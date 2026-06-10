@@ -6,7 +6,7 @@
   <title>Para Sempre, Nós | Amor Eterno</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <!-- Font Awesome 6 (free) -->
+  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -23,7 +23,6 @@
       overflow-x: hidden;
     }
 
-    /* cores tema: rosa suave, branco, dourado */
     :root {
       --rose: #f9e6e8;
       --rose-deep: #f3d0d4;
@@ -55,7 +54,6 @@
       transform: translateY(0);
     }
 
-    /* cabeçalho hero */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -69,7 +67,6 @@
       padding: 2rem;
     }
 
-    /* efeito corações flutuantes */
     .heart-bg {
       position: absolute;
       top: 0;
@@ -167,7 +164,17 @@
       transform: translateY(-3px);
     }
 
-    /* títulos seção */
+    .btn-musica {
+      background: linear-gradient(135deg, #d4af7a, #c2a05e);
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      padding: 14px 32px;
+    }
+
+    .btn-musica i {
+      margin-right: 8px;
+    }
+
     .section-title {
       font-size: 2.5rem;
       text-align: center;
@@ -186,7 +193,6 @@
       margin: 0.8rem auto 0;
     }
 
-    /* timeline */
     .timeline {
       display: flex;
       flex-wrap: wrap;
@@ -218,7 +224,6 @@
       margin-bottom: 0.5rem;
     }
 
-    /* galeria */
     .galeria-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -245,7 +250,6 @@
       transform: scale(1.05);
     }
 
-    /* cartões motivos */
     .motivos-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -267,7 +271,6 @@
       margin-bottom: 0.7rem;
     }
 
-    /* carta */
     .carta-box {
       background: #fffcf8;
       border-radius: 40px;
@@ -279,7 +282,6 @@
       font-style: italic;
     }
 
-    /* contador */
     .contador {
       background: linear-gradient(145deg, #fef3f0, #fde9e4);
       border-radius: 70px;
@@ -294,7 +296,6 @@
       color: #b27d7d;
     }
 
-    /* música */
     .musica-wrapper {
       background: #faf1ed;
       border-radius: 32px;
@@ -309,7 +310,6 @@
       height: 315px;
     }
 
-    /* mensagem final */
     .final {
       background: linear-gradient(115deg, #f7e6df, #f9eef0);
       text-align: center;
@@ -333,7 +333,6 @@
       margin: 0 auto;
     }
 
-    /* rodapé */
     footer {
       text-align: center;
       padding: 2rem;
@@ -341,7 +340,6 @@
       color: #b88b8b;
     }
 
-    /* responsivo */
     @media (max-width: 760px) {
       .container {
         padding: 1rem;
@@ -360,7 +358,6 @@
       }
     }
 
-    /* nav simples com link */
     .nav-links {
       display: flex;
       justify-content: center;
@@ -384,8 +381,7 @@
 <div class="hero">
   <div class="heart-bg" id="heart-container"></div>
   <div class="hero-content">
-    <!-- foto de capa do casal (imagem placeholder ilustrativa) -->
-    <img src="https://placehold.co/600x600/f9e6e8/b27d7d?text=♡+Nossa+Foto+♡" alt="Nosso amor" class="foto-capa" id="heroImage">
+    <img src="https://placehold.co/600x600/f3d0d4/ffffff?text=❤️+Nosso+Amor+❤️" alt="Nosso amor" class="foto-capa" id="heroImage">
     <h1>Para sempre, nós</h1>
     <div class="frase-destaque">
       “Cada capítulo da minha vida ficou mais bonito desde que você chegou.”
@@ -394,6 +390,10 @@
       <a href="#historia" class="btn">📖 Nossa História</a>
       <a href="#carta" class="btn btn-outline">💌 Carta de Amor</a>
     </div>
+    <!-- Botão para tocar a música -->
+    <button id="playMusicBtn" class="btn btn-musica" style="margin-top: 1.5rem;">
+      <i class="fas fa-music"></i> ♪ Tocar nossa música ♪
+    </button>
   </div>
   <div class="nav-links" style="margin-top: 2rem;">
     <a href="#historia">História</a>
@@ -406,7 +406,6 @@
 </div>
 
 <main class="container">
-  <!-- 1. Nossa História -->
   <section id="historia">
     <h2 class="section-title">✨ Nossa História ✨</h2>
     <div style="background: #fffdfb; border-radius: 48px; padding: 2.2rem; box-shadow: 0 8px 20px rgba(0,0,0,0.02);">
@@ -425,7 +424,6 @@
     </div>
   </section>
 
-  <!-- 2. Linha do Tempo -->
   <section id="linha-tempo">
     <h2 class="section-title">📅 Linha do Tempo</h2>
     <div class="timeline">
@@ -437,22 +435,17 @@
     </div>
   </section>
 
-  <!-- 3. Galeria de Fotos (layout moderno, 6 fotos placeholder) -->
   <section id="galeria">
     <h2 class="section-title">📸 Galeria de Memórias</h2>
-    <div class="galeria-grid" id="galeriaGrid">
-      <!-- Serão preenchidas via JS com imagens ilustrativas elegantes + opção de substituição -->
-    </div>
+    <div class="galeria-grid" id="galeriaGrid"></div>
     <p style="text-align: center; margin-top: 1rem; font-size: 0.85rem; color: #b88b8b;"><i class="fas fa-camera"></i> Clique nas fotos para ampliar (ilusão) — substitua pelas suas imagens reais.</p>
   </section>
 
-  <!-- 4. 10 Motivos Pelos Quais Eu Te Amo (cartões elegantes) -->
   <section id="motivos">
     <h2 class="section-title">🌸 10 Motivos Pelos Quais Eu Te Amo 🌸</h2>
     <div class="motivos-grid" id="motivosGrid"></div>
   </section>
 
-  <!-- 5. Carta de Amor -->
   <section id="carta">
     <h2 class="section-title">💌 Carta de Amor 💌</h2>
     <div class="carta-box">
@@ -463,25 +456,24 @@
     </div>
   </section>
 
-  <!-- 6. Contador de Tempo (data do casamento exemplo: dia 13 de julho de 2022 - ajustável) -->
   <section id="contador">
     <h2 class="section-title">⏳ Há Quanto Tempo Somos Um ⏳</h2>
     <div class="contador">
       <div class="tempo-numeros" id="contadorTempo"></div>
-      <p style="margin-top: 0.8rem;">❤️ desde o nosso casamento (13/07/2022) ❤️<br><span style="font-size:0.9rem;">(Caso queira editar a data, altere no código JavaScript)</span></p>
+      <p style="margin-top: 0.8rem;">❤️ desde o nosso casamento (13/07/2022) ❤️</p>
     </div>
   </section>
 
-  <!-- 7. Música Especial -->
   <section id="musica">
     <h2 class="section-title">🎵 Nossa Trilha Sonora 🎵</h2>
     <div class="musica-wrapper">
-      <iframe src="https://www.youtube.com/embed/1wCId0f8nKY?si=FaDYlYZmsQ2aeFrh" title="Conversations in the Dark - John Legend" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      <p style="margin-top: 1rem;"><em>"Conversations in the Dark" — John Legend</em></p>
+      <!-- Player do YouTube com a música escolhida (sem autoplay automático para evitar bloqueio) -->
+      <iframe id="youtubePlayer" width="560" height="315" src="https://www.youtube.com/embed/qUD2GxTeVcI" title="Música especial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <p style="margin-top: 1rem;"><em>🎶 Música tema do nosso amor 🎶</em></p>
+      <button id="playMusicInlineBtn" class="btn" style="margin-top: 1rem; background: #b27d7d;"><i class="fas fa-play"></i> Tocar música agora</button>
     </div>
   </section>
 
-  <!-- 8. Mensagem Final com animação suave -->
   <div class="final" id="mensagem-final">
     <p>✨ “Se eu pudesse voltar no tempo, escolheria você novamente. E novamente. E novamente. Te amo para sempre.” ✨</p>
   </div>
@@ -491,9 +483,7 @@
 </footer>
 
 <script>
-  // ==================== INTERATIVIDADE + CONTEÚDO ====================
-  
-  // --- 1. Gerar corações flutuantes ---
+  // ==================== CORAÇÕES FLUTUANTES ====================
   function createFloatingHearts() {
     const container = document.getElementById('heart-container');
     if(!container) return;
@@ -513,7 +503,7 @@
   }
   createFloatingHearts();
 
-  // --- 2. Galeria: 6 fotos elegantes (placeholders, mas indicamos substituir por imagens reais) ---
+  // ==================== GALERIA ====================
   const galeriaItens = [
     "https://placehold.co/600x600/f9e6e8/b27d7d?text=♡+Momento+Doce+♡",
     "https://placehold.co/600x600/f3e5c9/b27d7d?text=♡+Viagem+Juntos+♡",
@@ -536,7 +526,7 @@
     });
   }
 
-  // --- 3. 10 motivos elegantes ---
+  // ==================== 10 MOTIVOS ====================
   const motivosList = [
     "Pela forma que você ilumina meus dias mesmo nos mais escuros.",
     "Pelo seu sorriso sincero que me faz acreditar na magia.",
@@ -559,9 +549,9 @@
     });
   }
 
-  // --- 4. Contador de tempo (data: 13 de julho de 2022 - dia do casamento exemplo) ---
+  // ==================== CONTADOR DE TEMPO ====================
   function atualizarContador() {
-    const casamentoDate = new Date(2022, 6, 13); // 13 de julho de 2022 (mes 6 = julho)
+    const casamentoDate = new Date(2022, 6, 13);
     const agora = new Date();
     const diffMs = agora - casamentoDate;
     const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
@@ -576,7 +566,36 @@
   atualizarContador();
   setInterval(atualizarContador, 86400000);
 
-  // --- 5. Animação de scroll (efeito suave reveal) ---
+  // ==================== CONTROLE DA MÚSICA (PLAY) ====================
+  // Função para iniciar a reprodução no iframe
+  function playMusic() {
+    const iframe = document.getElementById('youtubePlayer');
+    if(iframe) {
+      // Recarregar o src com autoplay=1 (funciona após interação do usuário)
+      const videoId = "qUD2GxTeVcI";
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    }
+  }
+
+  // Botão principal no hero
+  const playBtn = document.getElementById('playMusicBtn');
+  if(playBtn) {
+    playBtn.addEventListener('click', () => {
+      playMusic();
+      // Mensagem delicada
+      alert("🎵 Nossa música favorita vai tocar agora. Aproveite cada nota, meu amor! 🎵");
+    });
+  }
+  
+  // Botão inline na seção música
+  const playInlineBtn = document.getElementById('playMusicInlineBtn');
+  if(playInlineBtn) {
+    playInlineBtn.addEventListener('click', () => {
+      playMusic();
+    });
+  }
+
+  // ==================== SCROLL REVEAL ====================
   const sections = document.querySelectorAll('section');
   const finalSection = document.querySelector('.final');
   const observer = new IntersectionObserver((entries) => {
@@ -588,36 +607,15 @@
   }, { threshold: 0.15 });
   sections.forEach(sec => observer.observe(sec));
   if(finalSection) observer.observe(finalSection);
-  // Mostrar hero também? hero já visível, mas opcional
-  document.querySelectorAll('.hero').forEach(el => el.style.opacity = 1);
   
-  // colocar class visible inicial para seções já visíveis se quiser, mas a animação por scroll resolve.
-  // pré-visible forçado para primeira section (história) caso já apareça
-  const handleFirst = () => {
-    const heroHidden = document.querySelector('.hero');
-    if(heroHidden) heroHidden.style.opacity = '1';
-  };
-  handleFirst();
-
-  // Trocar a imagem de capa para uma foto com casal real - se quiser, o usuário pode substituir a src abaixo.
-  const imgHero = document.getElementById('heroImage');
-  if(imgHero) {
-    // permitir que o usuário troque depois manualmente, mas deixamos uma imagem placeholder com cor rosa e texto amor
-    // No entanto, para demonstrar, uma imagem mais romântica (placeholder modificado)
-    imgHero.src = "https://placehold.co/600x600/f3d0d4/ffffff?text=❤️+Nosso+Amor+❤️";
-    imgHero.alt = "Foto do Casal";
-  }
-
-  // pegar a data personalizada: se necessário ajustar ano do contador, mas está dinâmico.
-  // Adicionar efeito de clique nas fotos para alertar que podem ser trocadas (opcional)
+  // ==================== CLICK NAS FOTOS ====================
   document.querySelectorAll('.galeria-item img').forEach(img => {
     img.addEventListener('click', () => {
       alert('✨ Adicione aqui suas fotos reais! Basta substituir os links das imagens no código. ✨');
     });
   });
   
-  // garantir contador data ajustável: caso queira mudar a data mais facil, declaramos variável.
-  // Funcionalidade extra: botão com rolagem suave
+  // ==================== NAVEGAÇÃO SUAVE ====================
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const href = this.getAttribute('href');
@@ -629,10 +627,6 @@
       }
     });
   });
-  
-  // Adicionar também o frase inicial no hero com corações e elegância
-  // + configuração adaptável para "todos os dias 13"
-  // pequeno detalhe: texto da linha do tempo já tem, tudo certo.
 </script>
 </body>
 </html>
