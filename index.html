@@ -365,32 +365,100 @@
       line-height: 1.6;
     }
 
-    /* GALERIA FLOATING GRIDS */
-    .galeria-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .galeria-item {
-      border-radius: 20px;
-      aspect-ratio: 1 / 1;
-      cursor: pointer;
+    /* ==================== NOVO SLIDE DE FOTOS (PREMIUM SLIDER) ==================== */
+    .slider-container {
+      position: relative;
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
       overflow: hidden;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.03);
-      border: 4px solid white;
-      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s;
+      border-radius: 32px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+      border: 6px solid white;
     }
 
-    .galeria-item:hover {
-      transform: scale(1.04) rotate(1deg);
-      box-shadow: 0 15px 35px rgba(255, 154, 158, 0.2);
+    .slider-track {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      width: 100%;
+      height: 480px;
     }
 
-    .galeria-item img {
+    @media (max-width: 768px) {
+      .slider-track { height: 360px; }
+    }
+
+    .slide-item {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .slide-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+    /* Controles do Slide */
+    .slider-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: #2c2c2c;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s;
+    }
+
+    .slider-arrow:hover {
+      background: white;
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .slider-arrow.left { left: 15px; }
+    .slider-arrow.right { right: 15px; }
+
+    /* Indicadores de Bolinha (Dots) */
+    .slider-dots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 8px 14px;
+      border-radius: 30px;
+      backdrop-filter: blur(8px);
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .dot.active {
+      background: white;
+      width: 20px;
+      border-radius: 10px;
     }
 
     /* MOTIVOS GRID MODERNO */
@@ -644,7 +712,7 @@
 </head>
 <body id="topo">
 
-<!-- SPLASH SCREEN INTERATIVA PARA DISPARAR O ÁUDIO AUTOMÁTICO -->
+<!-- SPLASH SCREEN INTERATIVA -->
 <div class="welcome-overlay" id="welcomeOverlay">
   <div class="welcome-box">
     <div class="welcome-icon"><i class="fas fa-heart"></i></div>
@@ -693,7 +761,7 @@
       <h2 class="section-title">A nossa história de amor</h2>
       <div class="section-sub">Como tudo começou.</div>
       <div class="historia-content glass-card">
-        <p>Algumas histórias começam with palavras. A nossa começou com um olhar.</p>
+        <p>Algumas histórias começam com palavras. A nossa começou com um olhar.</p>
         <p>Lembro como se fosse ontem. Vendo você descendo da escada e dando um chute na bunda do Allan, foi amor à primeira vista.</p>
         <p>Aquele momento exato, alguma coisa dentro de mim se mexeu, sabe? Foi como se o mundo tivesse pausado para me dizer: "é ela boy rsrs". E eu me apaixonei. Não devagar que era normal na época, me apaixonei inteiro, num único olhar.</p>
         <p>Vieram quatro anos de namoro. Conversas longas, mãos dadas, risadas bobas, planos e a certeza tranquila de que era com você que eu queria compartilhar essa coisa maravilhosa chamada vida.</p>
@@ -714,11 +782,23 @@
       </div>
     </section>
 
-    <!-- 3. Galeria -->
+    <!-- 3. NOVO SLIDE DE FOTOS INTERATIVO -->
     <section id="galeria">
       <h2 class="section-title">A nossa galeria</h2>
-      <div class="section-sub">Algumas das fotos preferidas de uma vida que ainda está só começando.</div>
-      <div class="galeria-grid" id="galeriaGrid"></div>
+      <div class="section-sub">Arraste para os lados ou clique nas fotos para expandir em tela cheia.</div>
+      
+      <div class="slider-container">
+        <button class="slider-arrow left" id="sliderPrev"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-arrow right" id="sliderNext"><i class="fas fa-chevron-right"></i></button>
+        
+        <div class="slider-track" id="sliderTrack">
+          <!-- Slides gerados dinamicamente via JavaScript -->
+        </div>
+        
+        <div class="slider-dots" id="sliderDots">
+          <!-- Bolinhas geradas via JavaScript -->
+        </div>
+      </div>
     </section>
 
     <!-- 4. 10 Motivos -->
@@ -806,26 +886,17 @@
   // ==================== DISPARADOR AUTOMÁTICO DE MÚSICA (SPLASH SCREEN) ====================
   function playMusic() {
     const iframe = document.getElementById('youtubePlayer');
-    // Adiciona o parâmetro de autoplay na URL para o YouTube forçar o play com som
     iframe.src = "https://www.youtube.com/embed/qUD2GxTeVcI?autoplay=1&enablejsapi=1";
   }
 
   document.getElementById('btnEnterSite').addEventListener('click', function(e) {
-    // 1. Toca a música usando a interação legítima do clique
     playMusic();
-    
-    // 2. Dispara uma explosão de corações para comemorar a entrada
     heartBurst(e);
-    
-    // 3. Remove a cortina borrada com suavidade
     const overlay = document.getElementById('welcomeOverlay');
     overlay.classList.add('fade-out');
-    
-    // Remove do DOM após a animação acabar para liberar a tela
     setTimeout(() => overlay.remove(), 800);
   });
 
-  // O botão interno da seção música serve como "recarregar" caso ela queira reiniciar
   document.getElementById('playMusicBtn').addEventListener('click', playMusic);
 
 
@@ -887,7 +958,7 @@
   document.getElementById('heroSurprise').addEventListener('click', heartBurst);
 
 
-  // ==================== GALERIA NATIVA ====================
+  // ==================== LÓGICA E CONSTRUÇÃO DO SLIDER DE FOTOS ====================
   const fotosGaleria = [
     "https://i.ibb.co/DgkYSBsz/IMG-20260101-WA0065.jpg",
     "https://i.ibb.co/b4PD5z7/IMG-20260101-WA0059.jpg",
@@ -898,33 +969,63 @@
     "https://i.ibb.co/vxZNSFrn/IMG-20240113-WA0017.jpg"
   ];
 
-  const galeriaGrid = document.getElementById('galeriaGrid');
-  if (galeriaGrid) {
-    fotosGaleria.forEach(src => {
-      const div = document.createElement('div');
-      div.className = 'galeria-item';
-      const img = document.createElement('img');
-      img.src = src;
-      img.alt = "Momento nosso";
-      img.loading = "lazy";
-      
-      img.onerror = function() {
-        this.style.display = 'none';
-        const placeholder = document.createElement('div');
-        placeholder.className = 'placeholder';
-        placeholder.style.height = '100%';
-        placeholder.style.display = 'flex';
-        placeholder.style.alignItems = 'center';
-        placeholder.style.justifyContent = 'center';
-        placeholder.style.background = '#fef0ea';
-        placeholder.innerHTML = '📸❤️';
-        div.appendChild(placeholder);
-      };
-      
-      div.appendChild(img);
-      galeriaGrid.appendChild(div);
+  const sliderTrack = document.getElementById('sliderTrack');
+  const sliderDots = document.getElementById('sliderDots');
+  let currentSlide = 0;
+  let slideInterval;
+
+  // Renderiza fotos e bolinhas
+  fotosGaleria.forEach((src, index) => {
+    // Cria Slide
+    const slide = document.createElement('div');
+    slide.className = 'slide-item';
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = "Momento nosso";
+    img.loading = "lazy";
+    slide.appendChild(img);
+    sliderTrack.appendChild(slide);
+
+    // Cria Bolinha (Dot)
+    const dot = document.createElement('div');
+    dot.className = `dot ${index === 0 ? 'active' : ''}`;
+    dot.addEventListener('click', () => {
+      goToSlide(index);
+      resetAutoPlay();
+    });
+    sliderDots.appendChild(dot);
+  });
+
+  function goToSlide(index) {
+    if (index >= fotosGaleria.length) currentSlide = 0;
+    else if (index < 0) currentSlide = fotosGaleria.length - 1;
+    else currentSlide = index;
+
+    // Move o track do slider
+    sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+    // Atualiza classe ativa dos dots
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === currentSlide);
     });
   }
+
+  function nextSlide() { goToSlide(currentSlide + 1); }
+  function prevSlide() { goToSlide(currentSlide - 1); }
+
+  document.getElementById('sliderNext').addEventListener('click', () => { nextSlide(); resetAutoPlay(); });
+  document.getElementById('sliderPrev').addEventListener('click', () => { prevSlide(); resetAutoPlay(); });
+
+  // AutoPlay Inteligente
+  function startAutoPlay() {
+    slideInterval = setInterval(nextSlide, 4000);
+  }
+  function resetAutoPlay() {
+    clearInterval(slideInterval);
+    startAutoPlay();
+  }
+  startAutoPlay();
 
 
   // ==================== MOTIVOS INTELIGENTES ====================
@@ -989,22 +1090,26 @@
   });
 
 
-  // ==================== LIGHTBOX MODAL SCRIPT ====================
+  // ==================== LIGHTBOX MODAL SCRIPT (CLIQUE NO SLIDE) ====================
   const lightboxModal = document.getElementById('lightboxModal');
   const lightboxImg = document.getElementById('lightboxImg');
   
   document.addEventListener('click', function(e) {
-    const galeriaItem = e.target.closest('.galeria-item');
-    if (galeriaItem) {
-      const img = galeriaItem.querySelector('img');
-      if (img && img.src && img.style.display !== 'none') {
+    const slideItem = e.target.closest('.slide-item');
+    if (slideItem) {
+      const img = slideItem.querySelector('img');
+      if (img && img.src) {
         lightboxImg.src = img.src;
         lightboxModal.classList.add('active');
+        clearInterval(slideInterval); // Pausa o autoplay enquanto ela vê em tela cheia
       }
     }
   });
 
-  function fecharLightbox() { lightboxModal.classList.remove('active'); }
+  function fecharLightbox() { 
+    lightboxModal.classList.remove('active'); 
+    startAutoPlay(); // Retoma o autoplay
+  }
   document.getElementById('closeLightbox').addEventListener('click', fecharLightbox);
   lightboxModal.addEventListener('click', function(e) {
     if(e.target === lightboxModal) fecharLightbox();
