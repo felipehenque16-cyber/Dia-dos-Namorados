@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>T & F | Nossa História de Amor</title>
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -34,14 +32,17 @@
       --text-soft: #6e5d53;
     }
 
-    /* TELA DE INGRESSO (SPLASH SCREEN STYLE LOVEPANDA) */
+    /* TELA DE INGRESSO ATUALIZADA COM FOTO DE FUNDO */
     .welcome-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, #fff5f2 0%, #fceae5 100%);
+      background: linear-gradient(rgba(44, 34, 30, 0.5), rgba(0, 0, 0, 0.6)), url('https://i.ibb.co/mCStQV3n/IMG-20241015-WA0022.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
       z-index: 9999;
       display: flex;
       flex-direction: column;
@@ -59,12 +60,12 @@
     .welcome-box {
       max-width: 450px;
       padding: 3rem 2rem;
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.75);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.8);
       border-radius: 32px;
-      box-shadow: 0 20px 50px rgba(255, 154, 158, 0.15);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
     }
     .welcome-icon {
       font-size: 3rem;
@@ -183,7 +184,6 @@
       .hero { background-attachment: scroll; }
     }
 
-    /* Animação dos Corações de Fundo */
     .floating-hearts {
       position: absolute;
       top: 0;
@@ -498,7 +498,6 @@
     .slider-arrow.left { left: 15px; }
     .slider-arrow.right { right: 15px; }
 
-    /* Estilização moderna e compacta para as bolinhas de paginação com muitas imagens */
     .slider-dots {
       position: absolute;
       bottom: 20px;
@@ -515,7 +514,6 @@
       overflow-x: auto;
     }
 
-    /* Esconde barra de rolagem do painel de bolinhas se estourar */
     .slider-dots::-webkit-scrollbar { display: none; }
 
     .dot {
@@ -796,7 +794,6 @@
 </head>
 <body id="topo">
 
-<!-- SPLASH SCREEN INTERATIVA BLINDADA -->
 <div class="welcome-overlay" id="welcomeOverlay">
   <div class="welcome-box">
     <div class="welcome-icon"><i class="fas fa-heart"></i></div>
@@ -824,7 +821,6 @@
 </header>
 
 <main>
-  <!-- HERO APP LOOK -->
   <div class="hero">
     <div class="floating-hearts" id="floatingHeartsHero"></div>
     <div class="hero-content">
@@ -840,7 +836,6 @@
   </div>
 
   <div class="container">
-    <!-- 1. Nossa História Atualizada com Foto Lateral e Texto Original -->
     <section id="historia">
       <h2 class="section-title">A nossa história de amor</h2>
       <div class="section-sub">Como tudo começou.</div>
@@ -858,7 +853,6 @@
       </div>
     </section>
 
-    <!-- 2. Linha do Tempo -->
     <section id="linha-tempo">
       <h2 class="section-title">A linha do tempo do nosso amor</h2>
       <div class="section-sub">Cinco momentos que nunca vou esquecer — e tantos outros que ainda virão.</div>
@@ -871,7 +865,6 @@
       </div>
     </section>
 
-    <!-- 3. Slide de Fotos Interativo com o Novo Álbum Completo -->
     <section id="galeria">
       <h2 class="section-title">A nossa galeria</h2>
       <div class="section-sub">Arraste para os lados ou clique nas fotos para expandir em tela cheia.</div>
@@ -881,30 +874,26 @@
         <button class="slider-arrow right" id="sliderNext"><i class="fas fa-chevron-right"></i></button>
         
         <div class="slider-track" id="sliderTrack">
-          <!-- Slides gerados dinamicamente via JavaScript -->
-        </div>
+          </div>
         
         <div class="slider-dots" id="sliderDots">
-          <!-- Bolinhas geradas via JavaScript -->
-        </div>
+          </div>
       </div>
     </section>
 
-    <!-- 4. 10 Motivos -->
     <section id="motivos">
       <h2 class="section-title">10 motivos pelos quais eu te amo</h2>
       <div class="section-sub">Pequenas coisas que fazem você ser a pessoa da minha vida.</div>
       <div class="motivos-grid" id="motivosGrid"></div>
     </section>
 
-    <!-- 5. Carta de Amor -->
     <section id="carta">
       <h2 class="section-title">Carta de Amor</h2>
       <div class="section-sub">Do meu coração direto para o seu.</div>
       <div class="carta-box glass-card">
         <p><strong>Meu amor,</strong></p>
         <p>Eu nunca fui muito bom com palavras, mas tentei. Porque você merece ouvir, ler e sentir tudo e este cantinho é o nosso, sempre que precisar lembrar, beleza?</p>
-        <p>Quando te vi descendo a escada da igreja, eu não sabia que estava conhecendo a minha vida inteira. Naquele momento, sem nenhum aviso, meu world capotou de um jeito maravilhoso. Você desceu aquela escada e seu sorriso ficou na minha mente de um jeito...</p>
+        <p>Quando te vi descendo a escada da igreja, eu não sabia que estava conhecendo a minha vida inteira. Naquele momento, sem nenhum aviso, meu mundo capotou de um jeito maravilhoso. Você desceu aquela escada e seu sorriso ficou na minha mente de um jeito...</p>
         <p>Foram quatro anos namorando como quem brinca de eternidade. A gente fez planos, sonhos, casa, futuro. E quando chega todos os dias, principalmente agora, penso: tudo o que eu já tinha vivido valia a pena, porque me trouxe até ali e aqui, com você xuxu, e sei que já estava escrito nas estrelas o nós.</p>
         <p>Agradeço por todas as manhãs em que acordamos juntos e escuto o "bom dia". Pelos jantares improvisados. Pelas brigas que viraram. Pela paciência que você tem com os meus silêncios. Pela coragem que você me empresta quando a minha falta.</p>
         <p>Eu quero envelhecer com você. Quero te ver com cabelos brancos, ainda rindo das minhas piadas ruins. Quero que a gente conte essa nossa história na eternidade.</p>
@@ -913,7 +902,6 @@
       </div>
     </section>
 
-    <!-- 6. Contador Widget Style -->
     <section id="contador">
       <h2 class="section-title">⏳ Cada segundo conta</h2>
       <div class="contador-wrapper glass-card">
@@ -930,7 +918,6 @@
       </div>
     </section>
 
-    <!-- 7. Música Modern Card -->
     <section id="musica">
       <h2 class="section-title">A nossa música especial</h2>
       <div class="musica-wrapper glass-card">
@@ -942,7 +929,6 @@
     </section>
   </div>
 
-  <!-- 8. Seção Final -->
   <div class="final-section" id="final">
     <div class="floating-hearts" id="floatingHeartsFinal"></div>
     <div class="final-content">
@@ -954,13 +940,11 @@
     </div>
   </div>
 
-  <!-- Lightbox Element -->
   <div id="lightboxModal" class="lightbox">
     <span class="close-lightbox" id="closeLightbox">&times;</span>
     <img id="lightboxImg" src="" alt="Foto expandida">
   </div>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="citacao">
       "O amor é a única coisa que somos capazes de perceber que transcende as dimensões de tempo e espaço."
@@ -1085,7 +1069,7 @@
     "https://i.ibb.co/r2ZnJjcr/IMG-20251219-WA0016.jpg",
     "https://i.ibb.co/d0DbWmTQ/IMG-20260101-WA0068.jpg",
     "https://i.ibb.co/D6Q21fG/IMG-20260105-WA0007.jpg",
-    "https://i.ibb.co/HjLqfMk/IMG-20260105-WA0008.jpg",
+    "https://i.ibb.co/HjLqfMk/IMG-20260105-WA0007.jpg",
     "https://i.ibb.co/b56SZVBR/IMG-20260128-WA0053.jpg",
     "https://i.ibb.co/svRFmk72/IMG-20260128-WA0070.jpg",
     "https://i.ibb.co/dJrYSvvf/IMG-20260331-WA0125.jpg",
@@ -1218,6 +1202,7 @@
       document.getElementById('diasTotal').innerHTML = `✨ ${diasTotal.toLocaleString()} dias de puro amor ✨<br>E cada microssegundo valeu a pena.`;
     }
   }
+  atualuarContador = atualizarContador;
   atualizarContador();
   setInterval(atualizarContador, 1000);
 
