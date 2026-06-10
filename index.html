@@ -34,6 +34,63 @@
       --text-soft: #6e5d53;
     }
 
+    /* TELA DE INGRESSO (SPLASH SCREEN STYLE LOVEPANDA) */
+    .welcome-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #fff5f2 0%, #fceae5 100%);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .welcome-overlay.fade-out {
+      opacity: 0;
+      transform: scale(1.05);
+      pointer-events: none;
+    }
+    .welcome-box {
+      max-width: 450px;
+      padding: 3rem 2rem;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 32px;
+      box-shadow: 0 20px 50px rgba(255, 154, 158, 0.15);
+    }
+    .welcome-icon {
+      font-size: 3rem;
+      background: var(--pink-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
+      animation: heartbeat 1.5s infinite;
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    .welcome-box h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #3d312a;
+      margin-bottom: 1rem;
+    }
+    .welcome-box p {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
     .container {
       max-width: 1000px;
       margin: 0 auto;
@@ -142,12 +199,6 @@
       z-index: 3;
       max-width: 750px;
       color: white;
-      animation: fadeIn 1.2s ease-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     .hero h1 {
@@ -187,7 +238,6 @@
     }
 
     .btn {
-      background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
       background: var(--pink-gradient);
       color: #5c3d46;
       border: none;
@@ -586,13 +636,23 @@
       .hero h1 { font-size: 2.6rem; }
       .hero h1 span { font-size: 2rem; }
       .section-title { font-size: 1.9rem; }
-      .nav-links { display: none; } /* Deixa clean no mobile */
+      .nav-links { display: none; }
       .header { padding: 0.6rem 1.5rem; }
       .historia-content, .carta-box { padding: 1.8rem; }
     }
   </style>
 </head>
 <body id="topo">
+
+<!-- SPLASH SCREEN INTERATIVA PARA DISPARAR O ÁUDIO AUTOMÁTICO -->
+<div class="welcome-overlay" id="welcomeOverlay">
+  <div class="welcome-box">
+    <div class="welcome-icon"><i class="fas fa-heart"></i></div>
+    <h2>Para o meu amor...</h2>
+    <p>Você recebeu um presente feito com memórias, palavras e música. Clique abaixo para abrir.</p>
+    <button class="btn" id="btnEnterSite"><i class="fas fa-envelope-open-text"></i> ABRIR PRESENTE</button>
+  </div>
+</div>
 
 <button class="btn-celebrate" id="btnCelebrate" title="Soltar Amor!"><i class="fas fa-heart"></i></button>
 
@@ -633,7 +693,7 @@
       <h2 class="section-title">A nossa história de amor</h2>
       <div class="section-sub">Como tudo começou.</div>
       <div class="historia-content glass-card">
-        <p>Algumas histórias começam com palavras. A nossa começou com um olhar.</p>
+        <p>Algumas histórias começam with palavras. A nossa começou com um olhar.</p>
         <p>Lembro como se fosse ontem. Vendo você descendo da escada e dando um chute na bunda do Allan, foi amor à primeira vista.</p>
         <p>Aquele momento exato, alguma coisa dentro de mim se mexeu, sabe? Foi como se o mundo tivesse pausado para me dizer: "é ela boy rsrs". E eu me apaixonei. Não devagar que era normal na época, me apaixonei inteiro, num único olhar.</p>
         <p>Vieram quatro anos de namoro. Conversas longas, mãos dadas, risadas bobas, planos e a certeza tranquila de que era com você que eu queria compartilhar essa coisa maravilhosa chamada vida.</p>
@@ -654,14 +714,14 @@
       </div>
     </section>
 
-    <!-- 3. Galeria Modern Floating -->
+    <!-- 3. Galeria -->
     <section id="galeria">
       <h2 class="section-title">A nossa galeria</h2>
       <div class="section-sub">Algumas das fotos preferidas de uma vida que ainda está só começando.</div>
       <div class="galeria-grid" id="galeriaGrid"></div>
     </section>
 
-    <!-- 4. 10 Motivos Interativos -->
+    <!-- 4. 10 Motivos -->
     <section id="motivos">
       <h2 class="section-title">10 motivos pelos quais eu te amo</h2>
       <div class="section-sub">Pequenas coisas que fazem você ser a pessoa da minha vida.</div>
@@ -708,7 +768,7 @@
         <div class="contador-titulo">🎵 TOCANDO AGORA</div>
         <div class="musica-artista">Conversations in the Dark — John Legend</div>
         <iframe id="youtubePlayer" width="100%" height="220" src="https://www.youtube.com/embed/qUD2GxTeVcI" title="YouTube player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 16px; margin-bottom: 1.5rem; border: 1px solid var(--glass-border);"></iframe>
-        <button id="playMusicBtn" class="btn"><i class="fas fa-play"></i> Dar Play com Autoplay</button>
+        <button id="playMusicBtn" class="btn"><i class="fas fa-redo"></i> Recarregar Música</button>
       </div>
     </section>
   </div>
@@ -743,6 +803,32 @@
 </main>
 
 <script>
+  // ==================== DISPARADOR AUTOMÁTICO DE MÚSICA (SPLASH SCREEN) ====================
+  function playMusic() {
+    const iframe = document.getElementById('youtubePlayer');
+    // Adiciona o parâmetro de autoplay na URL para o YouTube forçar o play com som
+    iframe.src = "https://www.youtube.com/embed/qUD2GxTeVcI?autoplay=1&enablejsapi=1";
+  }
+
+  document.getElementById('btnEnterSite').addEventListener('click', function(e) {
+    // 1. Toca a música usando a interação legítima do clique
+    playMusic();
+    
+    // 2. Dispara uma explosão de corações para comemorar a entrada
+    heartBurst(e);
+    
+    // 3. Remove a cortina borrada com suavidade
+    const overlay = document.getElementById('welcomeOverlay');
+    overlay.classList.add('fade-out');
+    
+    // Remove do DOM após a animação acabar para liberar a tela
+    setTimeout(() => overlay.remove(), 800);
+  });
+
+  // O botão interno da seção música serve como "recarregar" caso ela queira reiniciar
+  document.getElementById('playMusicBtn').addEventListener('click', playMusic);
+
+
   // ==================== CORAÇÕES FLUTUANTES (AMBIENTE) ====================
   function createFloatingHearts(containerId) {
     const container = document.getElementById(containerId);
@@ -767,10 +853,10 @@
   createFloatingHearts('floatingHeartsHero');
   createFloatingHearts('floatingHeartsFinal');
 
-  // ==================== EXPLOSÃO DE CORAÇÕES INTERATIVA (LOVEPANDA STYLE) ====================
+
+  // ==================== EXPLOSÃO DE CORAÇÕES INTERATIVA ====================
   function heartBurst(e) {
     const count = 18;
-    // Pega a posição certa tanto de botões quanto da tela livre
     const clientX = e.clientX || window.innerWidth / 2;
     const clientY = e.clientY || window.innerHeight / 2;
 
@@ -778,7 +864,6 @@
       const p = document.createElement('i');
       p.classList.add('fas', 'fa-heart', 'burst-heart');
       
-      // Ângulo aleatório para espalhar em círculo
       const angle = Math.random() * Math.PI * 2;
       const velocity = Math.random() * 120 + 60;
       const x = Math.cos(angle) * velocity;
@@ -789,7 +874,6 @@
       p.style.left = `${clientX}px`;
       p.style.top = `${clientY}px`;
       
-      // Cores mistas no tema LovePanda
       const colors = ['#ff9a9e', '#fecfef', '#d4af37', '#ff6b6b'];
       p.style.color = colors[Math.floor(Math.random() * colors.length)];
       p.style.fontSize = `${Math.random() * 15 + 10}px`;
@@ -801,6 +885,7 @@
 
   document.getElementById('btnCelebrate').addEventListener('click', heartBurst);
   document.getElementById('heroSurprise').addEventListener('click', heartBurst);
+
 
   // ==================== GALERIA NATIVA ====================
   const fotosGaleria = [
@@ -841,6 +926,7 @@
     });
   }
 
+
   // ==================== MOTIVOS INTELIGENTES ====================
   const motivos = [
     "Pelo seu sorriso que ilumina meus dias",
@@ -862,6 +948,7 @@
     card.innerHTML = `<div class="motivo-num">${String(i+1).padStart(2,'0')}</div><div class="motivo-text">${text}</div>`;
     motivosGrid.appendChild(card);
   });
+
 
   // ==================== CONTADOR PRECISO ====================
   function atualizarContador() {
@@ -888,24 +975,19 @@
   atualizarContador();
   setInterval(atualizarContador, 1000);
 
-  // ==================== PLAYER DE MÚSICA ====================
-  function playMusic() {
-    const iframe = document.getElementById('youtubePlayer');
-    iframe.src = "https://www.youtube.com/embed/qUD2GxTeVcI?autoplay=1";
-  }
-  document.getElementById('playMusicBtn').addEventListener('click', playMusic);
 
   // ==================== NAV SCROLL SUAVE ====================
   document.querySelectorAll('.nav-links a, .hero-buttons a').forEach(link => {
     link.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
-      if (targetId.startsWith('#')) {
+      if (targetId && targetId.startsWith('#')) {
         e.preventDefault();
         const target = document.querySelector(targetId === '#topo' ? 'body' : targetId);
         if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
   });
+
 
   // ==================== LIGHTBOX MODAL SCRIPT ====================
   const lightboxModal = document.getElementById('lightboxModal');
