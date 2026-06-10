@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Para Sempre, Nós | Amor Eterno</title>
+  <title>T & F | Nossa História de Amor</title>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -16,56 +16,89 @@
     }
 
     body {
-      background: #fffaf7;
+      background: #fffaf8;
       font-family: 'Inter', sans-serif;
-      color: #3e2c2b;
+      color: #2c2c2c;
       scroll-behavior: smooth;
-      overflow-x: hidden;
     }
 
     :root {
-      --rose: #f9e6e8;
-      --rose-deep: #f3d0d4;
-      --gold: #d4af7a;
-      --gold-light: #f3e5c9;
-      --dark-rose: #b27d7d;
-      --text-dark: #2c1e1d;
-    }
-
-    h1, h2, h3, .playfair {
-      font-family: 'Playfair Display', serif;
+      --gold: #c9a87b;
+      --gold-light: #e8d5b5;
+      --rose: #f5e6e3;
+      --rose-dark: #e8cdc7;
+      --text-dark: #2c2c2c;
+      --text-soft: #7a6a62;
+      --bg-card: #ffffff;
     }
 
     .container {
-      max-width: 1280px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 2rem 1.5rem;
     }
 
-    section {
-      margin-bottom: 5rem;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-      scroll-margin-top: 80px;
+    /* HEADER / NAVEGAÇÃO */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 250, 248, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--gold-light);
     }
 
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
-    /* HERO CAPA - IMAGEM EM TELA CHEIA */
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 600;
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-soft);
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    /* HERO COM FUNDO E CORAÇÕES */
     .hero {
       min-height: 100vh;
       width: 100%;
       position: relative;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       text-align: center;
-      background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)), url('https://i.ibb.co/zh6KLxGT/IMG-20240111-WA0019.jpg');
+      padding: 6rem 1.5rem 3rem;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('https://i.ibb.co/zh6KLxGT/IMG-20240111-WA0019.jpg');
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
@@ -79,50 +112,104 @@
       }
     }
 
+    /* Corações flutuantes */
+    .floating-hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      color: rgba(255, 200, 200, 0.7);
+      font-size: 1.2rem;
+      animation: floatUp linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
     .hero-content {
       position: relative;
       z-index: 3;
       max-width: 800px;
-      padding: 2rem;
       color: white;
       text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
     }
 
     .hero h1 {
-      font-size: 4rem;
-      letter-spacing: 3px;
-      color: white;
-      margin-bottom: 0.5rem;
+      font-size: 3.5rem;
+      font-family: 'Playfair Display', serif;
       font-weight: 600;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 span {
+      font-weight: 400;
+      font-style: italic;
     }
 
     .hero .frase-destaque {
-      font-size: 1.8rem;
-      font-family: 'Playfair Display', serif;
-      font-weight: 500;
-      color: white;
-      margin: 1.5rem 0;
-      line-height: 1.3;
+      font-size: 1.4rem;
+      color: rgba(255,255,255,0.95);
+      margin: 1rem 0 2rem;
+      font-weight: 400;
+    }
+
+    .hero .descricao {
+      max-width: 550px;
+      margin: 0 auto;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .hero-buttons {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     .btn {
       background: var(--gold);
       color: white;
       border: none;
-      padding: 12px 32px;
+      padding: 10px 28px;
       border-radius: 40px;
-      font-weight: 600;
-      font-size: 1rem;
+      font-weight: 500;
+      font-size: 0.9rem;
       cursor: pointer;
       transition: all 0.3s;
       text-decoration: none;
       display: inline-block;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
     .btn-outline {
       background: transparent;
-      border: 2px solid white;
+      border: 1.5px solid white;
       color: white;
     }
 
@@ -133,685 +220,523 @@
     }
 
     .btn:hover {
-      background: #c2a05e;
-      transform: translateY(-3px);
+      background: #b8926a;
+      transform: translateY(-2px);
     }
 
-    .btn-musica {
-      background: linear-gradient(135deg, #d4af7a, #c2a05e);
-      margin-top: 1rem;
-      font-size: 1.1rem;
-      padding: 14px 32px;
+    .scroll-hint {
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.8);
     }
 
-    .btn-musica i {
-      margin-right: 8px;
+    .scroll-hint i {
+      display: block;
+      margin-top: 0.5rem;
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    /* Seções */
+    section {
+      margin-bottom: 5rem;
+      scroll-margin-top: 90px;
     }
 
     .section-title {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
+      font-family: 'Playfair Display', serif;
       text-align: center;
-      margin-bottom: 3rem;
-      position: relative;
-      display: inline-block;
-      width: 100%;
-      color: #b27d7d;
-    }
-
-    .section-title:after {
-      content: '';
-      display: block;
-      width: 70px;
-      height: 3px;
-      background: var(--gold);
-      margin: 0.8rem auto 0;
-    }
-
-    .timeline {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .timeline-card {
-      background: white;
-      border-radius: 24px;
-      padding: 1.8rem;
-      flex: 1;
-      min-width: 180px;
-      text-align: center;
-      box-shadow: 0 12px 25px -10px rgba(0,0,0,0.05);
-      transition: all 0.3s;
-      border: 1px solid var(--rose-deep);
-    }
-
-    .timeline-card i {
-      font-size: 2.5rem;
+      margin-bottom: 2.5rem;
       color: var(--gold);
-      margin-bottom: 1rem;
+      font-weight: 500;
     }
 
-    .timeline-card h3 {
-      font-size: 1.3rem;
+    .section-sub {
+      text-align: center;
+      color: var(--text-soft);
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    /* História */
+    .historia-content {
+      background: var(--bg-card);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      border: 1px solid var(--gold-light);
+      line-height: 1.8;
+      color: #4a3a32;
+    }
+
+    .historia-content p {
+      margin-bottom: 1.2rem;
+    }
+
+    /* Timeline */
+    .timeline-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .timeline-item {
+      background: var(--bg-card);
+      border-radius: 20px;
+      padding: 1.5rem;
+      border-left: 4px solid var(--gold);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    .timeline-year {
+      font-weight: 700;
+      color: var(--gold);
+      font-size: 0.9rem;
+      letter-spacing: 1px;
       margin-bottom: 0.5rem;
     }
 
+    .timeline-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-desc {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+    }
+
+    /* Galeria */
     .galeria-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.8rem;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
     }
 
     .galeria-item {
-      overflow: hidden;
-      border-radius: 24px;
-      box-shadow: 0 15px 25px -12px rgba(0,0,0,0.1);
-      transition: all 0.4s;
-      background: #f3e5c9;
+      background: #f0e8e4;
+      border-radius: 20px;
       aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-soft);
+      font-size: 0.9rem;
       cursor: pointer;
-      position: relative;
+      transition: 0.3s;
+      overflow: hidden;
+    }
+
+    .galeria-item i {
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .galeria-item span {
+      display: block;
     }
 
     .galeria-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s ease;
     }
 
-    .galeria-item:hover img {
-      transform: scale(1.05);
-    }
-
-    .galeria-item .error-placeholder {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #f3e5c9;
-      color: #b27d7d;
-      font-size: 0.9rem;
-      text-align: center;
-      padding: 1rem;
-    }
-
+    /* Motivos */
     .motivos-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.8rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
     }
 
     .motivo-card {
-      background: white;
-      border-radius: 28px;
-      padding: 1.5rem;
+      background: var(--bg-card);
+      border-radius: 20px;
+      padding: 1.8rem;
+      border: 1px solid var(--gold-light);
       transition: 0.2s;
-      border-left: 5px solid var(--gold);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
     }
 
-    .motivo-card h4 {
-      font-size: 1.5rem;
+    .motivo-num {
+      font-size: 2rem;
+      font-weight: 700;
       color: var(--gold);
-      margin-bottom: 0.7rem;
+      margin-bottom: 0.8rem;
+      font-family: 'Playfair Display', serif;
     }
 
+    .motivo-text {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #5a4a40;
+    }
+
+    /* Carta */
     .carta-box {
-      background: #fffcf8;
-      border-radius: 40px;
-      padding: 2rem;
-      box-shadow: 0 20px 35px -15px rgba(0,0,0,0.1);
-      border: 1px solid var(--rose-deep);
-      font-size: 1.15rem;
-      line-height: 1.7;
+      background: var(--bg-card);
+      border-radius: 28px;
+      padding: 2.5rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      border: 1px solid var(--gold-light);
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #4a3a32;
+    }
+
+    .carta-assinatura {
+      margin-top: 1.5rem;
       font-style: italic;
+      color: var(--gold);
     }
 
-    /* CONTADOR MODERNO */
-    .contador-moderno {
-      background: linear-gradient(145deg, #fef3f0, #fde9e4);
-      border-radius: 70px;
-      padding: 2.5rem 2rem;
+    /* Contador */
+    .contador-wrapper {
+      background: linear-gradient(135deg, #fff5f0, #fef0ea);
+      border-radius: 40px;
+      padding: 2.5rem;
       text-align: center;
-      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.15);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .contador-moderno::before {
-      content: '❤️';
-      position: absolute;
-      font-size: 120px;
-      opacity: 0.05;
-      bottom: -20px;
-      right: -20px;
-      pointer-events: none;
+      border: 1px solid var(--gold-light);
     }
 
     .contador-titulo {
-      font-size: 1.1rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #b27d7d;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      color: var(--text-soft);
       margin-bottom: 1rem;
-      font-weight: 600;
     }
 
-    .contador-wrapper {
+    .contador-numeros {
       display: flex;
       justify-content: center;
       gap: 1.5rem;
       flex-wrap: wrap;
-      margin-bottom: 1rem;
+      margin: 1.5rem 0;
     }
 
     .contador-bloco {
       background: white;
-      border-radius: 24px;
-      padding: 1.2rem 1rem;
-      min-width: 100px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-      transition: transform 0.3s;
+      border-radius: 20px;
+      padding: 1rem;
+      min-width: 80px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
 
-    .contador-bloco:hover {
-      transform: translateY(-5px);
-    }
-
-    .contador-numero {
-      font-size: 3rem;
-      font-weight: 800;
+    .contador-valor {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
       font-family: 'Playfair Display', serif;
-      color: #d4af7a;
-      line-height: 1;
     }
 
     .contador-label {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #b27d7d;
-      margin-top: 0.5rem;
-      font-weight: 500;
+      color: var(--text-soft);
     }
 
-    .contador-data-ref {
-      font-size: 0.9rem;
-      color: #b88b8b;
+    .contador-dias-total {
       margin-top: 1rem;
-      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--text-soft);
     }
 
+    /* Música */
     .musica-wrapper {
-      background: #faf1ed;
-      border-radius: 32px;
-      padding: 1.5rem;
-      text-align: center;
-    }
-
-    iframe {
+      background: var(--bg-card);
       border-radius: 28px;
-      width: 100%;
-      max-width: 560px;
-      height: 315px;
-    }
-
-    .final {
-      background: linear-gradient(115deg, #f7e6df, #f9eef0);
+      padding: 2rem;
       text-align: center;
-      padding: 4rem 2rem;
-      border-radius: 60px;
-      margin: 2rem 0 4rem;
-      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
-      animation: softGlow 4s infinite alternate;
+      border: 1px solid var(--gold-light);
     }
 
-    @keyframes softGlow {
-      0% { box-shadow: 0 10px 30px rgba(212,175,122,0.2); background: #fdf5f2;}
-      100% { box-shadow: 0 20px 45px rgba(212,175,122,0.5); background: #ffece5;}
+    .musica-titulo {
+      font-size: 1rem;
+      color: var(--text-soft);
+      margin-bottom: 1rem;
+    }
+
+    .musica-artista {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+    }
+
+    .btn-musica {
+      background: var(--gold);
+      margin-top: 1.5rem;
+    }
+
+    /* Mensagem Final */
+    .final {
+      background: linear-gradient(145deg, #fef3ef, #fceae5);
+      text-align: center;
+      padding: 3rem 2rem;
+      border-radius: 48px;
+      margin: 2rem 0 3rem;
     }
 
     .final p {
-      font-size: 1.8rem;
+      font-size: 1.4rem;
       font-family: 'Playfair Display', serif;
-      font-weight: 500;
-      max-width: 800px;
+      color: #7a5a4a;
+      max-width: 700px;
       margin: 0 auto;
     }
 
-    footer {
+    .final strong {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .footer {
       text-align: center;
       padding: 2rem;
+      border-top: 1px solid var(--gold-light);
       font-size: 0.8rem;
-      color: #b88b8b;
+      color: var(--text-soft);
     }
 
-    .heart-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    .heart-bg i {
-      position: absolute;
-      color: rgba(255, 255, 255, 0.25);
-      font-size: 1.5rem;
-      animation: floatHeart 12s infinite linear;
-    }
-
-    @keyframes floatHeart {
-      0% {
-        transform: translateY(100vh) scale(0.5);
-        opacity: 0;
-      }
-      10% {
-        opacity: 0.5;
-      }
-      90% {
-        opacity: 0.5;
-      }
-      100% {
-        transform: translateY(-10vh) scale(1.2);
-        opacity: 0;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .container {
-        padding: 1rem;
-      }
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      .hero .frase-destaque {
-        font-size: 1.3rem;
-      }
-      .section-title {
-        font-size: 2rem;
-      }
-      .final p {
-        font-size: 1.3rem;
-      }
-      .timeline-card {
-        min-width: 140px;
-      }
-      .contador-bloco {
-        min-width: 70px;
-        padding: 0.8rem;
-      }
-      .contador-numero {
-        font-size: 2rem;
-      }
-      .contador-wrapper {
-        gap: 0.8rem;
-      }
-    }
-
-    .nav-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-      transition: 0.2s;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-      cursor: pointer;
-    }
-    .nav-links a:hover {
-      color: var(--gold);
-      transform: translateY(-2px);
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      .section-title { font-size: 1.8rem; }
+      .nav { flex-direction: column; }
+      .nav-links { justify-content: center; gap: 1rem; }
+      .hero { padding-top: 8rem; }
     }
   </style>
 </head>
 <body>
 
-<div class="hero">
-  <div class="heart-bg" id="heart-container"></div>
-  <div class="hero-content">
-    <h1>Para sempre, nós</h1>
-    <div class="frase-destaque">
-      “Cada capítulo da minha vida ficou mais bonito desde que você chegou.”
+<header class="header">
+  <div class="nav">
+    <div class="logo">T & F</div>
+    <div class="nav-links">
+      <a href="#historia">Início</a>
+      <a href="#historia">Nossa História</a>
+      <a href="#linha-tempo">Linha do Tempo</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#motivos">Motivos</a>
+      <a href="#carta">Carta</a>
+      <a href="#musica">Música</a>
     </div>
-    <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-      <a href="#historia" class="btn" id="btnHistoria">📖 Nossa História</a>
-      <a href="#carta" class="btn btn-outline" id="btnCarta">💌 Carta de Amor</a>
-    </div>
-    <button id="playMusicBtn" class="btn btn-musica" style="margin-top: 1.5rem;">
-      <i class="fas fa-music"></i> ♪ Tocar nossa música ♪
-    </button>
   </div>
-  <div class="nav-links">
-    <a href="#historia" class="nav-link">História</a>
-    <a href="#linha-tempo" class="nav-link">Linha do tempo</a>
-    <a href="#galeria" class="nav-link">Galeria</a>
-    <a href="#motivos" class="nav-link">10 Motivos</a>
-    <a href="#contador" class="nav-link">Juntos</a>
-    <a href="#musica" class="nav-link">Música</a>
-  </div>
-</div>
+</header>
 
-<main class="container">
-  <section id="historia">
-    <h2 class="section-title">✨ Nossa História ✨</h2>
-    <div style="background: #fffdfb; border-radius: 48px; padding: 2.2rem; box-shadow: 0 8px 20px rgba(0,0,0,0.02);">
-      <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 1rem;">
-        Eu a conheci quando a vi <strong>descendo a escada da igreja</strong>. A luz do fim da tarde tocava seus cabelos, e naquele instante, meu coração parou e depois disparou. 
-        Foi como se o tempo tivesse uma pausa só para nós dois. Me apaixonei ali, completamente, sem defesa.
-      </p>
-      <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 1rem;">
-        Namoramos por <strong>dois anos inesquecíveis</strong> — foram risos, viagens, conversas até o amanhecer e o apoio incondicional. Depois, 
-        nos casamos e iniciamos a mais linda aventura: construir uma vida inteira juntos.
-      </p>
-      <p style="font-size: 1.2rem; line-height: 1.7;">
-        Todo <strong>dia 13</strong> é especial para nós, porque foi o dia do nosso casamento, uma data que eternizou o nosso sim. Cada mês, celebramos não apenas o tempo, 
-        mas a certeza de que escolhemos certo. Você é o meu lar.
-      </p>
-    </div>
-  </section>
-
-  <section id="linha-tempo">
-    <h2 class="section-title">📅 Linha do Tempo</h2>
-    <div class="timeline">
-      <div class="timeline-card"><i class="fas fa-hand-holding-heart"></i><h3>Primeiro Encontro</h3><p>Escada da igreja · a centelha inicial</p></div>
-      <div class="timeline-card"><i class="fas fa-heart"></i><h3>Início do Namoro</h3><p>Dois apaixonados, dois anos de pura magia</p></div>
-      <div class="timeline-card"><i class="fas fa-ring"></i><h3>Pedido de Casamento</h3><p>Momento único, lágrimas e sorrisos</p></div>
-      <div class="timeline-card"><i class="fas fa-church"></i><h3>Casamento</h3><p>Dia 13 · o sim mais lindo</p></div>
-      <div class="timeline-card"><i class="fas fa-star"></i><h3>Momentos Especiais</h3><p>Cada segundo ao seu lado é inesquecível</p></div>
-    </div>
-  </section>
-
-  <section id="galeria">
-    <h2 class="section-title">📸 Galeria de Memórias</h2>
-    <div class="galeria-grid" id="galeriaGrid"></div>
-    <p style="text-align: center; margin-top: 1rem; font-size: 0.85rem; color: #b88b8b;"><i class="fas fa-camera"></i> Clique nas fotos para ampliar</p>
-  </section>
-
-  <section id="motivos">
-    <h2 class="section-title">🌸 10 Motivos Pelos Quais Eu Te Amo 🌸</h2>
-    <div class="motivos-grid" id="motivosGrid"></div>
-  </section>
-
-  <section id="carta">
-    <h2 class="section-title">💌 Carta de Amor 💌</h2>
-    <div class="carta-box">
-      <p>Meu amor,</p>
-      <p>Escrever o que sinto por você é como tentar contar as estrelas — infinito. Cada manhã ao seu lado é um recomeço cheio de gratidão. Admiro sua força, seu sorriso que ilumina os meus dias mais cinzentos e o jeito que você faz tudo parecer possível. Lembro daquele primeiro olhar na escada da igreja e como meu coração sussurrou: "é ela". E não me enganei.</p>
-      <p>Namoramos, vivemos sonhos, nos casamos e mesmo depois de tantos dias 13 especiais, ainda me surpreendo ao te ver. Você me ensinou o verdadeiro significado de parceria, cumplicidade e amor incondicional. Eu prometo honrar esse amor todos os dias da minha vida. Obrigado por ser minha esposa, minha melhor amiga, minha eterna namorada.</p>
-      <p style="margin-top: 1rem;">Com todo o meu coração,<br>Seu eterno apaixonado.</p>
-    </div>
-  </section>
-
-  <!-- CONTADOR MODERNO - DATA CORRETA: 15 DE OUTUBRO DE 2017 -->
-  <section id="contador">
-    <h2 class="section-title">⏳ Há Quanto Tempo Somos Um ⏳</h2>
-    <div class="contador-moderno">
-      <div class="contador-titulo">
-        <i class="fas fa-heart" style="color: #d4af7a;"></i> TEMPO DE AMOR ININTERRUPTO <i class="fas fa-heart" style="color: #d4af7a;"></i>
+<main>
+  <div class="hero">
+    <!-- Corações flutuantes -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <div class="hero-content">
+      <h1>Cada capítulo da minha vida<br><span>ficou mais bonito desde que você chegou.</span></h1>
+      <div class="descricao">
+        Um pequeno presente feito de palavras, lembranças e o amor mais sincero que conheço. Cada seção é uma carta para você, meu amor.
       </div>
-      <div class="contador-wrapper" id="contadorWrapper">
-        <div class="contador-bloco">
-          <div class="contador-numero" id="anosContador">0</div>
-          <div class="contador-label">Anos</div>
-        </div>
-        <div class="contador-bloco">
-          <div class="contador-numero" id="mesesContador">0</div>
-          <div class="contador-label">Meses</div>
-        </div>
-        <div class="contador-bloco">
-          <div class="contador-numero" id="diasContador">0</div>
-          <div class="contador-label">Dias</div>
-        </div>
-        <div class="contador-bloco">
-          <div class="contador-numero" id="horasContador">0</div>
-          <div class="contador-label">Horas</div>
-        </div>
-        <div class="contador-bloco">
-          <div class="contador-numero" id="minutosContador">0</div>
-          <div class="contador-label">Minutos</div>
-        </div>
-        <div class="contador-bloco">
-          <div class="contador-numero" id="segundosContador">0</div>
-          <div class="contador-label">Segundos</div>
-        </div>
+      <div class="hero-buttons">
+        <a href="#historia" class="btn">COMECAR NOSSA HISTÓRIA</a>
+        <a href="#final" class="btn btn-outline">MENSAGEM FINAL</a>
       </div>
-      <div class="contador-data-ref">
-        ✨ Desde 15 de outubro de 2017 ✨
+      <div class="scroll-hint">
+        ROLE PARA BAIXO <i class="fas fa-chevron-down"></i>
       </div>
     </div>
-  </section>
-
-  <section id="musica">
-    <h2 class="section-title">🎵 Nossa Trilha Sonora 🎵</h2>
-    <div class="musica-wrapper">
-      <iframe id="youtubePlayer" width="560" height="315" src="https://www.youtube.com/embed/qUD2GxTeVcI" title="Música especial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      <p style="margin-top: 1rem;"><em>🎶 Música tema do nosso amor 🎶</em></p>
-      <button id="playMusicInlineBtn" class="btn" style="margin-top: 1rem; background: #b27d7d;"><i class="fas fa-play"></i> Tocar música agora</button>
-    </div>
-  </section>
-
-  <div class="final" id="mensagem-final">
-    <p>✨ “Se eu pudesse voltar no tempo, escolheria você novamente. E novamente. E novamente. Te amo para sempre.” ✨</p>
   </div>
+
+  <div class="container">
+    <!-- 1. Nossa História -->
+    <section id="historia">
+      <h2 class="section-title">A nossa história de amor</h2>
+      <div class="historia-content">
+        <p>Algumas histórias começam com palavras. A nossa começou com um olhar.</p>
+        <p>Lembro como se fosse ontem. Vendo você descendo da escada e dando um chute na bunda do Allan, foi amor a primeira vista.</p>
+        <p>Aquele momento exato, alguma coisa dentro de mim se mexeu, sabe? Foi como se o mundo tivesse pausado para me dizer: "é ela boy rsrs". E eu me apaixonei. Não devagar que era normal na época, me apaixonei inteiro, num único olhar.</p>
+        <p>Vieram quatro anos de namoro. Conversas longas, mãos dadas, risadas bobas, planos e a certeza tranquila de que era com você que eu queria compartilhar essa coisa maravilhosa chamada vida.</p>
+        <p>Depois veio o nosso "sim". E desde então, todo dia 13 carrega momentos maravilhosos. É o nosso dia. O dia em que viramos um só e ainda assim continuamos sendo tudo de melhor que cada um podia ser.</p>
+      </div>
+    </section>
+
+    <!-- 2. Linha do Tempo -->
+    <section id="linha-tempo">
+      <h2 class="section-title">A linha do tempo do nosso amor</h2>
+      <div class="section-sub">Cinco momentos que nunca vou esquecer — e tantos outros que ainda virão.</div>
+      <div class="timeline-grid">
+        <div class="timeline-item"><div class="timeline-year">VERÃO DE 2018</div><div class="timeline-title">Primeiro Encontro</div><div class="timeline-desc">Te vi descendo a escada da igreja. Naquele momento, o tempo parou e eu soube que era você.</div></div>
+        <div class="timeline-item"><div class="timeline-year">OUTUBRO DE 2018</div><div class="timeline-title">Início do Namoro</div><div class="timeline-desc">Aquele primeiro "sim" pelo zap, nunca esqueci e nem vou.</div></div>
+        <div class="timeline-item"><div class="timeline-year">DEZEMBRO DE 2019</div><div class="timeline-title">Casamento</div><div class="timeline-desc">Quando resolvemos iniciar as compras para casarmos, cada compra, planos é inesquecível.</div></div>
+        <div class="timeline-item"><div class="timeline-year">13 DE SETEMBRO DE 2020</div><div class="timeline-title">O Nosso Sim</div><div class="timeline-desc">Um dos dias mais importantes. Você de azul, eu admirando tua beleza. Todo dia 13 é eterno.</div></div>
+        <div class="timeline-item"><div class="timeline-year">HOJE E SEMPRE</div><div class="timeline-title">Momentos Especiais</div><div class="timeline-desc">Aniversários, rolês, sextas na cama, manhãs preguiçosas. Cada um deles é maravilhoso.</div></div>
+      </div>
+    </section>
+
+    <!-- 3. Galeria -->
+    <section id="galeria">
+      <h2 class="section-title">A nossa galeria</h2>
+      <div class="section-sub">Algumas das fotos preferidas de uma vida que ainda está só começando.</div>
+      <div class="galeria-grid" id="galeriaGrid">
+        <div class="galeria-item"><i class="fas fa-image"></i><span>📸</span></div>
+        <div class="galeria-item"><i class="fas fa-image"></i><span>📸</span></div>
+        <div class="galeria-item"><i class="fas fa-image"></i><span>📸</span></div>
+        <div class="galeria-item"><i class="fas fa-image"></i><span>📸</span></div>
+        <div class="galeria-item"><i class="fas fa-image"></i><span>📸</span></div>
+        <div class="galeria-item"><i class="fas fa-image"></i><span>📸</span></div>
+      </div>
+    </section>
+
+    <!-- 4. 10 Motivos -->
+    <section id="motivos">
+      <h2 class="section-title">10 motivos pelos quais eu te amo</h2>
+      <div class="motivos-grid" id="motivosGrid"></div>
+    </section>
+
+    <!-- 5. Carta -->
+    <section id="carta">
+      <h2 class="section-title">Carta de Amor</h2>
+      <div class="carta-box">
+        <p><strong>Meu amor,</strong></p>
+        <p>Eu nunca fui muito bom com palavras, mas tentei. Porque você merece ouvir, ler e sentir tudo e este cantinho é o nosso, sempre que precisar lembrar, beleza?</p>
+        <p>Quando te vi descendo a escada da igreja, eu não sabia que estava conhecendo a minha vida inteira. Naquele momento, sem nenhum aviso, meu mundo capotou de um jeito maravilhoso. Você desceu aquela escada e seu sorriso ficou na minha mente de um jeito...</p>
+        <p>Foram quatro anos namorando como quem brinca de eternidade. A gente fez planos, sonhos, casa, futuro. E quando chega todos os dias, principalmente agora, penso: tudo o que eu já tinha vivido valia a pena, porque me trouxe até ali e aqui, com você xuxu, e sei que já estava escrito nas estrelas o nós.</p>
+        <p>Agradeço por todas as manhãs em que acordamos juntos e escuto o "bom dia". Pelos jantares improvisados. Pelas brigas que viraram. Pela paciência que você tem com os meus silêncios. Pela coragem que você me empresta quando a minha falta.</p>
+        <p>Eu quero envelhecer com você. Quero te ver com cabelos brancos, ainda rindo das minhas piadas ruins. Quero que a gente conte essa nossa história na eternidade.</p>
+        <p>Obrigado por ser a casa que eu sempre quero voltar quando saio. Obrigado por ser paz, festa, abraço e calmaria, tudo na mesma pessoa. Eu te amo. Hoje, ontem, amanhã. No dia 13 e em todos os outros.</p>
+        <div class="carta-assinatura">— Extremamente seu, com todo amor</div>
+      </div>
+    </section>
+
+    <!-- 6. Contador -->
+    <section id="contador">
+      <h2 class="section-title">⏳ Cada segundo conta</h2>
+      <div class="contador-wrapper">
+        <div class="contador-titulo">Estamos juntos há</div>
+        <div class="contador-numeros" id="contadorNumeros">
+          <div class="contador-bloco"><div class="contador-valor" id="anos">0</div><div class="contador-label">ANOS</div></div>
+          <div class="contador-bloco"><div class="contador-valor" id="meses">0</div><div class="contador-label">MESES</div></div>
+          <div class="contador-bloco"><div class="contador-valor" id="dias">0</div><div class="contador-label">DIAS</div></div>
+          <div class="contador-bloco"><div class="contador-valor" id="horas">0</div><div class="contador-label">HORAS</div></div>
+          <div class="contador-bloco"><div class="contador-valor" id="minutos">0</div><div class="contador-label">MINUTOS</div></div>
+          <div class="contador-bloco"><div class="contador-valor" id="segundos">0</div><div class="contador-label">SEGUNDOS</div></div>
+        </div>
+        <div class="contador-dias-total" id="diasTotal">Desde 15 de outubro de 2017 — e cada segundo aqui valeu a pena.</div>
+      </div>
+    </section>
+
+    <!-- 7. Música -->
+    <section id="musica">
+      <h2 class="section-title">A nossa música especial</h2>
+      <div class="section-sub">Aquela música que sempre vai ser sobre a gente — não importa onde a gente esteja.</div>
+      <div class="musica-wrapper">
+        <div class="musica-titulo">🎵 TOCANDO AGORA</div>
+        <div class="musica-artista">Conversations in the Dark — John Legend</div>
+        <iframe id="youtubePlayer" width="100%" height="200" src="https://www.youtube.com/embed/qUD2GxTeVcI" title="YouTube player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 16px; margin: 1rem 0;"></iframe>
+        <button id="playMusicBtn" class="btn btn-musica"><i class="fas fa-play"></i> Assista no YouTube</button>
+      </div>
+    </section>
+
+    <!-- 8. Mensagem Final -->
+    <div class="final" id="final">
+      <p>“Se eu pudesse voltar no tempo, escolheria você novamente.<br>E novamente. E novamente.<br><strong>Te amo para sempre.</strong></p>
+      <p style="margin-top: 1rem; font-size: 1rem;">— SEMPRE SEU</p>
+      <div style="margin-top: 1.5rem; font-size: 0.8rem;">Todo dia 13 é nosso 💛</div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>T & F — “O amor é a única coisa que somos capazes de provar que transcende as dimensões de tempo e espaço.”</p>
+    <p style="margin-top: 0.5rem;">© 2026 - Um presente feito com amor.</p>
+  </footer>
 </main>
-<footer>
-  <i class="fas fa-heart" style="color: #d4af7a;"></i> Para sempre, nós — feito com amor eterno <i class="fas fa-heart" style="color: #d4af7a;"></i>
-</footer>
 
 <script>
   // ==================== CORAÇÕES FLUTUANTES ====================
   function createFloatingHearts() {
-    const container = document.getElementById('heart-container');
-    if(!container) return;
-    const heartCount = 30;
-    for(let i = 0; i < heartCount; i++) {
-      let heart = document.createElement('i');
-      heart.classList.add('fas', 'fa-heart');
-      const size = Math.random() * 18 + 10;
+    const container = document.getElementById('floatingHearts');
+    if (!container) return;
+    
+    const heartCount = 40;
+    
+    for (let i = 0; i < heartCount; i++) {
+      const heart = document.createElement('i');
+      heart.classList.add('fas', 'fa-heart', 'heart');
+      
+      const size = Math.random() * 20 + 10;
       heart.style.fontSize = size + 'px';
       heart.style.left = Math.random() * 100 + '%';
-      heart.style.animationDuration = Math.random() * 8 + 8 + 's';
+      heart.style.animationDuration = Math.random() * 8 + 6 + 's';
       heart.style.animationDelay = Math.random() * 10 + 's';
-      heart.style.opacity = Math.random() * 0.4 + 0.1;
-      heart.style.position = 'absolute';
+      heart.style.opacity = Math.random() * 0.5 + 0.2;
+      
       container.appendChild(heart);
     }
   }
+  
   createFloatingHearts();
 
-  // ==================== GALERIA COM SUAS FOTOS ====================
-  const galeriaItens = [
-    "https://i.ibb.co/DgkYSBsz/IMG-20260101-WA0065.jpg",
-    "https://i.ibb.co/b4PD5z7/IMG-20260101-WA0059.jpg",
-    "https://i.ibb.co/pvx7Q2hd/IMG-20251124-WA0006.jpg",
-    "https://i.ibb.co/ks0B3fBR/IMG-20240407-160510493-AE.jpg",
-    "https://i.ibb.co/F4wgnQwm/Whats-App-Image-2026-06-10-at-09-47-28.jpg",
-    "https://i.ibb.co/zHsk1Phh/received-1185180684953854.jpg"
+  // ==================== MOTIVOS ====================
+  const motivos = [
+    "Pelo seu sorriso que ilumina meus dias",
+    "Pelo seu coração gigante, generoso, leal. Você ama as pessoas como quem cuida de uma planta rara.",
+    "Pelas nossas manhãs: café, série, risadas. Minha parte favorita do dia.",
+    "Pelas risadas bobas. Ninguém ri das minhas leseiras como você. Nem mesmo eu mesmo.",
+    "Pela sua mão na minha. Em todo lugar, em todo momento. É o melhor lugar.",
+    "Pela sua força. Você é a pessoa mais corajosa que conheço, mesmo quando acha que não tem um pingo de coragem.",
+    "Por construir um lar. Onde você está, é casa.",
+    "Pelas suas histórias. Adoro ouvir você falar do dia, dos sonhos, das pessoas. Vou ouvir para sempre, eu xuxu.",
+    "Pelo seu jeito único. Existe um 'jeito você' de ser, e ele me chama atenção até hoje.",
+    "Por escolher ficar. Todos os dias, mesmo nos difíceis. Obrigado por escolher a gente, sempre."
   ];
-  
-  const galeriaGrid = document.getElementById('galeriaGrid');
-  if(galeriaGrid) {
-    galeriaItens.forEach(src => {
-      const div = document.createElement('div');
-      div.className = 'galeria-item';
-      const img = document.createElement('img');
-      img.src = src;
-      img.alt = "Momento especial";
-      img.loading = "lazy";
-      
-      // Tratamento de erro para imagens que não carregarem
-      img.onerror = function() {
-        this.style.display = 'none';
-        const placeholder = document.createElement('div');
-        placeholder.className = 'error-placeholder';
-        placeholder.innerHTML = '<i class="fas fa-heart" style="font-size: 2rem; margin-bottom: 0.5rem; display: block;"></i>❤️ Foto disponível em breve ❤️';
-        div.appendChild(placeholder);
-      };
-      
-      div.appendChild(img);
-      galeriaGrid.appendChild(div);
-    });
-  }
 
-  // ==================== 10 MOTIVOS ====================
-  const motivosList = [
-    "Pela forma que você ilumina meus dias mesmo nos mais escuros.",
-    "Pelo seu sorriso sincero que me faz acreditar na magia.",
-    "Por me aceitar e me amar com todas as minhas imperfeições.",
-    "Por tornar cada dia 13 uma nova prova do nosso amor.",
-    "Pela sua força silenciosa e por me inspirar a ser melhor.",
-    "Por me fazer rir até nos momentos difíceis.",
-    "Pelo seu olhar, que ainda me desarma como no primeiro dia.",
-    "Por sonharmos juntos e nunca desistirmos um do outro.",
-    "Pela sua presença, que é meu maior presente todos os dias.",
-    "Por você simplesmente ser você — minha esposa, meu amor eterno."
-  ];
-  const motivosContainer = document.getElementById('motivosGrid');
-  if(motivosContainer) {
-    motivosList.forEach((motivo, idx) => {
-      const card = document.createElement('div');
-      card.className = 'motivo-card';
-      card.innerHTML = `<h4>${String(idx+1).padStart(2,'0')}</h4><p>${motivo}</p>`;
-      motivosContainer.appendChild(card);
-    });
-  }
+  const motivosGrid = document.getElementById('motivosGrid');
+  motivos.forEach((text, i) => {
+    const card = document.createElement('div');
+    card.className = 'motivo-card';
+    card.innerHTML = `<div class="motivo-num">${String(i+1).padStart(2,'0')}</div><div class="motivo-text">${text}</div>`;
+    motivosGrid.appendChild(card);
+  });
 
-  // ==================== CONTADOR MODERNO (15/10/2017) ====================
-  function atualizarContadorModerno() {
-    const dataInicio = new Date(2017, 9, 15);
+  // ==================== CONTADOR ====================
+  function atualizarContador() {
+    const inicio = new Date(2017, 9, 15);
     const agora = new Date();
-    
-    let diff = agora - dataInicio;
-    
-    const segundosTotal = Math.floor(diff / 1000);
-    const minutosTotal = Math.floor(segundosTotal / 60);
-    const horasTotal = Math.floor(minutosTotal / 60);
-    const diasTotal = Math.floor(horasTotal / 24);
-    
+    let diff = agora - inicio;
+    const segundos = Math.floor(diff / 1000) % 60;
+    const minutos = Math.floor(diff / (1000 * 60)) % 60;
+    const horas = Math.floor(diff / (1000 * 60 * 60)) % 24;
+    const diasTotal = Math.floor(diff / (1000 * 60 * 60 * 24));
     const anos = Math.floor(diasTotal / 365);
     const meses = Math.floor((diasTotal % 365) / 30.44);
     const dias = Math.floor((diasTotal % 365) % 30.44);
-    const horas = horasTotal % 24;
-    const minutos = minutosTotal % 60;
-    const segundos = segundosTotal % 60;
     
-    const anosElem = document.getElementById('anosContador');
-    const mesesElem = document.getElementById('mesesContador');
-    const diasElem = document.getElementById('diasContador');
-    const horasElem = document.getElementById('horasContador');
-    const minutosElem = document.getElementById('minutosContador');
-    const segundosElem = document.getElementById('segundosContador');
-    
-    if(anosElem) anosElem.textContent = anos;
-    if(mesesElem) mesesElem.textContent = meses;
-    if(diasElem) diasElem.textContent = dias;
-    if(horasElem) horasElem.textContent = horas;
-    if(minutosElem) minutosElem.textContent = minutos;
-    if(segundosElem) segundosElem.textContent = segundos;
+    document.getElementById('anos').textContent = anos;
+    document.getElementById('meses').textContent = meses;
+    document.getElementById('dias').textContent = dias;
+    document.getElementById('horas').textContent = horas;
+    document.getElementById('minutos').textContent = minutos;
+    document.getElementById('segundos').textContent = segundos;
+    document.getElementById('diasTotal').innerHTML = `✨ ${diasTotal.toLocaleString()} dias de nós ✨<br>Desde 15 de outubro de 2017 — e cada segundo aqui valeu a pena.`;
   }
-  
-  atualizarContadorModerno();
-  setInterval(atualizarContadorModerno, 1000);
+  atualizarContador();
+  setInterval(atualizarContador, 1000);
 
-  // ==================== CONTROLE DA MÚSICA ====================
+  // ==================== MÚSICA ====================
   function playMusic() {
     const iframe = document.getElementById('youtubePlayer');
-    if(iframe) {
-      const videoId = "qUD2GxTeVcI";
-      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-    }
+    iframe.src = "https://www.youtube.com/embed/qUD2GxTeVcI?autoplay=1";
   }
+  document.getElementById('playMusicBtn').addEventListener('click', playMusic);
 
-  const playBtn = document.getElementById('playMusicBtn');
-  if(playBtn) {
-    playBtn.addEventListener('click', () => {
-      playMusic();
-      alert("🎵 Nossa música favorita vai tocar agora. Aproveite cada nota, meu amor! 🎵");
-    });
-  }
-  
-  const playInlineBtn = document.getElementById('playMusicInlineBtn');
-  if(playInlineBtn) {
-    playInlineBtn.addEventListener('click', () => {
-      playMusic();
-    });
-  }
-
-  // ==================== SCROLL REVEAL ====================
-  const sections = document.querySelectorAll('section');
-  const finalSection = document.querySelector('.final');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
-  sections.forEach(sec => observer.observe(sec));
-  if(finalSection) observer.observe(finalSection);
-  
-  setTimeout(() => {
-    sections.forEach(sec => {
-      const rect = sec.getBoundingClientRect();
-      if(rect.top < window.innerHeight - 100) {
-        sec.classList.add('visible');
-      }
-    });
-  }, 100);
-  
-  // ==================== CLICK NAS FOTOS (GALERIA) ====================
-  document.querySelectorAll('.galeria-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const img = item.querySelector('img');
-      if(img && img.src && img.style.display !== 'none') {
-        window.open(img.src, '_blank');
-      }
-    });
-  });
-  
-  // ==================== NAVEGAÇÃO SUAVE ====================
-  function scrollToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    if(section) {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
-  
-  const allNavLinks = document.querySelectorAll('.nav-link, #btnHistoria, #btnCarta');
-  allNavLinks.forEach(link => {
+  // ==================== SCROLL SUAVE ====================
+  document.querySelectorAll('.nav-links a, .hero-buttons a').forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
-      const href = this.getAttribute('href');
-      if(href && href.startsWith('#')) {
-        const sectionId = href.substring(1);
-        scrollToSection(sectionId);
-      }
-    });
-  });
-  
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const href = this.getAttribute('href');
-      if(href && href.startsWith('#')) {
-        const sectionId = href.substring(1);
-        scrollToSection(sectionId);
-      }
+      const target = document.querySelector(this.getAttribute('href'));
+      if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 </script>
