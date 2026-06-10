@@ -1,146 +1,638 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para o Amor da Minha Vida 🧡</title>
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Para Sempre, Nós | Amor Eterno</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<link rel="stylesheet" href="style.css">
+    body {
+      background: #fffaf7;
+      font-family: 'Inter', sans-serif;
+      color: #3e2c2b;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    /* cores tema: rosa suave, branco, dourado */
+    :root {
+      --rose: #f9e6e8;
+      --rose-deep: #f3d0d4;
+      --gold: #d4af7a;
+      --gold-light: #f3e5c9;
+      --dark-rose: #b27d7d;
+      --text-dark: #2c1e1d;
+    }
+
+    h1, h2, h3, .playfair {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    section {
+      margin-bottom: 5rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* cabeçalho hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      background: linear-gradient(135deg, #fff5f2 0%, #ffece7 100%);
+      overflow: hidden;
+      padding: 2rem;
+    }
+
+    /* efeito corações flutuantes */
+    .heart-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .heart-bg i {
+      position: absolute;
+      color: rgba(212, 175, 122, 0.2);
+      font-size: 1.5rem;
+      animation: floatHeart 12s infinite linear;
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.6;
+      }
+      90% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      letter-spacing: 2px;
+      color: #b27d7d;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .frase-destaque {
+      font-size: 1.9rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      color: #b27d7d;
+      margin: 1.5rem 0;
+      line-height: 1.3;
+    }
+
+    .foto-capa {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.15);
+      border: 5px solid #fff;
+      margin-bottom: 2rem;
+      transition: transform 0.3s;
+    }
+
+    .foto-capa:hover {
+      transform: scale(1.02);
+    }
+
+    .btn {
+      background: var(--gold);
+      color: white;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+    }
+
+    .btn:hover {
+      background: #c2a05e;
+      transform: translateY(-3px);
+    }
+
+    /* títulos seção */
+    .section-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 3px;
+      background: var(--gold);
+      margin: 0.8rem auto 0;
+    }
+
+    /* timeline */
+    .timeline {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .timeline-card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.8rem;
+      flex: 1;
+      min-width: 180px;
+      text-align: center;
+      box-shadow: 0 12px 25px -10px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+      border: 1px solid var(--rose-deep);
+    }
+
+    .timeline-card i {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .timeline-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* galeria */
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .galeria-item {
+      overflow: hidden;
+      border-radius: 24px;
+      box-shadow: 0 15px 25px -12px rgba(0,0,0,0.1);
+      transition: all 0.4s;
+      background: #fff;
+      aspect-ratio: 1 / 1;
+    }
+
+    .galeria-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .galeria-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* cartões motivos */
+    .motivos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .motivo-card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.5rem;
+      transition: 0.2s;
+      border-left: 5px solid var(--gold);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .motivo-card h4 {
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
+    }
+
+    /* carta */
+    .carta-box {
+      background: #fffcf8;
+      border-radius: 40px;
+      padding: 2rem;
+      box-shadow: 0 20px 35px -15px rgba(0,0,0,0.1);
+      border: 1px solid var(--rose-deep);
+      font-size: 1.15rem;
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    /* contador */
+    .contador {
+      background: linear-gradient(145deg, #fef3f0, #fde9e4);
+      border-radius: 70px;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .tempo-numeros {
+      font-size: 3rem;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      color: #b27d7d;
+    }
+
+    /* música */
+    .musica-wrapper {
+      background: #faf1ed;
+      border-radius: 32px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    iframe {
+      border-radius: 28px;
+      width: 100%;
+      max-width: 560px;
+      height: 315px;
+    }
+
+    /* mensagem final */
+    .final {
+      background: linear-gradient(115deg, #f7e6df, #f9eef0);
+      text-align: center;
+      padding: 4rem 2rem;
+      border-radius: 60px;
+      margin: 2rem 0 4rem;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+      animation: softGlow 4s infinite alternate;
+    }
+
+    @keyframes softGlow {
+      0% { box-shadow: 0 10px 30px rgba(212,175,122,0.2); background: #fdf5f2;}
+      100% { box-shadow: 0 20px 45px rgba(212,175,122,0.5); background: #ffece5;}
+    }
+
+    .final p {
+      font-size: 1.8rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* rodapé */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      color: #b88b8b;
+    }
+
+    /* responsivo */
+    @media (max-width: 760px) {
+      .container {
+        padding: 1rem;
+      }
+      .hero .frase-destaque {
+        font-size: 1.5rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+      .final p {
+        font-size: 1.3rem;
+      }
+      .timeline-card {
+        min-width: 140px;
+      }
+    }
+
+    /* nav simples com link */
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #b27d7d;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+  </style>
 </head>
-
 <body>
 
-<div id="entrada">
-    <h1>🧡 Feliz Dia dos Namorados 🧡</h1>
-    <button onclick="entrar()">Clique para entrar</button>
-    <img src="https://i.ibb.co/mCStQV3n/IMG-20241015-WA0022.jpg" class="hero-image">
-</div>
-
-<audio id="musica" loop>
-    <source src="musica.mp3" type="audio/mpeg">
-</audio>
-
-<div id="site">
-
-```html
-<section class="hero">
-
-    <!-- Troque pela foto de vocês -->
-    <img src="https://i.ibb.co/zh6KLxGT/IMG-20240111-WA0019.jpg" class="hero-image">
-
-    <div class="hero-overlay">
-
-        <div class="hero-content">
-
-            <h1>Para Sempre, Nós</h1>
-
-            <p class="subtitle">
-                Cada capítulo da minha vida ficou mais bonito desde que você chegou.
-            </p>
-
-            <p class="description">
-                Um pequeno presente feito de palavras, lembranças e o amor mais sincero que conheço.
-            </p>
-
-            <p class="description">
-                Cada seção é uma carta para você, meu amor.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="#historia" class="btn-primary">
-                    Começar Nossa História
-                </a>
-
-                <a href="#mensagem-final" class="btn-secondary">
-                    Mensagem Final
-                </a>
-
-            </div>
-
-        </div>
-
+<div class="hero">
+  <div class="heart-bg" id="heart-container"></div>
+  <div class="hero-content">
+    <!-- foto de capa do casal (imagem placeholder ilustrativa) -->
+    <img src="https://placehold.co/600x600/f9e6e8/b27d7d?text=♡+Nossa+Foto+♡" alt="Nosso amor" class="foto-capa" id="heroImage">
+    <h1>Para sempre, nós</h1>
+    <div class="frase-destaque">
+      “Cada capítulo da minha vida ficou mais bonito desde que você chegou.”
     </div>
-
-</section>
-```
-
-
-<section class="contador">
-    <h2>Estamos juntos há</h2>
-    <div id="contador"></div>
-</section>
-
-<section class="historia">
-    <h2>Nossa História</h2>
-
-    <p>
-        Tudo começou em 15 de outubro de 2017.
-        Eu vi você descendo a escada da igreja
-        e naquele instante minha vida mudou.
-    </p>
-</section>
-
-<section class="galeria">
-
-<h2>Nossas Memórias</h2>
-
-<div class="grid">
-    <img src="https://i.ibb.co/b4PD5z7/IMG-20260101-WA0059.jpg">
-    <img src="https://i.ibb.co/pvx7Q2hd/IMG-20251124-WA0006.jpg">
-    <img src="https://i.ibb.co/ks0B3fBR/IMG-20240407-160510493-AE.jpg">
-    <img src="https://i.ibb.co/F4wgnQwm/Whats-App-Image-2026-06-10-at-09-47-28.jpg">
+    <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="#historia" class="btn">📖 Nossa História</a>
+      <a href="#carta" class="btn btn-outline">💌 Carta de Amor</a>
+    </div>
+  </div>
+  <div class="nav-links" style="margin-top: 2rem;">
+    <a href="#historia">História</a>
+    <a href="#linha-tempo">Linha do tempo</a>
+    <a href="#galeria">Galeria</a>
+    <a href="#motivos">10 Motivos</a>
+    <a href="#contador">Juntos</a>
+    <a href="#musica">Música</a>
+  </div>
 </div>
 
-</section>
+<main class="container">
+  <!-- 1. Nossa História -->
+  <section id="historia">
+    <h2 class="section-title">✨ Nossa História ✨</h2>
+    <div style="background: #fffdfb; border-radius: 48px; padding: 2.2rem; box-shadow: 0 8px 20px rgba(0,0,0,0.02);">
+      <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 1rem;">
+        Eu a conheci quando a vi <strong>descendo a escada da igreja</strong>. A luz do fim da tarde tocava seus cabelos, e naquele instante, meu coração parou e depois disparou. 
+        Foi como se o tempo tivesse uma pausa só para nós dois. Me apaixonei ali, completamente, sem defesa.
+      </p>
+      <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 1rem;">
+        Namoramos por <strong>dois anos inesquecíveis</strong> — foram risos, viagens, conversas até o amanhecer e o apoio incondicional. Depois, 
+        nos casamos e iniciamos a mais linda aventura: construir uma vida inteira juntos.
+      </p>
+      <p style="font-size: 1.2rem; line-height: 1.7;">
+        Todo <strong>dia 13</strong> é especial para nós, porque foi o dia do nosso casamento, uma data que eternizou o nosso sim. Cada mês, celebramos não apenas o tempo, 
+        mas a certeza de que escolhemos certo. Você é o meu lar.
+      </p>
+    </div>
+  </section>
 
-<section class="carta">
+  <!-- 2. Linha do Tempo -->
+  <section id="linha-tempo">
+    <h2 class="section-title">📅 Linha do Tempo</h2>
+    <div class="timeline">
+      <div class="timeline-card"><i class="fas fa-hand-holding-heart"></i><h3>Primeiro Encontro</h3><p>Escada da igreja · a centelha inicial</p></div>
+      <div class="timeline-card"><i class="fas fa-heart"></i><h3>Início do Namoro</h3><p>Dois apaixonados, dois anos de pura magia</p></div>
+      <div class="timeline-card"><i class="fas fa-ring"></i><h3>Pedido de Casamento</h3><p>Momento único, lágrimas e sorrisos</p></div>
+      <div class="timeline-card"><i class="fas fa-church"></i><h3>Casamento</h3><p>Dia 13 · o sim mais lindo</p></div>
+      <div class="timeline-card"><i class="fas fa-star"></i><h3>Momentos Especiais</h3><p>Cada segundo ao seu lado é inesquecível</p></div>
+    </div>
+  </section>
 
-<h2>Uma Carta Para Você</h2>
+  <!-- 3. Galeria de Fotos (layout moderno, 6 fotos placeholder) -->
+  <section id="galeria">
+    <h2 class="section-title">📸 Galeria de Memórias</h2>
+    <div class="galeria-grid" id="galeriaGrid">
+      <!-- Serão preenchidas via JS com imagens ilustrativas elegantes + opção de substituição -->
+    </div>
+    <p style="text-align: center; margin-top: 1rem; font-size: 0.85rem; color: #b88b8b;"><i class="fas fa-camera"></i> Clique nas fotos para ampliar (ilusão) — substitua pelas suas imagens reais.</p>
+  </section>
 
-<div class="envelope">
+  <!-- 4. 10 Motivos Pelos Quais Eu Te Amo (cartões elegantes) -->
+  <section id="motivos">
+    <h2 class="section-title">🌸 10 Motivos Pelos Quais Eu Te Amo 🌸</h2>
+    <div class="motivos-grid" id="motivosGrid"></div>
+  </section>
 
-<p>
-Meu amor,
+  <!-- 5. Carta de Amor -->
+  <section id="carta">
+    <h2 class="section-title">💌 Carta de Amor 💌</h2>
+    <div class="carta-box">
+      <p>Meu amor,</p>
+      <p>Escrever o que sinto por você é como tentar contar as estrelas — infinito. Cada manhã ao seu lado é um recomeço cheio de gratidão. Admiro sua força, seu sorriso que ilumina os meus dias mais cinzentos e o jeito que você faz tudo parecer possível. Lembro daquele primeiro olhar na escada da igreja e como meu coração sussurrou: "é ela". E não me enganei.</p>
+      <p>Namoramos, vivemos sonhos, nos casamos e mesmo depois de tantos dias 13 especiais, ainda me surpreendo ao te ver. Você me ensinou o verdadeiro significado de parceria, cumplicidade e amor incondicional. Eu prometo honrar esse amor todos os dias da minha vida. Obrigado por ser minha esposa, minha melhor amiga, minha eterna namorada.</p>
+      <p style="margin-top: 1rem;">Com todo o meu coração,<br>Seu eterno apaixonado.</p>
+    </div>
+  </section>
 
-Obrigado por cada sorriso,
-cada abraço,
-cada sonho compartilhado.
+  <!-- 6. Contador de Tempo (data do casamento exemplo: dia 13 de julho de 2022 - ajustável) -->
+  <section id="contador">
+    <h2 class="section-title">⏳ Há Quanto Tempo Somos Um ⏳</h2>
+    <div class="contador">
+      <div class="tempo-numeros" id="contadorTempo"></div>
+      <p style="margin-top: 0.8rem;">❤️ desde o nosso casamento (13/07/2022) ❤️<br><span style="font-size:0.9rem;">(Caso queira editar a data, altere no código JavaScript)</span></p>
+    </div>
+  </section>
 
-Entre bilhões de pessoas,
-a vida me trouxe até você.
+  <!-- 7. Música Especial -->
+  <section id="musica">
+    <h2 class="section-title">🎵 Nossa Trilha Sonora 🎵</h2>
+    <div class="musica-wrapper">
+      <iframe src="https://www.youtube.com/embed/1wCId0f8nKY?si=FaDYlYZmsQ2aeFrh" title="Conversations in the Dark - John Legend" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <p style="margin-top: 1rem;"><em>"Conversations in the Dark" — John Legend</em></p>
+    </div>
+  </section>
 
-E eu escolheria você novamente.
+  <!-- 8. Mensagem Final com animação suave -->
+  <div class="final" id="mensagem-final">
+    <p>✨ “Se eu pudesse voltar no tempo, escolheria você novamente. E novamente. E novamente. Te amo para sempre.” ✨</p>
+  </div>
+</main>
+<footer>
+  <i class="fas fa-heart" style="color: #d4af7a;"></i> Para sempre, nós — feito com amor eterno <i class="fas fa-heart" style="color: #d4af7a;"></i>
+</footer>
 
-Hoje.
-Amanhã.
-Para sempre.
-🧡
-</p>
+<script>
+  // ==================== INTERATIVIDADE + CONTEÚDO ====================
+  
+  // --- 1. Gerar corações flutuantes ---
+  function createFloatingHearts() {
+    const container = document.getElementById('heart-container');
+    if(!container) return;
+    const heartCount = 35;
+    for(let i = 0; i < heartCount; i++) {
+      let heart = document.createElement('i');
+      heart.classList.add('fas', 'fa-heart');
+      const size = Math.random() * 20 + 12;
+      heart.style.fontSize = size + 'px';
+      heart.style.left = Math.random() * 100 + '%';
+      heart.style.animationDuration = Math.random() * 8 + 8 + 's';
+      heart.style.animationDelay = Math.random() * 10 + 's';
+      heart.style.opacity = Math.random() * 0.4 + 0.1;
+      heart.style.position = 'absolute';
+      container.appendChild(heart);
+    }
+  }
+  createFloatingHearts();
 
-</div>
+  // --- 2. Galeria: 6 fotos elegantes (placeholders, mas indicamos substituir por imagens reais) ---
+  const galeriaItens = [
+    "https://placehold.co/600x600/f9e6e8/b27d7d?text=♡+Momento+Doce+♡",
+    "https://placehold.co/600x600/f3e5c9/b27d7d?text=♡+Viagem+Juntos+♡",
+    "https://placehold.co/600x600/ffece5/d4af7a?text=♡+Nosso+Casamento+♡",
+    "https://placehold.co/600x600/f9e6e8/d4af7a?text=♡+Primeiro+Encontro+♡",
+    "https://placehold.co/600x600/f3d0d4/b27d7d?text=♡+Cumplicidade+♡",
+    "https://placehold.co/600x600/fef3f0/b27d7d?text=♡+Amor+Infinito+♡"
+  ];
+  const galeriaGrid = document.getElementById('galeriaGrid');
+  if(galeriaGrid) {
+    galeriaItens.forEach(src => {
+      const div = document.createElement('div');
+      div.className = 'galeria-item';
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = "Momento especial";
+      img.loading = "lazy";
+      div.appendChild(img);
+      galeriaGrid.appendChild(div);
+    });
+  }
 
-</section>
+  // --- 3. 10 motivos elegantes ---
+  const motivosList = [
+    "Pela forma que você ilumina meus dias mesmo nos mais escuros.",
+    "Pelo seu sorriso sincero que me faz acreditar na magia.",
+    "Por me aceitar e me amar com todas as minhas imperfeições.",
+    "Por tornar cada dia 13 uma nova prova do nosso amor.",
+    "Pela sua força silenciosa e por me inspirar a ser melhor.",
+    "Por me fazer rir até nos momentos difíceis.",
+    "Pelo seu olhar, que ainda me desarma como no primeiro dia.",
+    "Por sonharmos juntos e nunca desistirmos um do outro.",
+    "Pela sua presença, que é meu maior presente todos os dias.",
+    "Por você simplesmente ser você — minha esposa, meu amor eterno."
+  ];
+  const motivosContainer = document.getElementById('motivosGrid');
+  if(motivosContainer) {
+    motivosList.forEach((motivo, idx) => {
+      const card = document.createElement('div');
+      card.className = 'motivo-card';
+      card.innerHTML = `<h4>${String(idx+1).padStart(2,'0')}</h4><p>${motivo}</p>`;
+      motivosContainer.appendChild(card);
+    });
+  }
 
-<section class="final">
+  // --- 4. Contador de tempo (data: 13 de julho de 2022 - dia do casamento exemplo) ---
+  function atualizarContador() {
+    const casamentoDate = new Date(2022, 6, 13); // 13 de julho de 2022 (mes 6 = julho)
+    const agora = new Date();
+    const diffMs = agora - casamentoDate;
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    const anos = Math.floor(diffDays / 365);
+    const meses = Math.floor((diffDays % 365) / 30.44);
+    const dias = Math.floor((diffDays % 365) % 30.44);
+    const elemento = document.getElementById('contadorTempo');
+    if(elemento) {
+      elemento.innerHTML = `${anos} anos, ${meses} meses e ${dias} dias`;
+    }
+  }
+  atualizarContador();
+  setInterval(atualizarContador, 86400000);
 
-<h2>Interstellar</h2>
+  // --- 5. Animação de scroll (efeito suave reveal) ---
+  const sections = document.querySelectorAll('section');
+  const finalSection = document.querySelector('.final');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+  sections.forEach(sec => observer.observe(sec));
+  if(finalSection) observer.observe(finalSection);
+  // Mostrar hero também? hero já visível, mas opcional
+  document.querySelectorAll('.hero').forEach(el => el.style.opacity = 1);
+  
+  // colocar class visible inicial para seções já visíveis se quiser, mas a animação por scroll resolve.
+  // pré-visible forçado para primeira section (história) caso já apareça
+  const handleFirst = () => {
+    const heroHidden = document.querySelector('.hero');
+    if(heroHidden) heroHidden.style.opacity = '1';
+  };
+  handleFirst();
 
-<p>
-"O amor é a única coisa que somos capazes de perceber
-que transcende as dimensões de tempo e espaço."
-</p>
+  // Trocar a imagem de capa para uma foto com casal real - se quiser, o usuário pode substituir a src abaixo.
+  const imgHero = document.getElementById('heroImage');
+  if(imgHero) {
+    // permitir que o usuário troque depois manualmente, mas deixamos uma imagem placeholder com cor rosa e texto amor
+    // No entanto, para demonstrar, uma imagem mais romântica (placeholder modificado)
+    imgHero.src = "https://placehold.co/600x600/f3d0d4/ffffff?text=❤️+Nosso+Amor+❤️";
+    imgHero.alt = "Foto do Casal";
+  }
 
-<h3>Eu te amo 🧡</h3>
-
-</section>
-
-</div>
-
-<script src="script.js"></script>
-
+  // pegar a data personalizada: se necessário ajustar ano do contador, mas está dinâmico.
+  // Adicionar efeito de clique nas fotos para alertar que podem ser trocadas (opcional)
+  document.querySelectorAll('.galeria-item img').forEach(img => {
+    img.addEventListener('click', () => {
+      alert('✨ Adicione aqui suas fotos reais! Basta substituir os links das imagens no código. ✨');
+    });
+  });
+  
+  // garantir contador data ajustável: caso queira mudar a data mais facil, declaramos variável.
+  // Funcionalidade extra: botão com rolagem suave
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if(href === "#" || href === "") return;
+      const target = document.querySelector(href);
+      if(target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+  
+  // Adicionar também o frase inicial no hero com corações e elegância
+  // + configuração adaptável para "todos os dias 13"
+  // pequeno detalhe: texto da linha do tempo já tem, tudo certo.
+</script>
 </body>
 </html>
