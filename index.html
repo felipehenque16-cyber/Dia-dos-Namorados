@@ -87,7 +87,7 @@
       color: var(--gold);
     }
 
-    /* HERO COM FUNDO E CORAÇÕES */
+    /* HERO */
     .hero {
       min-height: 100vh;
       width: 100%;
@@ -98,7 +98,7 @@
       align-items: center;
       text-align: center;
       padding: 6rem 1.5rem 3rem;
-      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('https://i.ibb.co/zh6KLxGT/IMG-20240111-WA0019.jpg');
+      background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)), url('https://i.ibb.co/zh6KLxGT/IMG-20240111-WA0019.jpg');
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
@@ -112,7 +112,6 @@
       }
     }
 
-    /* Corações flutuantes */
     .floating-hearts {
       position: absolute;
       top: 0;
@@ -126,7 +125,7 @@
 
     .heart {
       position: absolute;
-      color: rgba(255, 200, 200, 0.7);
+      color: rgba(255, 200, 200, 0.6);
       font-size: 1.2rem;
       animation: floatUp linear infinite;
       z-index: 1;
@@ -138,10 +137,10 @@
         opacity: 0;
       }
       10% {
-        opacity: 0.8;
+        opacity: 0.7;
       }
       90% {
-        opacity: 0.8;
+        opacity: 0.7;
       }
       100% {
         transform: translateY(-10vh) scale(1.2);
@@ -153,29 +152,36 @@
       position: relative;
       z-index: 3;
       max-width: 800px;
-      color: white;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
     }
 
-    .hero h1 {
+    .hero-title {
       font-size: 3.5rem;
       font-family: 'Playfair Display', serif;
       font-weight: 600;
-      color: white;
+      color: #f5e6d3;
       margin-bottom: 1rem;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 12px rgba(0,0,0,0.3);
     }
 
-    .hero h1 span {
-      font-weight: 400;
-      font-style: italic;
+    .hero-frase {
+      font-size: 1.6rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      color: #f0dcc8;
+      margin: 1.5rem 0;
+      line-height: 1.3;
+      text-shadow: 1px 1px 8px rgba(0,0,0,0.3);
     }
 
-    .hero .descricao {
+    .hero-descricao {
       max-width: 550px;
-      margin: 0 auto;
-      color: rgba(255,255,255,0.85);
+      margin: 1.5rem auto;
+      color: #e8d4c0;
       font-size: 0.95rem;
       line-height: 1.6;
+      font-weight: 400;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
     }
 
     .hero-buttons {
@@ -187,7 +193,7 @@
     }
 
     .btn {
-      background: var(--gold);
+      background: #d4a574;
       color: white;
       border: none;
       padding: 10px 28px;
@@ -202,25 +208,26 @@
 
     .btn-outline {
       background: transparent;
-      border: 1.5px solid white;
-      color: white;
+      border: 1.5px solid #f0dcc8;
+      color: #f0dcc8;
     }
 
     .btn-outline:hover {
-      background: rgba(255,255,255,0.2);
-      border-color: var(--gold);
-      color: var(--gold);
+      background: rgba(240, 220, 200, 0.2);
+      border-color: #d4a574;
+      color: #d4a574;
     }
 
     .btn:hover {
-      background: #b8926a;
+      background: #c49a6c;
       transform: translateY(-2px);
     }
 
     .scroll-hint {
       margin-top: 3rem;
       font-size: 0.8rem;
-      color: rgba(255,255,255,0.8);
+      color: #e8d4c0;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
     }
 
     .scroll-hint i {
@@ -237,14 +244,14 @@
     /* Seções */
     section {
       margin-bottom: 5rem;
-      scroll-margin-top: 100px;
+      scroll-margin-top: 90px;
     }
 
     .section-title {
       font-size: 2.2rem;
       font-family: 'Playfair Display', serif;
       text-align: center;
-      margin-bottom: 2.5rem;
+      margin-bottom: 1rem;
       color: var(--gold);
       font-weight: 500;
     }
@@ -252,57 +259,120 @@
     .section-sub {
       text-align: center;
       color: var(--text-soft);
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
       font-size: 0.95rem;
     }
 
-    /* História */
-    .historia-content {
-      background: var(--bg-card);
-      border-radius: 24px;
+    /* História - Estilo Novo com Imagem de Fundo */
+    .historia-wrapper {
+      background: linear-gradient(rgba(255,250,248,0.92), rgba(255,250,248,0.92)), url('https://i.ibb.co/TDv7KQfB/20220113-134534.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      border-radius: 32px;
       padding: 2.5rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
       border: 1px solid var(--gold-light);
-      line-height: 1.8;
+    }
+
+    .historia-content {
+      line-height: 1.9;
       color: #4a3a32;
+      font-size: 1rem;
     }
 
     .historia-content p {
       margin-bottom: 1.2rem;
     }
 
-    /* Timeline */
+    .historia-destaque {
+      margin-top: 1.5rem;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+
+    .historia-footer {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-soft);
+    }
+
+    /* Linha do Tempo */
     .timeline-grid {
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
+      position: relative;
+    }
+
+    .timeline-grid::before {
+      content: '';
+      position: absolute;
+      left: 30px;
+      top: 20px;
+      bottom: 20px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), var(--gold-light));
+      z-index: 0;
     }
 
     .timeline-item {
       background: var(--bg-card);
-      border-radius: 20px;
-      padding: 1.5rem;
-      border-left: 4px solid var(--gold);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      border-radius: 24px;
+      padding: 1.8rem 1.8rem 1.8rem 4rem;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+      border: 1px solid var(--gold-light);
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .timeline-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+    }
+
+    .timeline-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 36px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1rem;
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
     .timeline-year {
       font-weight: 700;
       color: var(--gold);
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       letter-spacing: 1px;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.3rem;
+      text-transform: uppercase;
     }
 
     .timeline-title {
       font-size: 1.3rem;
       font-weight: 600;
       margin-bottom: 0.5rem;
+      color: #2c2c2c;
     }
 
     .timeline-desc {
       color: var(--text-soft);
       font-size: 0.95rem;
+      line-height: 1.5;
     }
 
     /* Galeria */
@@ -342,42 +412,6 @@
       background: #f0e8e4;
       color: var(--text-soft);
       font-size: 2rem;
-    }
-
-    /* LIGHTBOX NATIVO */
-    .lightbox {
-      display: none;
-      position: fixed;
-      z-index: 2000;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(5px);
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .lightbox.active {
-      display: flex;
-      opacity: 1;
-    }
-    .lightbox img {
-      max-width: 90%;
-      max-height: 80vh;
-      border-radius: 12px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    }
-    .close-lightbox {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      color: white;
-      font-size: 2.5rem;
-      cursor: pointer;
-      font-family: sans-serif;
     }
 
     /* Motivos */
@@ -504,7 +538,7 @@
       margin-top: 1.5rem;
     }
 
-    /* Seção Final com imagem e corações */
+    /* Seção Final */
     .final-section {
       min-height: 80vh;
       width: 100%;
@@ -556,7 +590,7 @@
       letter-spacing: 2px;
     }
 
-    /* Footer com citação */
+    /* Footer */
     .footer {
       background: linear-gradient(145deg, #fef3ef, #fceae5);
       text-align: center;
@@ -594,23 +628,39 @@
     }
 
     @media (max-width: 768px) {
-      .hero h1 { font-size: 2.5rem; }
+      .hero-title { font-size: 2.5rem; }
+      .hero-frase { font-size: 1.2rem; }
       .section-title { font-size: 1.8rem; }
       .nav { flex-direction: column; }
       .nav-links { justify-content: center; gap: 1rem; }
       .hero { padding-top: 8rem; }
       .frase-final { font-size: 1.3rem; }
       .citacao { font-size: 1rem; }
+      .timeline-item {
+        padding: 1.2rem 1.2rem 1.2rem 3.5rem;
+      }
+      .timeline-icon {
+        width: 28px;
+        height: 28px;
+        left: 8px;
+        font-size: 0.7rem;
+      }
+      .timeline-grid::before {
+        left: 22px;
+      }
+      .historia-wrapper {
+        padding: 1.5rem;
+      }
     }
   </style>
 </head>
-<body id="topo">
+<body>
 
 <header class="header">
   <div class="nav">
     <div class="logo">T & F</div>
     <div class="nav-links">
-      <a href="#topo">Início</a>
+      <a href="#historia">Início</a>
       <a href="#historia">Nossa História</a>
       <a href="#linha-tempo">Linha do Tempo</a>
       <a href="#galeria">Galeria</a>
@@ -626,12 +676,13 @@
     <div class="floating-hearts" id="floatingHeartsHero"></div>
     
     <div class="hero-content">
-      <h1>Cada capítulo da minha vida<br><span>ficou mais bonito desde que você chegou.</span></h1>
-      <div class="descricao">
+      <div class="hero-title">Para sempre, nós</div>
+      <div class="hero-frase">Cada capítulo da minha vida ficou mais bonito desde que você chegou.</div>
+      <div class="hero-descricao">
         Um pequeno presente feito de palavras, lembranças e o amor mais sincero que conheço. Cada seção é uma carta para você, meu amor.
       </div>
       <div class="hero-buttons">
-        <a href="#historia" class="btn">COMEÇAR NOSSA HISTÓRIA</a>
+        <a href="#historia" class="btn">COMECAR NOSSA HISTÓRIA</a>
         <a href="#final" class="btn btn-outline">MENSAGEM FINAL</a>
       </div>
       <div class="scroll-hint">
@@ -641,15 +692,19 @@
   </div>
 
   <div class="container">
-    <!-- 1. Nossa História -->
+    <!-- 1. Nossa História - NOVO MODELO COM FOTO E TEXTO FORMATADO -->
     <section id="historia">
       <h2 class="section-title">A nossa história de amor</h2>
-      <div class="historia-content">
-        <p>Algumas histórias começam com palavras. A nossa começou com um olhar.</p>
-        <p>Lembro como se fosse ontem. Vendo você descendo da escada e dando um chute na bunda do Allan, foi amor à primeira vista.</p>
-        <p>Aquele momento exato, alguma coisa dentro de mi se mexeu, sabe? Foi como se o mundo tivesse pausado para me dizer: "é ela boy rsrs". E eu me apaixonei. Não devagar que era normal na época, me apaixonei inteiro, num único olhar.</p>
-        <p>Vieram quatro anos de namoro. Conversas longas, mãos dadas, risadas bobas, planos e a certeza tranquila de que era com você que eu queria compartilhar essa coisa maravilhosa chamada vida.</p>
-        <p>Depois veio o nosso "sim". E desde então, todo dia 13 carrega momentos maravilhosos. É o nosso dia. O dia em que viramos um só e ainda assim continuamos sendo tudo de melhor que cada um podia ser.</p>
+      <div class="historia-wrapper">
+        <div class="historia-content">
+          <p>Algumas histórias começam com palavras. A nossa começou com um olhar.</p>
+          <p>Lembro como se fosse ontem. Vendo você descendo da escada e dando um chute na bunda do Allan, foi amor a primeira vista.</p>
+          <p>Aquele momento exato, alguma coisa dentro de mim se mexeu, sabe? Foi como se o mundo tivesse pausado para me dizer: "é ela boy rsrs". E eu me apaixonei. Não devagar que era normal na época, me apaixonei inteiro, num único olhar.</p>
+          <p>Vieram quatro anos de namoro. Conversas longas, mãos dadas, risadas bobas, planos e a certeza tranquila de que era com você que eu queria compartilhar essa coisa maravilhosa chamada vida.</p>
+          <p>Depois veio o nosso "sim". E desde então, todo dia 13 carrega momentos maravilhosos. É o nosso dia. O dia em que viramos um só e ainda assim continuamos sendo tudo de melhor que cada um podia ser.</p>
+        </div>
+        <div class="historia-destaque">Para sempre</div>
+        <div class="historia-footer">💛 Todo dia 13 é nosso 💛</div>
       </div>
     </section>
 
@@ -658,11 +713,36 @@
       <h2 class="section-title">A linha do tempo do nosso amor</h2>
       <div class="section-sub">Cinco momentos que nunca vou esquecer — e tantos outros que ainda virão.</div>
       <div class="timeline-grid">
-        <div class="timeline-item"><div class="timeline-year">VERÃO DE 2018</div><div class="timeline-title">Primeiro Encontro</div><div class="timeline-desc">Te vi descendo a escada da igreja. Naquele momento, o tempo parou e eu soube que era você.</div></div>
-        <div class="timeline-item"><div class="timeline-year">OUTUBRO DE 2018</div><div class="timeline-title">Início do Namoro</div><div class="timeline-desc">Aquele primeiro "sim" pelo zap, nunca esqueci e nem vou.</div></div>
-        <div class="timeline-item"><div class="timeline-year">DEZEMBRO DE 2019</div><div class="timeline-title">Casamento</div><div class="timeline-desc">Quando resolvemos iniciar as compras para casarmos, cada compra e plano se tornou inesquecível.</div></div>
-        <div class="timeline-item"><div class="timeline-year">13 DE SETEMBRO DE 2020</div><div class="timeline-title">O Nosso Sim</div><div class="timeline-desc">Um dos dias mais importantes. Você de azul, eu admirando tua beleza. Todo dia 13 é eterno.</div></div>
-        <div class="timeline-item"><div class="timeline-year">HOJE E SEMPRE</div><div class="timeline-title">Momentos Especiais</div><div class="timeline-desc">Aniversários, rolês, sextas na cama, manhãs preguiçosas. Cada um deles é maravilhoso.</div></div>
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fas fa-heart"></i></div>
+          <div class="timeline-year">Verão de 2018</div>
+          <div class="timeline-title">Primeiro Encontro</div>
+          <div class="timeline-desc">Te vi descendo a escada da igreja. Naquele momento, o tempo parou e eu soube que era você.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fas fa-heart"></i></div>
+          <div class="timeline-year">Outubro de 2018</div>
+          <div class="timeline-title">Início do Namoro</div>
+          <div class="timeline-desc">Aquele primeiro "sim" pelo zap, nunca esqueci e nem vou.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fas fa-heart"></i></div>
+          <div class="timeline-year">Dezembro de 2019</div>
+          <div class="timeline-title">Casamento</div>
+          <div class="timeline-desc">Quando resolvemos iniciar as compras para casarmos, cada compra, planos é inesquecível.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fas fa-heart"></i></div>
+          <div class="timeline-year">13 de setembro de 2020</div>
+          <div class="timeline-title">O Nosso Sim</div>
+          <div class="timeline-desc">Um dos dias mais importantes. Você de azul, eu admirando tua beleza. Todo dia 13 é eterno, pode ter certeza.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fas fa-heart"></i></div>
+          <div class="timeline-year">Hoje e sempre</div>
+          <div class="timeline-title">Momentos Especiais</div>
+          <div class="timeline-desc">Aniversários, rolês, sextas na cama, manhãs preguiçosas. Cada um deles é maravilhoso.</div>
+        </div>
       </div>
     </section>
 
@@ -738,12 +818,6 @@
     </div>
   </div>
 
-  <!-- Lightbox Element -->
-  <div id="lightboxModal" class="lightbox">
-    <span class="close-lightbox" id="closeLightbox">&times;</span>
-    <img id="lightboxImg" src="" alt="Foto expandida">
-  </div>
-
   <!-- Footer -->
   <footer class="footer">
     <div class="citacao">
@@ -785,7 +859,7 @@
   createFloatingHearts('floatingHeartsHero');
   createFloatingHearts('floatingHeartsFinal');
 
-  // ==================== GALERIA COM TODAS AS FOTOS ====================
+  // ==================== GALERIA ====================
   const fotosGaleria = [
     "https://i.ibb.co/DgkYSBsz/IMG-20260101-WA0065.jpg",
     "https://i.ibb.co/b4PD5z7/IMG-20260101-WA0059.jpg",
@@ -828,7 +902,7 @@
     "Pela sua mão na minha. Em todo lugar, em todo momento. É o melhor lugar.",
     "Pela sua força. Você é a pessoa mais corajosa que conheço, mesmo quando acha que não tem um pingo de coragem.",
     "Por construir um lar. Onde você está, é casa.",
-    "Pelas suas histórias. Adoro ouvir você falar do dia, dos sonhos, das pessoas. Vou ouvir para sempre, minha xuxu.",
+    "Pelas suas histórias. Adoro ouvir você falar do dia, dos sonhos, das pessoas. Vou ouvir para sempre, eu xuxu.",
     "Pelo seu jeito único. Existe um 'jeito você' de ser, e ele me chama atenção até hoje.",
     "Por escolher ficar. Todos os dias, mesmo nos difíceis. Obrigado por escolher a gente, sempre."
   ];
@@ -858,7 +932,7 @@
     document.getElementById('meses').textContent = meses;
     document.getElementById('dias').textContent = dias;
     document.getElementById('horas').textContent = horas;
-    document.getElementById('minutos').textContent = minutes = minutos;
+    document.getElementById('minutos').textContent = minutos;
     document.getElementById('segundos').textContent = segundos;
     document.getElementById('diasTotal').innerHTML = `✨ ${diasTotal.toLocaleString()} dias de nós ✨<br>Desde 15 de outubro de 2017 — e cada segundo aqui valeu a pena.`;
   }
@@ -872,38 +946,24 @@
   }
   document.getElementById('playMusicBtn').addEventListener('click', playMusic);
 
-  // ==================== SCROLL SUAVE ====================
+  // ==================== SCROLL SUAVE E CLIQUE NAS FOTOS ====================
   document.querySelectorAll('.nav-links a, .hero-buttons a').forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const target = document.querySelector(targetId === '#topo' ? 'body' : targetId);
+      const target = document.querySelector(this.getAttribute('href'));
       if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 
-  // ==================== LIGHTBOX MODAL SCRIPT ====================
-  const lightboxModal = document.getElementById('lightboxModal');
-  const lightboxImg = document.getElementById('lightboxImg');
-  
+  // Clique nas fotos da galeria para ampliar
   document.addEventListener('click', function(e) {
     const galeriaItem = e.target.closest('.galeria-item');
     if (galeriaItem) {
       const img = galeriaItem.querySelector('img');
       if (img && img.src && img.style.display !== 'none') {
-        lightboxImg.src = img.src;
-        lightboxModal.classList.add('active');
+        window.open(img.src, '_blank');
       }
     }
-  });
-
-  function fecharLightbox() {
-    lightboxModal.classList.remove('active');
-  }
-
-  document.getElementById('closeLightbox').addEventListener('click', fecharLightbox);
-  lightboxModal.addEventListener('click', function(e) {
-    if(e.target === lightboxModal) fecharLightbox();
   });
 </script>
 </body>
