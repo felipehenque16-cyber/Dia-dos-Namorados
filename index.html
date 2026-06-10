@@ -30,9 +30,6 @@
       --text-dark: #2c2c2c;
       --text-soft: #7a6a62;
       --bg-card: #ffffff;
-      --hero-title: #d4a574;
-      --hero-subtitle: #c49a6c;
-      --hero-text: #9e8a7a;
     }
 
     .container {
@@ -90,7 +87,7 @@
       color: var(--gold);
     }
 
-    /* HERO COM FUNDO, CORAÇÕES E NOVAS CORES */
+    /* HERO */
     .hero {
       min-height: 100vh;
       width: 100%;
@@ -115,7 +112,6 @@
       }
     }
 
-    /* Corações flutuantes */
     .floating-hearts {
       position: absolute;
       top: 0;
@@ -158,7 +154,6 @@
       max-width: 800px;
     }
 
-    /* ESTILOS DAS LETRAS DO INÍCIO - IGUAL AO MODELO */
     .hero-title {
       font-size: 3.5rem;
       font-family: 'Playfair Display', serif;
@@ -268,19 +263,42 @@
       font-size: 0.95rem;
     }
 
-    /* História */
-    .historia-content {
-      background: var(--bg-card);
-      border-radius: 24px;
+    /* História - Estilo Novo com Imagem de Fundo */
+    .historia-wrapper {
+      background: linear-gradient(rgba(255,250,248,0.92), rgba(255,250,248,0.92)), url('https://i.ibb.co/TDv7KQfB/20220113-134534.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      border-radius: 32px;
       padding: 2.5rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
       border: 1px solid var(--gold-light);
-      line-height: 1.8;
+    }
+
+    .historia-content {
+      line-height: 1.9;
       color: #4a3a32;
+      font-size: 1rem;
     }
 
     .historia-content p {
       margin-bottom: 1.2rem;
+    }
+
+    .historia-destaque {
+      margin-top: 1.5rem;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+
+    .historia-footer {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-soft);
     }
 
     /* Linha do Tempo */
@@ -630,6 +648,9 @@
       .timeline-grid::before {
         left: 22px;
       }
+      .historia-wrapper {
+        padding: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -671,15 +692,19 @@
   </div>
 
   <div class="container">
-    <!-- 1. Nossa História -->
+    <!-- 1. Nossa História - NOVO MODELO COM FOTO E TEXTO FORMATADO -->
     <section id="historia">
       <h2 class="section-title">A nossa história de amor</h2>
-      <div class="historia-content">
-        <p>Algumas histórias começam com palavras. A nossa começou com um olhar.</p>
-        <p>Lembro como se fosse ontem. Vendo você descendo da escada e dando um chute na bunda do Allan, foi amor a primeira vista.</p>
-        <p>Aquele momento exato, alguma coisa dentro de mim se mexeu, sabe? Foi como se o mundo tivesse pausado para me dizer: "é ela boy rsrs". E eu me apaixonei. Não devagar que era normal na época, me apaixonei inteiro, num único olhar.</p>
-        <p>Vieram quatro anos de namoro. Conversas longas, mãos dadas, risadas bobas, planos e a certeza tranquila de que era com você que eu queria compartilhar essa coisa maravilhosa chamada vida.</p>
-        <p>Depois veio o nosso "sim". E desde então, todo dia 13 carrega momentos maravilhosos. É o nosso dia. O dia em que viramos um só e ainda assim continuamos sendo tudo de melhor que cada um podia ser.</p>
+      <div class="historia-wrapper">
+        <div class="historia-content">
+          <p>Algumas histórias começam com palavras. A nossa começou com um olhar.</p>
+          <p>Lembro como se fosse ontem. Vendo você descendo da escada e dando um chute na bunda do Allan, foi amor a primeira vista.</p>
+          <p>Aquele momento exato, alguma coisa dentro de mim se mexeu, sabe? Foi como se o mundo tivesse pausado para me dizer: "é ela boy rsrs". E eu me apaixonei. Não devagar que era normal na época, me apaixonei inteiro, num único olhar.</p>
+          <p>Vieram quatro anos de namoro. Conversas longas, mãos dadas, risadas bobas, planos e a certeza tranquila de que era com você que eu queria compartilhar essa coisa maravilhosa chamada vida.</p>
+          <p>Depois veio o nosso "sim". E desde então, todo dia 13 carrega momentos maravilhosos. É o nosso dia. O dia em que viramos um só e ainda assim continuamos sendo tudo de melhor que cada um podia ser.</p>
+        </div>
+        <div class="historia-destaque">Para sempre</div>
+        <div class="historia-footer">💛 Todo dia 13 é nosso 💛</div>
       </div>
     </section>
 
