@@ -498,32 +498,39 @@
     .slider-arrow.left { left: 15px; }
     .slider-arrow.right { right: 15px; }
 
+    /* Estilização moderna e compacta para as bolinhas de paginação com muitas imagens */
     .slider-dots {
       position: absolute;
       bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
-      gap: 10px;
+      gap: 6px;
       z-index: 10;
-      background: rgba(0, 0, 0, 0.2);
-      padding: 8px 14px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 6px 12px;
       border-radius: 30px;
       backdrop-filter: blur(8px);
+      max-width: 85%;
+      overflow-x: auto;
     }
 
+    /* Esconde barra de rolagem do painel de bolinhas se estourar */
+    .slider-dots::-webkit-scrollbar { display: none; }
+
     .dot {
-      width: 8px;
-      height: 8px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.4);
       cursor: pointer;
       transition: all 0.3s;
+      flex-shrink: 0;
     }
 
     .dot.active {
-      background: white;
-      width: 20px;
+      background: #ff9a9e;
+      width: 14px;
       border-radius: 10px;
     }
 
@@ -833,7 +840,7 @@
   </div>
 
   <div class="container">
-    <!-- 1. Nossa História Atualizada com Foto Lateral -->
+    <!-- 1. Nossa História Atualizada com Foto Lateral e Texto Original -->
     <section id="historia">
       <h2 class="section-title">A nossa história de amor</h2>
       <div class="section-sub">Como tudo começou.</div>
@@ -864,7 +871,7 @@
       </div>
     </section>
 
-    <!-- 3. Slide de Fotos Interativo -->
+    <!-- 3. Slide de Fotos Interativo com o Novo Álbum Completo -->
     <section id="galeria">
       <h2 class="section-title">A nossa galeria</h2>
       <div class="section-sub">Arraste para os lados ou clique nas fotos para expandir em tela cheia.</div>
@@ -897,7 +904,7 @@
       <div class="carta-box glass-card">
         <p><strong>Meu amor,</strong></p>
         <p>Eu nunca fui muito bom com palavras, mas tentei. Porque você merece ouvir, ler e sentir tudo e este cantinho é o nosso, sempre que precisar lembrar, beleza?</p>
-        <p>Quando te vi descendo a escada da igreja, eu não sabia que estava conhecendo a minha vida inteira. Naquele momento, sem nenhum aviso, meu mundo capotou de um jeito maravilhoso. Você desceu aquela escada e seu sorriso ficou na minha mente de um jeito...</p>
+        <p>Quando te vi descendo a escada da igreja, eu não sabia que estava conhecendo a minha vida inteira. Naquele momento, sem nenhum aviso, meu world capotou de um jeito maravilhoso. Você desceu aquela escada e seu sorriso ficou na minha mente de um jeito...</p>
         <p>Foram quatro anos namorando como quem brinca de eternidade. A gente fez planos, sonhos, casa, futuro. E quando chega todos os dias, principalmente agora, penso: tudo o que eu já tinha vivido valia a pena, porque me trouxe até ali e aqui, com você xuxu, e sei que já estava escrito nas estrelas o nós.</p>
         <p>Agradeço por todas as manhãs em que acordamos juntos e escuto o "bom dia". Pelos jantares improvisados. Pelas brigas que viraram. Pela paciência que você tem com os meus silêncios. Pela coragem que você me empresta quando a minha falta.</p>
         <p>Eu quero envelhecer com você. Quero te ver com cabelos brancos, ainda rindo das minhas piadas ruins. Quero que a gente conte essa nossa história na eternidade.</p>
@@ -973,9 +980,7 @@
     }
   }
 
-  // EVENT LISTENER BLINDADO CONTRA ERROS DO NAVEGADOR
   document.getElementById('btnEnterSite').addEventListener('click', function(e) {
-    // try/catch garante que falhas em mídias não parem a quebra da tela
     try { playMusic(); } catch(err) { console.log("Autoplay bloqueado"); }
     try { heartBurst(e); } catch(err) { console.log("Partículas bloqueadas"); }
     
@@ -1047,15 +1052,64 @@
   document.getElementById('heroSurprise').addEventListener('click', heartBurst);
 
 
-  // ==================== LÓGICA DO SLIDER DE FOTOS ====================
+  // ==================== ÁLBUM COMPLETO ATUALIZADO ====================
   const fotosGaleria = [
-    "https://i.ibb.co/DgkYSBsz/IMG-20260101-WA0065.jpg",
-    "https://i.ibb.co/b4PD5z7/IMG-20260101-WA0059.jpg",
-    "https://i.ibb.co/pvx7Q2hd/IMG-20251124-WA0006.jpg",
-    "https://i.ibb.co/ks0B3fBR/IMG-20240407-160510493-AE.jpg",
-    "https://i.ibb.co/F4wgnQwm/Whats-App-Image-2026-06-10-at-09-47-28.jpg",
-    "https://i.ibb.co/zHsk1Phh/received-1185180684953854.jpg",
-    "https://i.ibb.co/vxZNSFrn/IMG-20240113-WA0017.jpg"
+    "https://i.ibb.co/jZhRC9X7/IMG-20251120-WA0005.jpg",
+    "https://i.ibb.co/67X49YsZ/IMG-20221125-WA0000.jpg",
+    "https://i.ibb.co/Z64sKkzY/IMG-20251124-WA0002.jpg",
+    "https://i.ibb.co/xtH6p26C/IMG-20190803-161033-370.jpg",
+    "https://i.ibb.co/S74t81xf/IMG-20240817-170652127.jpg",
+    "https://i.ibb.co/fb4FY6k/IMG-20240902-132104188.jpg",
+    "https://i.ibb.co/WNDYJK6q/IMG-20241123-203355196.jpg",
+    "https://i.ibb.co/VpPsPVzw/IMG-20241208-163744503.jpg",
+    "https://i.ibb.co/mVdx4vPL/IMG-20251010-213256052.jpg",
+    "https://i.ibb.co/DHdSGJBx/IMG-20260103-185026392.jpg",
+    "https://i.ibb.co/mCTJsXz7/IMG-20260519-113536417.jpg",
+    "https://i.ibb.co/5XHcP3tv/IMG-20200125-WA0014.jpg",
+    "https://i.ibb.co/27XbmBM4/IMG-20200816-WA0006.jpg",
+    "https://i.ibb.co/hxch3HJx/IMG-20231015-WA0027.jpg",
+    "https://i.ibb.co/d0xHnJPN/IMG-20231124-WA0011.jpg",
+    "https://i.ibb.co/JR6Qrqqv/IMG-20231209-WA0067.jpg",
+    "https://i.ibb.co/4n2g18k0/IMG-20240107-WA0020.jpg",
+    "https://i.ibb.co/WXZH1JT/IMG-20240113-WA0004.jpg",
+    "https://i.ibb.co/sJjs6Hzb/IMG-20240113-WA0009.jpg",
+    "https://i.ibb.co/Q3kcBvLW/IMG-20240113-WA0021.jpg",
+    "https://i.ibb.co/jPRkWnzw/IMG-20240113-WA0074.jpg",
+    "https://i.ibb.co/MxxmrbKV/IMG-20240907-WA0029.jpg",
+    "https://i.ibb.co/TB0Nmkjx/IMG-20241027-WA0004.jpg",
+    "https://i.ibb.co/TBXs3VBz/IMG-20250112-WA0003.jpg",
+    "https://i.ibb.co/nqvr0Ytn/IMG-20250816-WA0023.jpg",
+    "https://i.ibb.co/HTwXF2W7/IMG-20251109-WA0006.jpg",
+    "https://i.ibb.co/99zX2PNz/IMG-20251110-WA0011.jpg",
+    "https://i.ibb.co/8DRB8KW1/IMG-20251212-WA0006.jpg",
+    "https://i.ibb.co/r2ZnJjcr/IMG-20251219-WA0016.jpg",
+    "https://i.ibb.co/d0DbWmTQ/IMG-20260101-WA0068.jpg",
+    "https://i.ibb.co/D6Q21fG/IMG-20260105-WA0007.jpg",
+    "https://i.ibb.co/HjLqfMk/IMG-20260105-WA0008.jpg",
+    "https://i.ibb.co/b56SZVBR/IMG-20260128-WA0053.jpg",
+    "https://i.ibb.co/svRFmk72/IMG-20260128-WA0070.jpg",
+    "https://i.ibb.co/dJrYSvvf/IMG-20260331-WA0125.jpg",
+    "https://i.ibb.co/C58qzy71/P-20190101-153007-p.jpg",
+    "https://i.ibb.co/HLMzr1hL/received-278342282806485.jpg",
+    "https://i.ibb.co/8L69njRH/received-279229712687367.jpg",
+    "https://i.ibb.co/MyH8CVSy/received-702000203488976.jpg",
+    "https://i.ibb.co/8F1ktD4/received-1082845511886797.jpg",
+    "https://i.ibb.co/n8DVYCt7/IMG-20190614-200512-595.jpg",
+    "https://i.ibb.co/Qv7dNyQj/IMG-20231124-WA0023.jpg",
+    "https://i.ibb.co/2YnFh2S2/IMG-20231124-WA0036.jpg",
+    "https://i.ibb.co/KcSxKJNy/IMG-20240113-WA0015.jpg",
+    "https://i.ibb.co/ZzJqff7j/IMG-20240113-WA0084.jpg",
+    "https://i.ibb.co/1GfPcKPD/received-1300369936764897.jpg",
+    "https://i.ibb.co/dw7r7YHs/IMG-20221211-WA0112.jpg",
+    "https://i.ibb.co/6RpYH2VK/IMG-20200310-WA0016.jpg",
+    "https://i.ibb.co/d4b27LKH/44067559-1475380705939148-1763006181481119744-n.jpg",
+    "https://i.ibb.co/yBRpd7NP/C-pia-de-DSC-0050.jpg",
+    "https://i.ibb.co/sp5TXtM8/39402074-657527681284257-1675639404149866496-n.jpg",
+    "https://i.ibb.co/vCdF28nm/07.jpg",
+    "https://i.ibb.co/jPtBgm81/06.jpg",
+    "https://i.ibb.co/QvCpD1Mf/IMG-20180520-214642-198.jpg",
+    "https://i.ibb.co/d4wjj2rn/IMG-20180612-212252-595.jpg",
+    "https://i.ibb.co/tPhSrKbQ/IMG-20161124-WA0070.jpg"
   ];
 
   const sliderTrack = document.getElementById('sliderTrack');
