@@ -47,6 +47,7 @@
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.8s ease, transform 0.8s ease;
+      scroll-margin-top: 80px;
     }
 
     section.visible {
@@ -60,10 +61,11 @@
       width: 100%;
       position: relative;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://i.ibb.co/zh6KLxGT/IMG-20240111-WA0019.jpg');
+      background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)), url('https://i.ibb.co/zh6KLxGT/IMG-20240111-WA0019.jpg');
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
@@ -71,22 +73,10 @@
       overflow: hidden;
     }
 
-    /* fallback se a imagem não carregar */
     @media (max-width: 768px) {
       .hero {
         background-attachment: scroll;
       }
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0,0,0,0.2);
-      z-index: 1;
     }
 
     .hero-content {
@@ -132,10 +122,8 @@
 
     .btn-outline {
       background: transparent;
-      border: 2px solid var(--gold);
-      color: var(--gold);
+      border: 2px solid white;
       color: white;
-      border-color: white;
     }
 
     .btn-outline:hover {
@@ -221,8 +209,10 @@
       border-radius: 24px;
       box-shadow: 0 15px 25px -12px rgba(0,0,0,0.1);
       transition: all 0.4s;
-      background: #fff;
+      background: #f3e5c9;
       aspect-ratio: 1 / 1;
+      cursor: pointer;
+      position: relative;
     }
 
     .galeria-item img {
@@ -234,6 +224,22 @@
 
     .galeria-item:hover img {
       transform: scale(1.05);
+    }
+
+    .galeria-item .error-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f3e5c9;
+      color: #b27d7d;
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 1rem;
     }
 
     .motivos-grid {
@@ -268,18 +274,79 @@
       font-style: italic;
     }
 
-    .contador {
+    /* CONTADOR MODERNO */
+    .contador-moderno {
       background: linear-gradient(145deg, #fef3f0, #fde9e4);
       border-radius: 70px;
-      padding: 2rem;
+      padding: 2.5rem 2rem;
       text-align: center;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.15);
+      position: relative;
+      overflow: hidden;
     }
 
-    .tempo-numeros {
-      font-size: 3rem;
-      font-weight: 700;
-      font-family: 'Playfair Display', serif;
+    .contador-moderno::before {
+      content: '❤️';
+      position: absolute;
+      font-size: 120px;
+      opacity: 0.05;
+      bottom: -20px;
+      right: -20px;
+      pointer-events: none;
+    }
+
+    .contador-titulo {
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
       color: #b27d7d;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .contador-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .contador-bloco {
+      background: white;
+      border-radius: 24px;
+      padding: 1.2rem 1rem;
+      min-width: 100px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+
+    .contador-bloco:hover {
+      transform: translateY(-5px);
+    }
+
+    .contador-numero {
+      font-size: 3rem;
+      font-weight: 800;
+      font-family: 'Playfair Display', serif;
+      color: #d4af7a;
+      line-height: 1;
+    }
+
+    .contador-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #b27d7d;
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+
+    .contador-data-ref {
+      font-size: 0.9rem;
+      color: #b88b8b;
+      margin-top: 1rem;
+      font-style: italic;
     }
 
     .musica-wrapper {
@@ -326,7 +393,6 @@
       color: #b88b8b;
     }
 
-    /* corações flutuantes na capa */
     .heart-bg {
       position: absolute;
       top: 0;
@@ -380,6 +446,16 @@
       .timeline-card {
         min-width: 140px;
       }
+      .contador-bloco {
+        min-width: 70px;
+        padding: 0.8rem;
+      }
+      .contador-numero {
+        font-size: 2rem;
+      }
+      .contador-wrapper {
+        gap: 0.8rem;
+      }
     }
 
     .nav-links {
@@ -395,6 +471,7 @@
       font-weight: 500;
       transition: 0.2s;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+      cursor: pointer;
     }
     .nav-links a:hover {
       color: var(--gold);
@@ -412,20 +489,20 @@
       “Cada capítulo da minha vida ficou mais bonito desde que você chegou.”
     </div>
     <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-      <a href="#historia" class="btn">📖 Nossa História</a>
-      <a href="#carta" class="btn btn-outline">💌 Carta de Amor</a>
+      <a href="#historia" class="btn" id="btnHistoria">📖 Nossa História</a>
+      <a href="#carta" class="btn btn-outline" id="btnCarta">💌 Carta de Amor</a>
     </div>
     <button id="playMusicBtn" class="btn btn-musica" style="margin-top: 1.5rem;">
       <i class="fas fa-music"></i> ♪ Tocar nossa música ♪
     </button>
   </div>
   <div class="nav-links">
-    <a href="#historia">História</a>
-    <a href="#linha-tempo">Linha do tempo</a>
-    <a href="#galeria">Galeria</a>
-    <a href="#motivos">10 Motivos</a>
-    <a href="#contador">Juntos</a>
-    <a href="#musica">Música</a>
+    <a href="#historia" class="nav-link">História</a>
+    <a href="#linha-tempo" class="nav-link">Linha do tempo</a>
+    <a href="#galeria" class="nav-link">Galeria</a>
+    <a href="#motivos" class="nav-link">10 Motivos</a>
+    <a href="#contador" class="nav-link">Juntos</a>
+    <a href="#musica" class="nav-link">Música</a>
   </div>
 </div>
 
@@ -462,7 +539,7 @@
   <section id="galeria">
     <h2 class="section-title">📸 Galeria de Memórias</h2>
     <div class="galeria-grid" id="galeriaGrid"></div>
-    <p style="text-align: center; margin-top: 1rem; font-size: 0.85rem; color: #b88b8b;"><i class="fas fa-camera"></i> Clique nas fotos para ampliar — substitua pelas suas imagens reais.</p>
+    <p style="text-align: center; margin-top: 1rem; font-size: 0.85rem; color: #b88b8b;"><i class="fas fa-camera"></i> Clique nas fotos para ampliar</p>
   </section>
 
   <section id="motivos">
@@ -480,11 +557,42 @@
     </div>
   </section>
 
+  <!-- CONTADOR MODERNO - DATA CORRETA: 15 DE OUTUBRO DE 2017 -->
   <section id="contador">
     <h2 class="section-title">⏳ Há Quanto Tempo Somos Um ⏳</h2>
-    <div class="contador">
-      <div class="tempo-numeros" id="contadorTempo"></div>
-      <p style="margin-top: 0.8rem;">❤️ desde o nosso casamento (13/07/2022) ❤️</p>
+    <div class="contador-moderno">
+      <div class="contador-titulo">
+        <i class="fas fa-heart" style="color: #d4af7a;"></i> TEMPO DE AMOR ININTERRUPTO <i class="fas fa-heart" style="color: #d4af7a;"></i>
+      </div>
+      <div class="contador-wrapper" id="contadorWrapper">
+        <div class="contador-bloco">
+          <div class="contador-numero" id="anosContador">0</div>
+          <div class="contador-label">Anos</div>
+        </div>
+        <div class="contador-bloco">
+          <div class="contador-numero" id="mesesContador">0</div>
+          <div class="contador-label">Meses</div>
+        </div>
+        <div class="contador-bloco">
+          <div class="contador-numero" id="diasContador">0</div>
+          <div class="contador-label">Dias</div>
+        </div>
+        <div class="contador-bloco">
+          <div class="contador-numero" id="horasContador">0</div>
+          <div class="contador-label">Horas</div>
+        </div>
+        <div class="contador-bloco">
+          <div class="contador-numero" id="minutosContador">0</div>
+          <div class="contador-label">Minutos</div>
+        </div>
+        <div class="contador-bloco">
+          <div class="contador-numero" id="segundosContador">0</div>
+          <div class="contador-label">Segundos</div>
+        </div>
+      </div>
+      <div class="contador-data-ref">
+        ✨ Desde 15 de outubro de 2017 ✨
+      </div>
     </div>
   </section>
 
@@ -526,15 +634,16 @@
   }
   createFloatingHearts();
 
-  // ==================== GALERIA ====================
+  // ==================== GALERIA COM SUAS FOTOS ====================
   const galeriaItens = [
-    "https://placehold.co/600x600/f9e6e8/b27d7d?text=♡+Momento+Doce+♡",
-    "https://placehold.co/600x600/f3e5c9/b27d7d?text=♡+Viagem+Juntos+♡",
-    "https://placehold.co/600x600/ffece5/d4af7a?text=♡+Nosso+Casamento+♡",
-    "https://placehold.co/600x600/f9e6e8/d4af7a?text=♡+Primeiro+Encontro+♡",
-    "https://placehold.co/600x600/f3d0d4/b27d7d?text=♡+Cumplicidade+♡",
-    "https://placehold.co/600x600/fef3f0/b27d7d?text=♡+Amor+Infinito+♡"
+    "https://i.ibb.co/DgkYSBsz/IMG-20260101-WA0065.jpg",
+    "https://i.ibb.co/b4PD5z7/IMG-20260101-WA0059.jpg",
+    "https://i.ibb.co/pvx7Q2hd/IMG-20251124-WA0006.jpg",
+    "https://i.ibb.co/ks0B3fBR/IMG-20240407-160510493-AE.jpg",
+    "https://i.ibb.co/F4wgnQwm/Whats-App-Image-2026-06-10-at-09-47-28.jpg",
+    "https://i.ibb.co/zHsk1Phh/received-1185180684953854.jpg"
   ];
+  
   const galeriaGrid = document.getElementById('galeriaGrid');
   if(galeriaGrid) {
     galeriaItens.forEach(src => {
@@ -544,6 +653,16 @@
       img.src = src;
       img.alt = "Momento especial";
       img.loading = "lazy";
+      
+      // Tratamento de erro para imagens que não carregarem
+      img.onerror = function() {
+        this.style.display = 'none';
+        const placeholder = document.createElement('div');
+        placeholder.className = 'error-placeholder';
+        placeholder.innerHTML = '<i class="fas fa-heart" style="font-size: 2rem; margin-bottom: 0.5rem; display: block;"></i>❤️ Foto disponível em breve ❤️';
+        div.appendChild(placeholder);
+      };
+      
       div.appendChild(img);
       galeriaGrid.appendChild(div);
     });
@@ -572,22 +691,42 @@
     });
   }
 
-  // ==================== CONTADOR DE TEMPO ====================
-  function atualizarContador() {
-    const casamentoDate = new Date(2022, 6, 13);
+  // ==================== CONTADOR MODERNO (15/10/2017) ====================
+  function atualizarContadorModerno() {
+    const dataInicio = new Date(2017, 9, 15);
     const agora = new Date();
-    const diffMs = agora - casamentoDate;
-    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-    const anos = Math.floor(diffDays / 365);
-    const meses = Math.floor((diffDays % 365) / 30.44);
-    const dias = Math.floor((diffDays % 365) % 30.44);
-    const elemento = document.getElementById('contadorTempo');
-    if(elemento) {
-      elemento.innerHTML = `${anos} anos, ${meses} meses e ${dias} dias`;
-    }
+    
+    let diff = agora - dataInicio;
+    
+    const segundosTotal = Math.floor(diff / 1000);
+    const minutosTotal = Math.floor(segundosTotal / 60);
+    const horasTotal = Math.floor(minutosTotal / 60);
+    const diasTotal = Math.floor(horasTotal / 24);
+    
+    const anos = Math.floor(diasTotal / 365);
+    const meses = Math.floor((diasTotal % 365) / 30.44);
+    const dias = Math.floor((diasTotal % 365) % 30.44);
+    const horas = horasTotal % 24;
+    const minutos = minutosTotal % 60;
+    const segundos = segundosTotal % 60;
+    
+    const anosElem = document.getElementById('anosContador');
+    const mesesElem = document.getElementById('mesesContador');
+    const diasElem = document.getElementById('diasContador');
+    const horasElem = document.getElementById('horasContador');
+    const minutosElem = document.getElementById('minutosContador');
+    const segundosElem = document.getElementById('segundosContador');
+    
+    if(anosElem) anosElem.textContent = anos;
+    if(mesesElem) mesesElem.textContent = meses;
+    if(diasElem) diasElem.textContent = dias;
+    if(horasElem) horasElem.textContent = horas;
+    if(minutosElem) minutosElem.textContent = minutos;
+    if(segundosElem) segundosElem.textContent = segundos;
   }
-  atualizarContador();
-  setInterval(atualizarContador, 86400000);
+  
+  atualizarContadorModerno();
+  setInterval(atualizarContadorModerno, 1000);
 
   // ==================== CONTROLE DA MÚSICA ====================
   function playMusic() {
@@ -626,22 +765,52 @@
   sections.forEach(sec => observer.observe(sec));
   if(finalSection) observer.observe(finalSection);
   
+  setTimeout(() => {
+    sections.forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      if(rect.top < window.innerHeight - 100) {
+        sec.classList.add('visible');
+      }
+    });
+  }, 100);
+  
   // ==================== CLICK NAS FOTOS (GALERIA) ====================
-  document.querySelectorAll('.galeria-item img').forEach(img => {
-    img.addEventListener('click', () => {
-      alert('✨ Você pode substituir esta imagem pela sua foto real! Basta editar o array "galeriaItens" no código. ✨');
+  document.querySelectorAll('.galeria-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      if(img && img.src && img.style.display !== 'none') {
+        window.open(img.src, '_blank');
+      }
     });
   });
   
   // ==================== NAVEGAÇÃO SUAVE ====================
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+  function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if(section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+  
+  const allNavLinks = document.querySelectorAll('.nav-link, #btnHistoria, #btnCarta');
+  allNavLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
       const href = this.getAttribute('href');
-      if(href === "#" || href === "") return;
-      const target = document.querySelector(href);
-      if(target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
+      if(href && href.startsWith('#')) {
+        const sectionId = href.substring(1);
+        scrollToSection(sectionId);
+      }
+    });
+  });
+  
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = this.getAttribute('href');
+      if(href && href.startsWith('#')) {
+        const sectionId = href.substring(1);
+        scrollToSection(sectionId);
       }
     });
   });
