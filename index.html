@@ -295,17 +295,70 @@
       font-size: 0.95rem;
     }
 
-    /* HISTÓRIA E CARTA */
-    .historia-content, .carta-box {
+    /* ==================== HISTÓRIA ATUALIZADA (LADO A LADO) ==================== */
+    .historia-content {
       padding: 3rem;
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .historia-text {
+      flex: 1.3;
       line-height: 1.9;
       color: #3d312a;
       font-size: 1.05rem;
     }
 
-    .historia-content p, .carta-box p {
+    .historia-text p {
       margin-bottom: 1.5rem;
     }
+
+    .historia-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .para-sempre {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 600;
+      color: #ff9a9e;
+      font-size: 1.4rem;
+      margin-top: 1rem;
+      display: block;
+    }
+
+    .historia-side-img {
+      flex: 0.7;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(255, 154, 158, 0.2);
+      border: 6px solid white;
+      transform: rotate(2deg);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+    }
+
+    .historia-side-img:hover {
+      transform: rotate(0deg) scale(1.03);
+      box-shadow: 0 20px 45px rgba(255, 154, 158, 0.35);
+    }
+
+    .historia-side-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* CARTA BOX BASE */
+    .carta-box {
+      padding: 3rem;
+      line-height: 1.9;
+      color: #3d312a;
+      font-size: 1.05rem;
+    }
+    .carta-box p { margin-bottom: 1.5rem; }
 
     /* TIMELINE CLEAN APP STYLE */
     .timeline-grid {
@@ -365,7 +418,7 @@
       line-height: 1.6;
     }
 
-    /* ==================== NOVO SLIDE DE FOTOS (PREMIUM SLIDER) ==================== */
+    /* SLIDE DE FOTOS (PREMIUM SLIDER) */
     .slider-container {
       position: relative;
       width: 100%;
@@ -401,7 +454,6 @@
       object-fit: cover;
     }
 
-    /* Controles do Slide */
     .slider-arrow {
       position: absolute;
       top: 50%;
@@ -431,7 +483,6 @@
     .slider-arrow.left { left: 15px; }
     .slider-arrow.right { right: 15px; }
 
-    /* Indicadores de Bolinha (Dots) */
     .slider-dots {
       position: absolute;
       bottom: 20px;
@@ -706,7 +757,19 @@
       .section-title { font-size: 1.9rem; }
       .nav-links { display: none; }
       .header { padding: 0.6rem 1.5rem; }
-      .historia-content, .carta-box { padding: 1.8rem; }
+      
+      /* Ajuste responsivo para a seção da história */
+      .historia-content {
+        flex-direction: column;
+        padding: 1.8rem;
+        gap: 2rem;
+      }
+      .historia-side-img {
+        width: 100%;
+        max-width: 300px;
+        transform: rotate(0deg);
+      }
+      .carta-box { padding: 1.8rem; }
     }
   </style>
 </head>
@@ -756,16 +819,21 @@
   </div>
 
   <div class="container">
-    <!-- 1. Nossa História -->
+    <!-- 1. Nossa História Atualizada com Foto Lateral -->
     <section id="historia">
       <h2 class="section-title">A nossa história de amor</h2>
       <div class="section-sub">Como tudo começou.</div>
       <div class="historia-content glass-card">
-        <p>Algumas histórias começam com palavras. A nossa começou com um olhar.</p>
-        <p>Lembro como se fosse ontem. Vendo você descendo da escada e dando um chute na bunda do Allan, foi amor à primeira vista.</p>
-        <p>Aquele momento exato, alguma coisa dentro de mim se mexeu, sabe? Foi como se o mundo tivesse pausado para me dizer: "é ela boy rsrs". E eu me apaixonei. Não devagar que era normal na época, me apaixonei inteiro, num único olhar.</p>
-        <p>Vieram quatro anos de namoro. Conversas longas, mãos dadas, risadas bobas, planos e a certeza tranquila de que era com você que eu queria compartilhar essa coisa maravilhosa chamada vida.</p>
-        <p>Depois veio o nosso "sim". E desde então, todo dia 13 carrega momentos maravilhosos. É o nosso dia. O dia em que viramos um só e ainda assim continuamos sendo tudo de melhor que cada um podia ser.</p>
+        <div class="historia-text">
+          <p>Lembro como se fosse ontem. Vendo você descendo da escala e dando um chute na bunda do Allan, foi amor a primeira vista.</p>
+          <p>Naquele momento exato, alguma coisa dentro de mim se mexeu, sabe? Foi como se o mundo tivesse pausado para me dizer: "é ela boy rsrs". E eu me apaixonei. Não devagar que era normal na epoca, me apaixonei inteiro, num único olhar.</p>
+          <p>Vieram quatro anos de namoro. Conversas longas, mãos dadas, risadas bobas, planos e a certeza tranquila de que era com você que eu queria compartilhar essa coisa maravilhosa chamada vida.</p>
+          <p>Depois veio o nosso "sim". E desde então, todo dia 13 carrega momentos maravilhosos. É o nosso dia. O dia em que viramos um só e ainda assim continuamos sendo tudo de melhor que cada um podia ser.</p>
+          <span class="para-sempre">para sempre</span>
+        </div>
+        <div class="historia-side-img id-expandable-img">
+          <img src="https://i.ibb.co/TDv7KQfB/20220113-134534.jpg" alt="Foto especial da nossa história">
+        </div>
       </div>
     </section>
 
@@ -782,7 +850,7 @@
       </div>
     </section>
 
-    <!-- 3. NOVO SLIDE DE FOTOS INTERATIVO -->
+    <!-- 3. Slide de Fotos Interativo -->
     <section id="galeria">
       <h2 class="section-title">A nossa galeria</h2>
       <div class="section-sub">Arraste para os lados ou clique nas fotos para expandir em tela cheia.</div>
@@ -974,9 +1042,7 @@
   let currentSlide = 0;
   let slideInterval;
 
-  // Renderiza fotos e bolinhas
   fotosGaleria.forEach((src, index) => {
-    // Cria Slide
     const slide = document.createElement('div');
     slide.className = 'slide-item';
     const img = document.createElement('img');
@@ -986,7 +1052,6 @@
     slide.appendChild(img);
     sliderTrack.appendChild(slide);
 
-    // Cria Bolinha (Dot)
     const dot = document.createElement('div');
     dot.className = `dot ${index === 0 ? 'active' : ''}`;
     dot.addEventListener('click', () => {
@@ -1001,10 +1066,8 @@
     else if (index < 0) currentSlide = fotosGaleria.length - 1;
     else currentSlide = index;
 
-    // Move o track do slider
     sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
 
-    // Atualiza classe ativa dos dots
     const dots = document.querySelectorAll('.dot');
     dots.forEach((dot, idx) => {
       dot.classList.toggle('active', idx === currentSlide);
@@ -1017,7 +1080,6 @@
   document.getElementById('sliderNext').addEventListener('click', () => { nextSlide(); resetAutoPlay(); });
   document.getElementById('sliderPrev').addEventListener('click', () => { prevSlide(); resetAutoPlay(); });
 
-  // AutoPlay Inteligente
   function startAutoPlay() {
     slideInterval = setInterval(nextSlide, 4000);
   }
@@ -1090,25 +1152,28 @@
   });
 
 
-  // ==================== LIGHTBOX MODAL SCRIPT (CLIQUE NO SLIDE) ====================
+  // ==================== LIGHTBOX MODAL SCRIPT (CLIQUE NAS FOTOS DO SLIDE OU LATERAL) ====================
   const lightboxModal = document.getElementById('lightboxModal');
   const lightboxImg = document.getElementById('lightboxImg');
   
   document.addEventListener('click', function(e) {
+    // Alvo pode ser imagem do slider ou a imagem lateral da história
     const slideItem = e.target.closest('.slide-item');
-    if (slideItem) {
-      const img = slideItem.querySelector('img');
+    const sideImgItem = e.target.closest('.historia-side-img');
+    
+    if (slideItem || sideImgItem) {
+      const img = (slideItem || sideImgItem).querySelector('img');
       if (img && img.src) {
         lightboxImg.src = img.src;
         lightboxModal.classList.add('active');
-        clearInterval(slideInterval); // Pausa o autoplay enquanto ela vê em tela cheia
+        clearInterval(slideInterval); // Pausa autoplay do slide
       }
     }
   });
 
   function fecharLightbox() { 
     lightboxModal.classList.remove('active'); 
-    startAutoPlay(); // Retoma o autoplay
+    startAutoPlay(); 
   }
   document.getElementById('closeLightbox').addEventListener('click', fecharLightbox);
   lightboxModal.addEventListener('click', function(e) {
