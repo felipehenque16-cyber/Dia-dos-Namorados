@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>T & F | Nossa História de Amor</title>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -32,7 +34,7 @@
       --text-soft: #6e5d53;
     }
 
-    /* TELA DE INGRESSO ATUALIZADA COM FOTO DE FUNDO */
+    /* TELA DE INGRESSO (SPLASH SCREEN STYLE LOVEPANDA) */
     .welcome-overlay {
       position: fixed;
       top: 0;
@@ -794,6 +796,7 @@
 </head>
 <body id="topo">
 
+<!-- SPLASH SCREEN INTERATIVA BLINDADA -->
 <div class="welcome-overlay" id="welcomeOverlay">
   <div class="welcome-box">
     <div class="welcome-icon"><i class="fas fa-heart"></i></div>
@@ -821,6 +824,7 @@
 </header>
 
 <main>
+  <!-- HERO APP LOOK -->
   <div class="hero">
     <div class="floating-hearts" id="floatingHeartsHero"></div>
     <div class="hero-content">
@@ -836,6 +840,7 @@
   </div>
 
   <div class="container">
+    <!-- 1. Nossa História -->
     <section id="historia">
       <h2 class="section-title">A nossa história de amor</h2>
       <div class="section-sub">Como tudo começou.</div>
@@ -853,18 +858,40 @@
       </div>
     </section>
 
+    <!-- 2. Linha do Tempo Atualizada com Textos Originais -->
     <section id="linha-tempo">
       <h2 class="section-title">A linha do tempo do nosso amor</h2>
       <div class="section-sub">Cinco momentos que nunca vou esquecer — e tantos outros que ainda virão.</div>
       <div class="timeline-grid">
-        <div class="timeline-item glass-card"><div class="timeline-year">VERÃO DE 2018</div><div class="timeline-title">Primeiro Encontro</div><div class="timeline-desc">Te vi descendo a escada da igreja. Naquele momento, o tempo parou e eu soube que era você.</div></div>
-        <div class="timeline-item glass-card"><div class="timeline-year">OUTUBRO DE 2018</div><div class="timeline-title">Início do Namoro</div><div class="timeline-desc">Aquele primeiro "sim" pelo zap, nunca esqueci e nem vou.</div></div>
-        <div class="timeline-item glass-card"><div class="timeline-year">DEZEMBRO DE 2019</div><div class="timeline-title">Casamento</div><div class="timeline-desc">Quando resolvemos iniciar as compras para casarmos, cada compra e plano se tornou inesquecível.</div></div>
-        <div class="timeline-item glass-card"><div class="timeline-year">13 DE SETEMBRO DE 2020</div><div class="timeline-title">O Nosso Sim</div><div class="timeline-desc">Um dos dias mais importantes. Você de azul, eu admirando tua beleza. Todo dia 13 é eterno.</div></div>
-        <div class="timeline-item glass-card"><div class="timeline-year">HOJE E SEMPRE</div><div class="timeline-title">Momentos Especiais</div><div class="timeline-desc">Aniversários, rolês, sextas na cama, manhãs preguiçosas. Cada um deles é maravilhoso.</div></div>
+        <div class="timeline-item glass-card">
+          <div class="timeline-year">VERÃO DE 2018</div>
+          <div class="timeline-title">Primeiro Encontro</div>
+          <div class="timeline-desc">Te vi descendo a escada da igreja. Naquele momento, o tempo parou e eu soube era você.</div>
+        </div>
+        <div class="timeline-item glass-card">
+          <div class="timeline-year">OUTUBRO DE 2018</div>
+          <div class="timeline-title">Início do Namoro</div>
+          <div class="timeline-desc">Aquele primeiro "sim" pelo zap, nunca esqueci e nem vou.</div>
+        </div>
+        <div class="timeline-item glass-card">
+          <div class="timeline-year">DEZEMBRO DE 2019</div>
+          <div class="timeline-title">Casamento</div>
+          <div class="timeline-desc">Quando resolvemos iniciar as compras para casarmos, cada compra, planos é inesquecivel</div>
+        </div>
+        <div class="timeline-item glass-card">
+          <div class="timeline-year">13 DE SETEMBRO DE 2020</div>
+          <div class="timeline-title">O Nosso Sim</div>
+          <div class="timeline-desc">Um dos dias mais importantes. Você de azul, eu admirando tua beleza. Todo dia 13 é eterno, pode ter certeza.</div>
+        </div>
+        <div class="timeline-item glass-card">
+          <div class="timeline-year">HOJE E SEMPRE</div>
+          <div class="timeline-title">Momentos Especiais</div>
+          <div class="timeline-desc">Aniversários, rolês, sextas na cama, manhãs preguiçosas. Cada um deles, é maravilhoso.</div>
+        </div>
       </div>
     </section>
 
+    <!-- 3. Slide de Fotos Interativo com o Álbum Completo -->
     <section id="galeria">
       <h2 class="section-title">A nossa galeria</h2>
       <div class="section-sub">Arraste para os lados ou clique nas fotos para expandir em tela cheia.</div>
@@ -874,19 +901,23 @@
         <button class="slider-arrow right" id="sliderNext"><i class="fas fa-chevron-right"></i></button>
         
         <div class="slider-track" id="sliderTrack">
-          </div>
+          <!-- Slides gerados dinamicamente via JavaScript -->
+        </div>
         
         <div class="slider-dots" id="sliderDots">
-          </div>
+          <!-- Bolinhas geradas via JavaScript -->
+        </div>
       </div>
     </section>
 
+    <!-- 4. 10 Motivos -->
     <section id="motivos">
       <h2 class="section-title">10 motivos pelos quais eu te amo</h2>
       <div class="section-sub">Pequenas coisas que fazem você ser a pessoa da minha vida.</div>
       <div class="motivos-grid" id="motivosGrid"></div>
     </section>
 
+    <!-- 5. Carta de Amor -->
     <section id="carta">
       <h2 class="section-title">Carta de Amor</h2>
       <div class="section-sub">Do meu coração direto para o seu.</div>
@@ -902,6 +933,7 @@
       </div>
     </section>
 
+    <!-- 6. Contador Widget Style -->
     <section id="contador">
       <h2 class="section-title">⏳ Cada segundo conta</h2>
       <div class="contador-wrapper glass-card">
@@ -918,6 +950,7 @@
       </div>
     </section>
 
+    <!-- 7. Música Modern Card -->
     <section id="musica">
       <h2 class="section-title">A nossa música especial</h2>
       <div class="musica-wrapper glass-card">
@@ -929,6 +962,7 @@
     </section>
   </div>
 
+  <!-- 8. Seção Final -->
   <div class="final-section" id="final">
     <div class="floating-hearts" id="floatingHeartsFinal"></div>
     <div class="final-content">
@@ -940,11 +974,13 @@
     </div>
   </div>
 
+  <!-- Lightbox Element -->
   <div id="lightboxModal" class="lightbox">
     <span class="close-lightbox" id="closeLightbox">&times;</span>
     <img id="lightboxImg" src="" alt="Foto expandida">
   </div>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="citacao">
       "O amor é a única coisa que somos capazes de perceber que transcende as dimensões de tempo e espaço."
@@ -1069,7 +1105,7 @@
     "https://i.ibb.co/r2ZnJjcr/IMG-20251219-WA0016.jpg",
     "https://i.ibb.co/d0DbWmTQ/IMG-20260101-WA0068.jpg",
     "https://i.ibb.co/D6Q21fG/IMG-20260105-WA0007.jpg",
-    "https://i.ibb.co/HjLqfMk/IMG-20260105-WA0007.jpg",
+    "https://i.ibb.co/HjLqfMk/IMG-20260105-WA0008.jpg",
     "https://i.ibb.co/b56SZVBR/IMG-20260128-WA0053.jpg",
     "https://i.ibb.co/svRFmk72/IMG-20260128-WA0070.jpg",
     "https://i.ibb.co/dJrYSvvf/IMG-20260331-WA0125.jpg",
@@ -1166,13 +1202,13 @@
     "Por escolher ficar. Todos os dias, mesmo nos difíceis. Obrigado por escolher a gente, sempre."
   ];
 
-  const motivosGrid = document.getElementById('motivosGrid');
-  if (motivosGrid) {
+  const motifsGrid = document.getElementById('motivosGrid');
+  if (motifsGrid) {
     motivos.forEach((text, i) => {
       const card = document.createElement('div');
       card.className = 'motivo-card glass-card';
       card.innerHTML = `<div class="motivo-num">${String(i+1).padStart(2,'0')}</div><div class="motivo-text">${text}</div>`;
-      motivosGrid.appendChild(card);
+      motifsGrid.appendChild(card);
     });
   }
 
@@ -1202,7 +1238,6 @@
       document.getElementById('diasTotal').innerHTML = `✨ ${diasTotal.toLocaleString()} dias de puro amor ✨<br>E cada microssegundo valeu a pena.`;
     }
   }
-  atualuarContador = atualizarContador;
   atualizarContador();
   setInterval(atualizarContador, 1000);
 
