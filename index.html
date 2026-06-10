@@ -102,7 +102,9 @@
     }
 
     .hero-content {
-      <img src="https://placehold.co/600x600/f3d0d4/ffffff?text=❤️+Nosso+Amor+❤️" alt="Nosso amor" class="foto-capa" id="heroImage">
+      position: relative;
+      z-index: 3;
+      max-width: 800px;
     }
 
     .hero h1 {
@@ -126,6 +128,7 @@
       height: 280px;
       border-radius: 50%;
       object-fit: cover;
+      object-position: center center;
       box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.15);
       border: 5px solid #fff;
       margin-bottom: 2rem;
@@ -372,6 +375,11 @@
     .nav-links a:hover {
       color: var(--gold);
     }
+    
+    /* fallback caso a imagem não carregue */
+    .foto-capa {
+      background: #f3d0d4;
+    }
   </style>
 </head>
 <body>
@@ -379,7 +387,12 @@
 <div class="hero">
   <div class="heart-bg" id="heart-container"></div>
   <div class="hero-content">
-    <img src="https://placehold.co/600x600/f3d0d4/ffffff?text=❤️+Nosso+Amor+❤️" alt="Nosso amor" class="foto-capa" id="heroImage">
+    <!-- FOTO DO CASAL - SUBSTITUÍDA PELA SUA IMAGEM -->
+    <img src="https://i.ibb.co/zh6KLxGT/IMG-20240111-WA0019.jpg" 
+         alt="Nossa foto - amor eterno" 
+         class="foto-capa" 
+         id="heroImage"
+         onerror="this.onerror=null; this.src='https://placehold.co/600x600/f3d0d4/b27d7d?text=❤️+Nossa+Foto+❤️'; this.alt='Imagem temporária - coloque sua foto aqui';">
     <h1>Para sempre, nós</h1>
     <div class="frase-destaque">
       “Cada capítulo da minha vida ficou mais bonito desde que você chegou.”
@@ -388,7 +401,6 @@
       <a href="#historia" class="btn">📖 Nossa História</a>
       <a href="#carta" class="btn btn-outline">💌 Carta de Amor</a>
     </div>
-    <!-- Botão para tocar a música -->
     <button id="playMusicBtn" class="btn btn-musica" style="margin-top: 1.5rem;">
       <i class="fas fa-music"></i> ♪ Tocar nossa música ♪
     </button>
@@ -436,7 +448,7 @@
   <section id="galeria">
     <h2 class="section-title">📸 Galeria de Memórias</h2>
     <div class="galeria-grid" id="galeriaGrid"></div>
-    <p style="text-align: center; margin-top: 1rem; font-size: 0.85rem; color: #b88b8b;"><i class="fas fa-camera"></i> Clique nas fotos para ampliar (ilusão) — substitua pelas suas imagens reais.</p>
+    <p style="text-align: center; margin-top: 1rem; font-size: 0.85rem; color: #b88b8b;"><i class="fas fa-camera"></i> Clique nas fotos para ampliar — substitua pelas suas imagens reais.</p>
   </section>
 
   <section id="motivos">
@@ -458,14 +470,13 @@
     <h2 class="section-title">⏳ Há Quanto Tempo Somos Um ⏳</h2>
     <div class="contador">
       <div class="tempo-numeros" id="contadorTempo"></div>
-      <p style="margin-top: 0.8rem;">❤️ desde o nosso casamento (13/07/2022) ❤️</p>
+      <p style="margin-top: 0.8rem;">❤️ desde o nosso casamento (13/07/2022) ❤️<br><span style="font-size:0.85rem;">(Ajuste a data no código JavaScript se necessário)</span></p>
     </div>
   </section>
 
   <section id="musica">
     <h2 class="section-title">🎵 Nossa Trilha Sonora 🎵</h2>
     <div class="musica-wrapper">
-      <!-- Player do YouTube com a música escolhida (sem autoplay automático para evitar bloqueio) -->
       <iframe id="youtubePlayer" width="560" height="315" src="https://www.youtube.com/embed/qUD2GxTeVcI" title="Música especial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       <p style="margin-top: 1rem;"><em>🎶 Música tema do nosso amor 🎶</em></p>
       <button id="playMusicInlineBtn" class="btn" style="margin-top: 1rem; background: #b27d7d;"><i class="fas fa-play"></i> Tocar música agora</button>
@@ -564,28 +575,23 @@
   atualizarContador();
   setInterval(atualizarContador, 86400000);
 
-  // ==================== CONTROLE DA MÚSICA (PLAY) ====================
-  // Função para iniciar a reprodução no iframe
+  // ==================== CONTROLE DA MÚSICA ====================
   function playMusic() {
     const iframe = document.getElementById('youtubePlayer');
     if(iframe) {
-      // Recarregar o src com autoplay=1 (funciona após interação do usuário)
       const videoId = "qUD2GxTeVcI";
       iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
     }
   }
 
-  // Botão principal no hero
   const playBtn = document.getElementById('playMusicBtn');
   if(playBtn) {
     playBtn.addEventListener('click', () => {
       playMusic();
-      // Mensagem delicada
       alert("🎵 Nossa música favorita vai tocar agora. Aproveite cada nota, meu amor! 🎵");
     });
   }
   
-  // Botão inline na seção música
   const playInlineBtn = document.getElementById('playMusicInlineBtn');
   if(playInlineBtn) {
     playInlineBtn.addEventListener('click', () => {
@@ -606,10 +612,10 @@
   sections.forEach(sec => observer.observe(sec));
   if(finalSection) observer.observe(finalSection);
   
-  // ==================== CLICK NAS FOTOS ====================
+  // ==================== CLICK NAS FOTOS (GALERIA) ====================
   document.querySelectorAll('.galeria-item img').forEach(img => {
     img.addEventListener('click', () => {
-      alert('✨ Adicione aqui suas fotos reais! Basta substituir os links das imagens no código. ✨');
+      alert('✨ Você pode substituir esta imagem pela sua foto real! Basta editar o array "galeriaItens" no código. ✨');
     });
   });
   
@@ -625,6 +631,17 @@
       }
     });
   });
+  
+  // Verificação de carregamento da imagem (feedback visual no console)
+  const heroImg = document.getElementById('heroImage');
+  if(heroImg) {
+    heroImg.onerror = function() {
+      console.log("A imagem não pôde ser carregada do link fornecido. Verifique se o link está correto ou faça upload novamente.");
+    };
+    heroImg.onload = function() {
+      console.log("✅ Foto de capa carregada com sucesso!");
+    };
+  }
 </script>
 </body>
 </html>
