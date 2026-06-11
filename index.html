@@ -8,32 +8,33 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     /* CSS COMPLETO E OTIMIZADO */
-    * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; -webkit-user-drag: none; }
+    * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -webkit-user-drag: none; }
     body { background-color: #fffaf8; font-family: 'Plus Jakarta Sans', sans-serif; color: #2c2c2c; scroll-behavior: smooth; overflow-x: hidden; position: relative; }
+    ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #fffaf8; } ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #ff9a9e 0%, #fecfef 100%); border-radius: 10px; }
     
-    /* BLOQUEIO POR SENHA */
+    /* BLOQUEIO SENHA */
     .lock-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url('https://i.ibb.co/TBXs3VBz/IMG-20250112-WA0003.jpg'); background-size: cover; background-position: center; z-index: 10000; display: flex; justify-content: center; align-items: center; padding: 1.5rem; transition: all 0.8s; }
     .lock-screen.unlocked { opacity: 0; transform: translateY(-100vh); pointer-events: none; }
     .lock-box { width: 100%; max-width: 420px; padding: 3.5rem 2rem; text-align: center; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(15px); border-radius: 36px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
-    .lock-input { width: 100%; padding: 16px; border-radius: 50px; border: 1.5px solid #ff9a9e; text-align: center; margin-bottom: 1rem; }
-    
-    /* COMPONENTES ORIGINAIS E SEÇÕES */
-    .btn { background: linear-gradient(135deg, #ff9a9e, #fecfef); padding: 15px 36px; border-radius: 50px; border: none; font-weight: 700; cursor: pointer; }
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(44, 34, 30, 0.45), rgba(0, 0, 0, 0.55)), url('https://i.ibb.co/zh6KLxGT/IMG-20240111-WA0019.jpg'); background-size: cover; background-position: center; }
-    .hero h1 { font-size: 3.5rem; color: white; font-family: 'Playfair Display', serif; }
+    .lock-input { width: 100%; padding: 16px; border-radius: 50px; border: 1.5px solid #ff9a9e; text-align: center; margin-bottom: 1rem; font-size: 1.2rem; }
+
+    /* SEÇÕES E ELEMENTOS */
+    .btn { position: relative; overflow: hidden; background: linear-gradient(135deg, #ff9a9e, #fecfef); color: #5c3d46; border: none; padding: 15px 36px; border-radius: 50px; font-weight: 700; cursor: pointer; box-shadow: 0 8px 25px rgba(255, 154, 158, 0.35); transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(44, 34, 30, 0.45), rgba(0, 0, 0, 0.55)), url('https://i.ibb.co/zh6KLxGT/IMG-20240111-WA0019.jpg'); background-size: cover; background-position: center; background-attachment: fixed; }
     .container { max-width: 1000px; margin: 0 auto; padding: 4rem 1.5rem; }
     .glass-card { background: rgba(255, 255, 255, 0.55); backdrop-filter: blur(16px); border-radius: 24px; padding: 3rem; margin-bottom: 3rem; }
-    
-    /* GALERIA AJUSTADA */
-    .slider-container { width: 100%; max-width: 700px; height: 500px; margin: 0 auto; overflow: hidden; border-radius: 32px; position: relative; }
-    .slider-track { display: flex; height: 100%; transition: transform 0.6s; }
-    .slide-item { min-width: 100%; display: flex; align-items: center; justify-content: center; position: relative; }
-    .slide-item img { max-width: 100%; max-height: 100%; object-fit: contain; }
-    
-    /* DEMAIS ESTILOS (MANTENHA OS ORIGINAIS) */
     .reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.8s; }
     .reveal-on-scroll.visible { opacity: 1; transform: translateY(0); }
-    #youtubePlayer { position: absolute; top: 0; left: -9999px; width: 0; height: 0; }
+    
+    /* GALERIA */
+    .slider-container { width: 100%; max-width: 700px; height: 500px; margin: 0 auto; overflow: hidden; border-radius: 32px; position: relative; border: 8px solid white; }
+    .slider-track { display: flex; height: 100%; transition: transform 0.6s; }
+    .slide-item { min-width: 100%; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .slide-item::before { content: ''; position: absolute; top:0; left:0; right:0; bottom:0; background-image: var(--bg-img); background-size: cover; filter: blur(25px) brightness(0.75); z-index: 1; }
+    .slide-item img { max-width: 100%; max-height: 100%; object-fit: contain; z-index: 2; }
+    
+    /* MÚSICA */
+    #youtubePlayer { position: absolute; top: 0; left: -9999px; width: 0; height: 0; visibility: hidden; }
   </style>
 </head>
 <body id="topo">
@@ -58,7 +59,7 @@
   <div class="nav">
     <div class="logo">T & F</div>
     <div class="nav-links">
-      <a href="#historia">História</a><a href="#galeria">Galeria</a><a href="#carta">Carta</a>
+      <a href="#historia">História</a><a href="#galeria">Galeria</a><a href="#carta">Carta</a><a href="#musica">Música</a>
     </div>
   </div>
 </header>
@@ -66,12 +67,13 @@
 <main>
   <div class="hero">
     <h1>Cada capítulo da minha vida<span>ficou mais bonito desde que você chegou.</span></h1>
+    <a href="#historia" class="btn">NOSSA HISTÓRIA</a>
   </div>
 
   <div class="container">
     <section id="historia" class="reveal-on-scroll glass-card">
       <h2>Nossa história</h2>
-      <p>Lembro como se fosse ontem... (seu texto original)</p>
+      <p>Lembro como se fosse ontem... (seu texto)</p>
     </section>
     
     <section id="galeria" class="reveal-on-scroll">
@@ -81,8 +83,8 @@
     </section>
 
     <section id="musica" class="reveal-on-scroll glass-card">
-      <iframe id="youtubePlayer" src="https://www.youtube.com/embed/42QG9tIHRsQ" allow="autoplay"></iframe>
-      <p>Música tocando...</p>
+      <iframe id="youtubePlayer" src="https://www.youtube.com/embed/qUD2GxTeVcI" allow="autoplay"></iframe>
+      <button id="playMusicBtn" class="btn">Reiniciar Música</button>
     </section>
   </div>
 </main>
@@ -95,25 +97,35 @@
     } else { document.getElementById('errorMsg').style.display = 'block'; }
   });
 
-  // ENTER SITE
+  // ENTER E MÚSICA
   document.getElementById('btnEnterSite').addEventListener('click', () => {
     document.getElementById('welcomeOverlay').classList.add('fade-out');
     document.getElementById('youtubePlayer').src += "?autoplay=1";
   });
 
-  // GALERIA (Fotos originais)
-  const fotos = ["https://i.ibb.co/jZhRC9X7/IMG-20251120-WA0005.jpg", "https://i.ibb.co/67X49YsZ/IMG-20221125-WA0000.jpg"]; // Adicione o resto aqui
+  // GALERIA COM 56 FOTOS
+  const fotos = [
+    "https://i.ibb.co/jZhRC9X7/IMG-20251120-WA0005.jpg", "https://i.ibb.co/67X49YsZ/IMG-20221125-WA0000.jpg", "https://i.ibb.co/Z64sKkzY/IMG-20251124-WA0002.jpg", "https://i.ibb.co/xtH6p26C/IMG-20190803-161033-370.jpg", "https://i.ibb.co/S74t81xf/IMG-20240817-170652127.jpg",
+    "https://i.ibb.co/fb4FY6k/IMG-20240902-132104188.jpg", "https://i.ibb.co/WNDYJK6q/IMG-20241123-203355196.jpg", "https://i.ibb.co/VpPsPVzw/IMG-20241208-163744503.jpg", "https://i.ibb.co/mVdx4vPL/IMG-20251010-213256052.jpg", "https://i.ibb.co/DHdSGJBx/IMG-20260103-185026392.jpg",
+    "https://i.ibb.co/mCTJsXz7/IMG-20260519-113536417.jpg", "https://i.ibb.co/5XHcP3tv/IMG-20200125-WA0014.jpg", "https://i.ibb.co/27XbmBM4/IMG-20200816-WA0006.jpg", "https://i.ibb.co/hxch3HJx/IMG-20231015-WA0027.jpg", "https://i.ibb.co/d0xHnJPN/IMG-20231124-WA0011.jpg",
+    "https://i.ibb.co/JR6Qrqqv/IMG-20231209-WA0067.jpg", "https://i.ibb.co/4n2g18k0/IMG-20240107-WA0020.jpg", "https://i.ibb.co/WXZH1JT/IMG-20240113-WA0004.jpg", "https://i.ibb.co/sJjs6Hzb/IMG-20240113-WA0009.jpg", "https://i.ibb.co/Q3kcBvLW/IMG-20240113-WA0021.jpg",
+    "https://i.ibb.co/jPRkWnzw/IMG-20240113-WA0074.jpg", "https://i.ibb.co/MxxmrbKV/IMG-20240907-WA0029.jpg", "https://i.ibb.co/TB0Nmkjx/IMG-20241027-WA0004.jpg", "https://i.ibb.co/TBXs3VBz/IMG-20250112-WA0003.jpg", "https://i.ibb.co/nqvr0Ytn/IMG-20250816-WA0023.jpg",
+    "https://i.ibb.co/HTwXF2W7/IMG-20251109-WA0006.jpg", "https://i.ibb.co/99zX2PNz/IMG-20251110-WA0011.jpg", "https://i.ibb.co/8DRB8KW1/IMG-20251212-WA0006.jpg", "https://i.ibb.co/r2ZnJjcr/IMG-20251219-WA0016.jpg", "https://i.ibb.co/d0DbWmTQ/IMG-20260101-WA0068.jpg",
+    "https://i.ibb.co/D6Q21fG/IMG-20260105-WA0007.jpg", "https://i.ibb.co/HjLqfMk/IMG-20260105-WA0008.jpg", "https://i.ibb.co/b56SZVBR/IMG-20260128-WA0053.jpg", "https://i.ibb.co/svRFmk72/IMG-20260128-WA0070.jpg", "https://i.ibb.co/dJrYSvvf/IMG-20260331-WA0125.jpg",
+    "https://i.ibb.co/C58qzy71/P-20190101-153007-p.jpg", "https://i.ibb.co/HLMzr1hL/received-278342282806485.jpg", "https://i.ibb.co/8L69njRH/received-279229712687367.jpg", "https://i.ibb.co/MyH8CVSy/received-702000203488976.jpg", "https://i.ibb.co/8F1ktD4/received-1082845511886797.jpg",
+    "https://i.ibb.co/n8DVYCt7/IMG-20190614-200512-595.jpg", "https://i.ibb.co/Qv7dNyQj/IMG-20231124-WA0023.jpg", "https://i.ibb.co/2YnFh2S2/IMG-20231124-WA0036.jpg", "https://i.ibb.co/KcSxKJNy/IMG-20240113-WA0015.jpg", "https://i.ibb.co/ZzJqff7j/IMG-20240113-WA0084.jpg",
+    "https://i.ibb.co/1GfPcKPD/received-1300369936764897.jpg", "https://i.ibb.co/dw7r7YHs/IMG-20221211-WA0112.jpg", "https://i.ibb.co/6RpYH2VK/IMG-20200310-WA0016.jpg", "https://i.ibb.co/d4b27LKH/44067559-1475380705939148-1763006181481119744-n.jpg", "https://i.ibb.co/yBRpd7NP/C-pia-de-DSC-0050.jpg",
+    "https://i.ibb.co/sp5TXtM8/39402074-657527681284257-1675639404149866496-n.jpg", "https://i.ibb.co/vCdF28nm/07.jpg", "https://i.ibb.co/jPtBgm81/06.jpg", "https://i.ibb.co/QvCpD1Mf/IMG-20180520-214642-198.jpg", "https://i.ibb.co/d4wjj2rn/IMG-20180612-212252-595.jpg", "https://i.ibb.co/tPhSrKbQ/IMG-20161124-WA0070.jpg"
+  ];
+  
   const track = document.getElementById('sliderTrack');
   fotos.forEach(src => {
     const div = document.createElement('div');
     div.className = 'slide-item';
+    div.style.setProperty('--bg-img', `url(${src})`);
     div.innerHTML = `<img src="${src}">`;
     track.appendChild(div);
   });
-  
-  // SCROLL REVEAL
-  const observer = new IntersectionObserver(e => e.forEach(i => i.isIntersecting && i.target.classList.add('visible')));
-  document.querySelectorAll('.reveal-on-scroll').forEach(e => observer.observe(e));
 </script>
 </body>
 </html>
