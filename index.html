@@ -4,15 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>T & F | Nossa História de Amor</title>
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      /* Camada de Proteção UI: Impede seleção de texto e cópia visual */
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -webkit-user-drag: none;
     }
 
     body {
@@ -796,7 +800,6 @@
 </head>
 <body id="topo">
 
-<!-- SPLASH SCREEN INTERATIVA BLINDADA -->
 <div class="welcome-overlay" id="welcomeOverlay">
   <div class="welcome-box">
     <div class="welcome-icon"><i class="fas fa-heart"></i></div>
@@ -824,7 +827,6 @@
 </header>
 
 <main>
-  <!-- HERO APP LOOK -->
   <div class="hero">
     <div class="floating-hearts" id="floatingHeartsHero"></div>
     <div class="hero-content">
@@ -840,7 +842,6 @@
   </div>
 
   <div class="container">
-    <!-- 1. Nossa História -->
     <section id="historia">
       <h2 class="section-title">A nossa história de amor</h2>
       <div class="section-sub">Como tudo começou.</div>
@@ -858,7 +859,6 @@
       </div>
     </section>
 
-    <!-- 2. Linha do Tempo Atualizada com Textos Originais -->
     <section id="linha-tempo">
       <h2 class="section-title">A linha do tempo do nosso amor</h2>
       <div class="section-sub">Cinco momentos que nunca vou esquecer — e tantos outros que ainda virão.</div>
@@ -891,7 +891,6 @@
       </div>
     </section>
 
-    <!-- 3. Slide de Fotos Interativo com o Álbum Completo -->
     <section id="galeria">
       <h2 class="section-title">A nossa galeria</h2>
       <div class="section-sub">Arraste para os lados ou clique nas fotos para expandir em tela cheia.</div>
@@ -901,23 +900,19 @@
         <button class="slider-arrow right" id="sliderNext"><i class="fas fa-chevron-right"></i></button>
         
         <div class="slider-track" id="sliderTrack">
-          <!-- Slides gerados dinamicamente via JavaScript -->
-        </div>
+          </div>
         
         <div class="slider-dots" id="sliderDots">
-          <!-- Bolinhas geradas via JavaScript -->
-        </div>
+          </div>
       </div>
     </section>
 
-    <!-- 4. 10 Motivos -->
     <section id="motivos">
       <h2 class="section-title">10 motivos pelos quais eu te amo</h2>
       <div class="section-sub">Pequenas coisas que fazem você ser a pessoa da minha vida.</div>
       <div class="motivos-grid" id="motivosGrid"></div>
     </section>
 
-    <!-- 5. Carta de Amor -->
     <section id="carta">
       <h2 class="section-title">Carta de Amor</h2>
       <div class="section-sub">Do meu coração direto para o seu.</div>
@@ -933,7 +928,6 @@
       </div>
     </section>
 
-    <!-- 6. Contador Widget Style -->
     <section id="contador">
       <h2 class="section-title">⏳ Cada segundo conta</h2>
       <div class="contador-wrapper glass-card">
@@ -950,7 +944,6 @@
       </div>
     </section>
 
-    <!-- 7. Música Modern Card -->
     <section id="musica">
       <h2 class="section-title">A nossa música especial</h2>
       <div class="musica-wrapper glass-card">
@@ -962,7 +955,6 @@
     </section>
   </div>
 
-  <!-- 8. Seção Final -->
   <div class="final-section" id="final">
     <div class="floating-hearts" id="floatingHeartsFinal"></div>
     <div class="final-content">
@@ -974,13 +966,11 @@
     </div>
   </div>
 
-  <!-- Lightbox Element -->
   <div id="lightboxModal" class="lightbox">
     <span class="close-lightbox" id="closeLightbox">&times;</span>
     <img id="lightboxImg" src="" alt="Foto expandida">
   </div>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="citacao">
       "O amor é a única coisa que somos capazes de perceber que transcende as dimensões de tempo e espaço."
@@ -992,6 +982,40 @@
 </main>
 
 <script>
+  // ==================== CAMADA TÉCNICA DE SINALIZAÇÃO E PROTEÇÃO ANTI-CÓPIA ====================
+  
+  // 1. Bloqueia o clique do botão direito do mouse globalmente
+  document.addEventListener('contextmenu', event => event.preventDefault());
+
+  // 2. Trava atalhos críticos de teclado para abrir ferramentas de DevTools ou salvar dados
+  document.addEventListener('keydown', event => {
+    // F12
+    if (event.keyCode === 123) {
+      event.preventDefault();
+      return false;
+    }
+    // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+    if (event.ctrlKey && event.shiftKey && (event.keyCode === 73 || event.keyCode === 74 || event.keyCode === 67)) {
+      event.preventDefault();
+      return false;
+    }
+    // Ctrl+U (Ver código-fonte bruto)
+    if (event.ctrlKey && event.keyCode === 85) {
+      event.preventDefault();
+      return false;
+    }
+    // Ctrl+S (Salvar página inteira localmente)
+    if (event.ctrlKey && event.keyCode === 83) {
+      event.preventDefault();
+      return false;
+    }
+    // Ctrl+C e Ctrl+X (Impedir comandos tradicionais de cópia de strings textuais)
+    if (event.ctrlKey && (event.keyCode === 67 || event.keyCode === 88)) {
+      event.preventDefault();
+      return false;
+    }
+  });
+
   // ==================== DISPARADOR AUTOMÁTICO DE MÚSICA PROTEGIDO ====================
   function playMusic() {
     const iframe = document.getElementById('youtubePlayer');
