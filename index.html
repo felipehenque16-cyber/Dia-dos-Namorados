@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>T & F | Nossa História de Amor</title>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -335,6 +337,10 @@
       margin-bottom: 1.5rem;
     }
 
+    .historia-text p:last-child {
+      margin-bottom: 0;
+    }
+
     .para-sempre {
       font-family: 'Playfair Display', serif;
       font-style: italic;
@@ -435,7 +441,7 @@
       line-height: 1.6;
     }
 
-    /* SLIDE DE FOTOS (PREMIUM SLIDER) */
+    /* ==================== PREMIUM SLIDER COM FOTO INTEIRA (ANTI-CORTE) ==================== */
     .slider-container {
       position: relative;
       width: 100%;
@@ -463,12 +469,33 @@
       height: 100%;
       position: relative;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
 
+    /* Efeito inteligente de espelho borrado ao fundo */
+    .slide-item::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: var(--bg-img);
+      background-size: cover;
+      background-position: center;
+      filter: blur(25px) brightness(0.75);
+      transform: scale(1.15);
+      z-index: 1;
+    }
+
+    /* Foto da frente: 100% inteira sem cortes */
     .slide-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
 
     .slider-arrow {
@@ -625,14 +652,13 @@
       color: #ff9a9e;
     }
 
-    /* ==================== DESIGN REFINADO DO AUDIO PLAYER (HIDING VIDEO) ==================== */
+    /* DESIGN REFINADO DO AUDIO PLAYER (HIDING VIDEO) */
     .musica-wrapper {
       padding: 2.5rem 2rem;
       text-align: center;
       position: relative;
     }
 
-    /* Esconde o iframe jogando pra fora do mapa sem quebrar o som */
     #youtubePlayer {
       position: absolute;
       top: 0; left: -9999px;
@@ -668,7 +694,7 @@
     }
 
     @keyframes spin {
-      100% { transform: rotate(320deg); }
+      100% { transform: rotate(360deg); }
     }
 
     .player-meta {
@@ -676,7 +702,6 @@
       flex: 1;
     }
 
-    /* Animação do Equalizador Digital */
     .equalizer {
       display: flex;
       align-items: flex-end;
@@ -824,6 +849,7 @@
 </head>
 <body id="topo">
 
+<!-- SPLASH SCREEN INTERATIVA BLINDADA -->
 <div class="welcome-overlay" id="welcomeOverlay">
   <div class="welcome-box">
     <div class="welcome-icon"><i class="fas fa-heart"></i></div>
@@ -851,6 +877,7 @@
 </header>
 
 <main>
+  <!-- HERO APP LOOK -->
   <div class="hero">
     <div class="floating-hearts" id="floatingHeartsHero"></div>
     <div class="hero-content">
@@ -866,6 +893,7 @@
   </div>
 
   <div class="container">
+    <!-- 1. Nossa História -->
     <section id="historia">
       <h2 class="section-title">A nossa história de amor</h2>
       <div class="section-sub">Como tudo começou.</div>
@@ -883,6 +911,7 @@
       </div>
     </section>
 
+    <!-- 2. Linha do Tempo -->
     <section id="linha-tempo">
       <h2 class="section-title">A linha do tempo do nosso amor</h2>
       <div class="section-sub">Cinco momentos que nunca vou esquecer — e tantos outros que ainda virão.</div>
@@ -915,6 +944,7 @@
       </div>
     </section>
 
+    <!-- 3. Slide de Fotos Interativo com Álbum Completo de 56 Fotos -->
     <section id="galeria">
       <h2 class="section-title">A nossa galeria</h2>
       <div class="section-sub">Arraste para os lados ou clique nas fotos para expandir em tela cheia.</div>
@@ -924,19 +954,23 @@
         <button class="slider-arrow right" id="sliderNext"><i class="fas fa-chevron-right"></i></button>
         
         <div class="slider-track" id="sliderTrack">
-          </div>
+          <!-- Slides gerados dinamicamente via JavaScript -->
+        </div>
         
         <div class="slider-dots" id="sliderDots">
-          </div>
+          <!-- Bolinhas geradas via JavaScript -->
+        </div>
       </div>
     </section>
 
+    <!-- 4. 10 Motivos -->
     <section id="motivos">
       <h2 class="section-title">10 motivos pelos quais eu te amo</h2>
       <div class="section-sub">Pequenas coisas que fazem você ser a pessoa da minha vida.</div>
       <div class="motivos-grid" id="motivosGrid"></div>
     </section>
 
+    <!-- 5. Carta de Amor -->
     <section id="carta">
       <h2 class="section-title">Carta de Amor</h2>
       <div class="section-sub">Do meu coração direto para o seu.</div>
@@ -952,6 +986,7 @@
       </div>
     </section>
 
+    <!-- 6. Contador Widget Style -->
     <section id="contador">
       <h2 class="section-title">⏳ Cada segundo conta</h2>
       <div class="contador-wrapper glass-card">
@@ -968,6 +1003,7 @@
       </div>
     </section>
 
+    <!-- 7. Música Oculta com Widget Customizado de Luxo -->
     <section id="musica">
       <h2 class="section-title">A nossa música especial</h2>
       <div class="musica-wrapper glass-card">
@@ -987,6 +1023,7 @@
           </div>
         </div>
 
+        <!-- Player de Áudio Técnico Totalmente Oculto -->
         <iframe id="youtubePlayer" width="200" height="200" src="https://www.youtube.com/embed/qUD2GxTeVcI" title="YouTube player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
         
         <button id="playMusicBtn" class="btn" style="margin-top: 1.5rem;"><i class="fas fa-redo"></i> Reiniciar Trilha</button>
@@ -994,6 +1031,7 @@
     </section>
   </div>
 
+  <!-- 8. Seção Final -->
   <div class="final-section" id="final">
     <div class="floating-hearts" id="floatingHeartsFinal"></div>
     <div class="final-content">
@@ -1005,11 +1043,13 @@
     </div>
   </div>
 
+  <!-- Lightbox Element -->
   <div id="lightboxModal" class="lightbox">
     <span class="close-lightbox" id="closeLightbox">&times;</span>
     <img id="lightboxImg" src="" alt="Foto expandida">
   </div>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="citacao">
       "O amor é a única coisa que somos capazes de perceber que transcende as dimensões de tempo e espaço."
@@ -1052,7 +1092,6 @@
 
   document.getElementById('playMusicBtn').addEventListener('click', playMusic);
 
-
   // ==================== CORAÇÕES FLUTUANTES (AMBIENTE) ====================
   function createFloatingHearts(containerId) {
     const container = document.getElementById(containerId);
@@ -1076,7 +1115,6 @@
   }
   createFloatingHearts('floatingHeartsHero');
   createFloatingHearts('floatingHeartsFinal');
-
 
   // ==================== EXPLOSÃO DE CORAÇÕES INTERATIVA ====================
   function heartBurst(e) {
@@ -1110,8 +1148,7 @@
   document.getElementById('btnCelebrate').addEventListener('click', heartBurst);
   document.getElementById('heroSurprise').addEventListener('click', heartBurst);
 
-
-  // ==================== ÁLBUM COMPLETO ATUALIZADO ====================
+  // ==================== ÁLBUM COMPLETO (56 FOTOS) COM RENDERIZADOR ESPECULAR ====================
   const fotosGaleria = [
     "https://i.ibb.co/jZhRC9X7/IMG-20251120-WA0005.jpg",
     "https://i.ibb.co/67X49YsZ/IMG-20221125-WA0000.jpg",
@@ -1180,10 +1217,15 @@
     fotosGaleria.forEach((src, index) => {
       const slide = document.createElement('div');
       slide.className = 'slide-item';
+      
+      // Injeta a foto como variável customizada para o CSS gerar o blur reflexivo
+      slide.style.setProperty('--bg-img', `url(${src})`);
+      
       const img = document.createElement('img');
       img.src = src;
       img.alt = "Momento nosso";
       img.loading = "lazy";
+      
       slide.appendChild(img);
       sliderTrack.appendChild(slide);
 
@@ -1217,15 +1259,9 @@
   document.getElementById('sliderNext').addEventListener('click', () => { nextSlide(); resetAutoPlay(); });
   document.getElementById('sliderPrev').addEventListener('click', () => { prevSlide(); resetAutoPlay(); });
 
-  function startAutoPlay() {
-    slideInterval = setInterval(nextSlide, 4000);
-  }
-  function resetAutoPlay() {
-    clearInterval(slideInterval);
-    startAutoPlay();
-  }
+  function startAutoPlay() { slideInterval = setInterval(nextSlide, 4000); }
+  function resetAutoPlay() { clearInterval(slideInterval); startAutoPlay(); }
   startAutoPlay();
-
 
   // ==================== MOTIVOS ====================
   const motivos = [
@@ -1250,7 +1286,6 @@
       motifsGrid.appendChild(card);
     });
   }
-
 
   // ==================== CONTADOR PRECISO ====================
   function atualizarContador() {
@@ -1280,7 +1315,6 @@
   atualizarContador();
   setInterval(atualizarContador, 1000);
 
-
   // ==================== NAV SCROLL SUAVE ====================
   document.querySelectorAll('.nav-links a, .hero-buttons a').forEach(link => {
     link.addEventListener('click', function(e) {
@@ -1292,7 +1326,6 @@
       }
     });
   });
-
 
   // ==================== LIGHTBOX MODAL SCRIPT ====================
   const lightboxModal = document.getElementById('lightboxModal');
