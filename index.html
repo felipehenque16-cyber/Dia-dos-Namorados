@@ -116,13 +116,13 @@
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* HEADER / NAVEGAÇÃO RESPONSIVA */
+    /* HEADER / NAVEGAÇÃO INTERATIVA */
     .header {
       position: fixed;
       top: 15px;
       left: 50%;
       transform: translateX(-50%);
-      width: 92%;
+      width: 90%;
       max-width: 1100px;
       background: rgba(255, 255, 255, 0.75);
       backdrop-filter: blur(20px);
@@ -152,9 +152,8 @@
 
     .nav-links {
       display: flex;
-      gap: 1.2rem;
+      gap: 1.5rem;
       align-items: center;
-      flex-wrap: wrap;
     }
 
     .nav-links a {
@@ -167,9 +166,10 @@
 
     .nav-links a:hover {
       color: #ff9a9e;
+      transform: translateY(-1px);
     }
 
-    /* HERO FLUIDO */
+    /* HERO ESTILO PREMIUM APP */
     .hero {
       min-height: 100vh;
       width: 100%;
@@ -185,6 +185,10 @@
       background-position: center center;
       background-repeat: no-repeat;
       background-attachment: fixed;
+    }
+
+    @media (max-width: 768px) {
+      .hero { background-attachment: scroll; }
     }
 
     .floating-hearts {
@@ -314,7 +318,7 @@
       padding: 0 1rem;
     }
 
-    /* HISTÓRIA E LAYOUT SE ADAPTA A TABLETS */
+    /* HISTÓRIA E LAYOUT LADO A LADO */
     .historia-content {
       padding: 3rem;
       display: flex;
@@ -331,10 +335,6 @@
 
     .historia-text p {
       margin-bottom: 1.5rem;
-    }
-
-    .historia-text p:last-child {
-      margin-bottom: 0;
     }
 
     .para-sempre {
@@ -378,7 +378,6 @@
       font-size: 1.05rem;
     }
     .carta-box p { margin-bottom: 1.5rem; }
-    .carta-assinatura { margin-top: 1.5rem; font-style: italic; color: var(--gold-dark); }
 
     /* TIMELINE CLEAN APP STYLE */
     .timeline-grid {
@@ -438,7 +437,7 @@
       line-height: 1.6;
     }
 
-    /* ==================== PREMIUM SLIDER RESPONSIVO COMPLETO ==================== */
+    /* PREMIUM SLIDER COMPLETO ANTI-CORTE */
     .slider-container {
       position: relative;
       width: 100%;
@@ -551,7 +550,7 @@
       border-radius: 10px;
     }
 
-    /* MOTIVOS GRID */
+    /* ==================== CONFIGURAÇÃO DO CARDS DE MOTIVOS COM RENDER ATUALIZADO ==================== */
     .motivos-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -560,32 +559,36 @@
 
     .motivo-card {
       padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 220px;
     }
 
-    .motivo-card:hover {
-      transform: translateY(-6px);
-      background: white;
-      border-color: rgba(255, 154, 158, 0.3);
-    }
-
-    .motivo-num {
-      font-size: 2.2rem;
-      font-weight: 800;
-      background: var(--pink-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 0.8rem;
+    /* Rodapé Oculto: Alinha o coração e o "para sempre" */
+    .motivo-footer {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 1.2rem;
+      color: #c9a87b; /* Cor do ouro da imagem */
       font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: 0.98rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .motivo-text {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: #4a3a32;
-      font-weight: 500;
+    /* Disparadores de Visibilidade (Hover no PC e classe .reveal no Mobile) */
+    .motivo-card:hover .motivo-footer,
+    .motivo-card.reveal .motivo-footer {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    /* CONTADOR DINÂMICO GRID (6 COLUNAS BASE) */
+    /* CONTADOR ESTILO WIDGET IOS */
     .contador-wrapper {
       padding: 3rem 2rem;
       text-align: center;
@@ -782,40 +785,6 @@
       cursor: pointer;
     }
 
-    .btn-celebrate {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      z-index: 999;
-      background: var(--pink-gradient);
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.4rem;
-      cursor: pointer;
-      box-shadow: 0 8px 25px rgba(255, 154, 158, 0.5);
-      border: none;
-      transition: transform 0.2s;
-    }
-    .btn-celebrate:hover { transform: scale(1.08) translateY(-2px); }
-
-    .burst-heart {
-      position: fixed;
-      pointer-events: none;
-      color: #ff9a9e;
-      z-index: 9999;
-      animation: explodeParticle 0.8s ease-out forwards;
-    }
-
-    @keyframes explodeParticle {
-      0% { transform: translate(0, 0) scale(1); opacity: 1; }
-      100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
-    }
-
     /* FOOTER MODERNO */
     .footer {
       background: transparent;
@@ -840,9 +809,7 @@
       font-weight: 600;
     }
 
-    /* ==================== MEDIA QUERIES APURADAS (BREAKPOINTS TABLET & MOBILE) ==================== */
-    
-    /* 1. TABLETS (TELAS ATÉ 1024px) */
+    /* BREAKPOINTS RESPONSIVOS */
     @media (max-width: 1024px) {
       .container { padding: 3rem 1.2rem; }
       .historia-content { gap: 2rem; padding: 2.5rem; }
@@ -852,11 +819,10 @@
       .slider-track { height: 400px; }
     }
 
-    /* 2. CELULARES E SMARTPHONES (TELAS ATÉ 768px) */
     @media (max-width: 768px) {
       .hero { background-attachment: scroll; padding-top: 7rem; }
       .final-section { background-attachment: scroll; }
-      .nav-links { display: none; } /* Oculta menu no mobile para ficar super clean */
+      .nav-links { display: none; } 
       .header { padding: 0.6rem 1.5rem; width: 88%; }
       
       .historia-content {
@@ -877,7 +843,6 @@
       .btn-celebrate { bottom: 20px; right: 20px; }
     }
 
-    /* 3. CELULARES PEQUENOS (TELAS ATÉ 480px) */
     @media (max-width: 480px) {
       .contador-numeros { grid-template-columns: repeat(2, 1fr); }
       .slider-container { border-width: 4px; border-radius: 24px; }
@@ -988,11 +953,8 @@
         <button class="slider-arrow left" id="sliderPrev"><i class="fas fa-chevron-left"></i></button>
         <button class="slider-arrow right" id="sliderNext"><i class="fas fa-chevron-right"></i></button>
         
-        <div class="slider-track" id="sliderTrack">
-          </div>
-        
-        <div class="slider-dots" id="sliderDots">
-          </div>
+        <div class="slider-track" id="sliderTrack"></div>
+        <div class="slider-dots" id="sliderDots"></div>
       </div>
     </section>
 
@@ -1010,10 +972,10 @@
         <p>Eu nunca fui muito bom com palavras, mas tentei. Porque você merece ouvir, ler e sentir tudo e este cantinho é o nosso, sempre que precisar lembrar, beleza?</p>
         <p>Quando te vi descendo a escada da igreja, eu não sabia que estava conhecendo a minha vida inteira. Naquele momento, sem nenhum aviso, meu mundo capotou de um jeito maravilhoso. Você desceu aquela escada e seu sorriso ficou na minha mente de um jeito...</p>
         <p>Foram quatro anos namorando como quem brinca de eternidade. A gente fez planos, sonhos, casa, futuro. E quando chega todos os dias, principalmente agora, penso: tudo o que eu já tinha vivido valia a pena, porque me trouxe até ali e aqui, com você xuxu, e sei que já estava escrito nas estrelas o nós.</p>
-        <p>Agradeço por todas as manhãs em que acordamos juntos e escuto o "bom dia". Pelos jantares improvisados. Pelas brigas que viraram. Pela paciência que você tem com os meus silêncios. Pela coragem que você me empresta quando a minha falta.</p>
+        <p>Agradeço por todas as manhãs in que acordamos juntos e escuto o "bom dia". Pelos jantares improvisados. Pelas brigas que viraram. Pela paciência que você tem com os meus silêncios. Pela coragem que você me empresta quando a minha falta.</p>
         <p>Eu quero envelhecer com você. Quero te ver com cabelos brancos, ainda rindo das minhas piadas ruins. Quero que a gente conte essa nossa história na eternidade.</p>
         <p>Obrigado por ser a casa que eu sempre quero voltar quando saio. Obrigado por ser paz, festa, abraço e calmaria, tudo na mesma pessoa. Eu te amo. Hoje, ontem, amanhã. No dia 13 e em todos os outros.</p>
-        <div class="carta-assinatura">— Extremamente seu, com todo amor</div>
+        <div class="carta-box-assinatura carta-assinatura">— Extremamente seu, com todo amor</div>
       </div>
     </section>
 
@@ -1117,7 +1079,6 @@
 
   document.getElementById('playMusicBtn').addEventListener('click', playMusic);
 
-
   // ==================== CORAÇÕES FLUTUANTES (AMBIENTE) ====================
   function createFloatingHearts(containerId) {
     const container = document.getElementById(containerId);
@@ -1141,7 +1102,6 @@
   }
   createFloatingHearts('floatingHeartsHero');
   createFloatingHearts('floatingHeartsFinal');
-
 
   // ==================== EXPLOSÃO DE CORAÇÕES INTERATIVA ====================
   function heartBurst(e) {
@@ -1174,7 +1134,6 @@
 
   document.getElementById('btnCelebrate').addEventListener('click', heartBurst);
   document.getElementById('heroSurprise').addEventListener('click', heartBurst);
-
 
   // ==================== ÁLBUM COMPLETO ATUALIZADO ====================
   const fotosGaleria = [
@@ -1295,7 +1254,7 @@
   startAutoPlay();
 
 
-  // ==================== MOTIVOS ====================
+  // ==================== RENDERIZADOR DOS CARDS DE MOTIVOS COM DETALHES DE HOVER/CLICK ====================
   const motivos = [
     "Pelo seu sorriso que ilumina meus dias",
     "Pelo seu coração gigante, generoso, leal. Você ama as pessoas como quem cuida de uma planta rara.",
@@ -1314,7 +1273,23 @@
     motivos.forEach((text, i) => {
       const card = document.createElement('div');
       card.className = 'motivo-card glass-card';
-      card.innerHTML = `<div class="motivo-num">${String(i+1).padStart(2,'0')}</div><div class="motivo-text">${text}</div>`;
+      
+      // Montagem do HTML injetando o rodapé oculto com o coração e o "para sempre"
+      card.innerHTML = `
+        <div>
+          <div class="motivo-num">${String(i+1).padStart(2,'0')}</div>
+          <div class="motivo-text">${text}</div>
+        </div>
+        <div class="motivo-footer">
+          <i class="fas fa-heart"></i> para sempre
+        </div>
+      `;
+      
+      // Listener de toque para funcionar como clique estável no mobile/tablet
+      card.addEventListener('click', function() {
+        this.classList.toggle('reveal');
+      });
+      
       motifsGrid.appendChild(card);
     });
   }
@@ -1330,7 +1305,7 @@
     const minutos = Math.floor(diff / (1000 * 60)) % 60;
     const horas = Math.floor(diff / (1000 * 60 * 60)) % 24;
     const diasTotal = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const anos = Math.floor(diasTotal / 365);
+    const anos = Math.floor(diasTotal / 3 canvas = 365);
     const meses = Math.floor((diasTotal % 365) / 30.44);
     const dias = Math.floor((diasTotal % 365) % 30.44);
     
