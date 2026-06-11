@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>T & F | Nossa História de Amor</title>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -302,7 +304,7 @@
     }
 
     .section-title {
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       font-family: 'Playfair Display', serif;
       text-align: center;
       margin-bottom: 0.5rem;
@@ -550,7 +552,7 @@
       border-radius: 10px;
     }
 
-    /* ==================== CONFIGURAÇÃO DO CARDS DE MOTIVOS COM RENDER ATUALIZADO ==================== */
+    /* CONFIGURAÇÃO DO CARDS DE MOTIVOS (ESTILO IMAGE_1FC41E.PNG) */
     .motivos-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -581,7 +583,7 @@
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* Disparadores de Visibilidade (Hover no PC e classe .reveal no Mobile) */
+    /* Disparadores de Visibilidade */
     .motivo-card:hover .motivo-footer,
     .motivo-card.reveal .motivo-footer {
       opacity: 1;
@@ -785,6 +787,40 @@
       cursor: pointer;
     }
 
+    .btn-celebrate {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 999;
+      background: var(--pink-gradient);
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(255, 154, 158, 0.5);
+      border: none;
+      transition: transform 0.2s;
+    }
+    .btn-celebrate:hover { transform: scale(1.08) translateY(-2px); }
+
+    .burst-heart {
+      position: fixed;
+      pointer-events: none;
+      color: #ff9a9e;
+      z-index: 9999;
+      animation: explodeParticle 0.8s ease-out forwards;
+    }
+
+    @keyframes explodeParticle {
+      0% { transform: translate(0, 0) scale(1); opacity: 1; }
+      100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
+    }
+
     /* FOOTER MODERNO */
     .footer {
       background: transparent;
@@ -854,6 +890,7 @@
 </head>
 <body id="topo">
 
+<!-- SPLASH SCREEN INTERATIVA BLINDADA -->
 <div class="welcome-overlay" id="welcomeOverlay">
   <div class="welcome-box">
     <div class="welcome-icon"><i class="fas fa-heart"></i></div>
@@ -881,6 +918,7 @@
 </header>
 
 <main>
+  <!-- HERO APP LOOK -->
   <div class="hero">
     <div class="floating-hearts" id="floatingHeartsHero"></div>
     <div class="hero-content">
@@ -896,6 +934,7 @@
   </div>
 
   <div class="container">
+    <!-- 1. Nossa História -->
     <section id="historia">
       <h2 class="section-title">A nossa história de amor</h2>
       <div class="section-sub">Como tudo começou.</div>
@@ -913,6 +952,7 @@
       </div>
     </section>
 
+    <!-- 2. Linha do Tempo -->
     <section id="linha-tempo">
       <h2 class="section-title">A linha do tempo do nosso amor</h2>
       <div class="section-sub">Cinco momentos que nunca vou esquecer — e tantos outros que ainda virão.</div>
@@ -933,7 +973,7 @@
           <div class="timeline-desc">Quando resolvemos iniciar as compras para casarmos, cada compra, planos é inesquecivel</div>
         </div>
         <div class="timeline-item glass-card">
-          <div class="timeline-year">13 DE SETEMBRO DE 2020</div>
+          <div class="timeline-year">13 DE SETEMBRE DE 2020</div>
           <div class="timeline-title">O Nosso Sim</div>
           <div class="timeline-desc">Um dos dias mais importantes. Você de azul, eu admirando tua beleza. Todo dia 13 é eterno, pode ter certeza.</div>
         </div>
@@ -945,6 +985,7 @@
       </div>
     </section>
 
+    <!-- 3. Slide de Fotos Interativo -->
     <section id="galeria">
       <h2 class="section-title">A nossa galeria</h2>
       <div class="section-sub">Arraste para os lados ou clique nas fotos para expandir em tela cheia.</div>
@@ -953,17 +994,24 @@
         <button class="slider-arrow left" id="sliderPrev"><i class="fas fa-chevron-left"></i></button>
         <button class="slider-arrow right" id="sliderNext"><i class="fas fa-chevron-right"></i></button>
         
-        <div class="slider-track" id="sliderTrack"></div>
-        <div class="slider-dots" id="sliderDots"></div>
+        <div class="slider-track" id="sliderTrack">
+          <!-- Slides gerados via JavaScript -->
+        </div>
+        
+        <div class="slider-dots" id="sliderDots">
+          <!-- Bolinhas geradas via JavaScript -->
+        </div>
       </div>
     </section>
 
+    <!-- 4. 10 Motivos -->
     <section id="motivos">
       <h2 class="section-title">10 motivos pelos quais eu te amo</h2>
       <div class="section-sub">Pequenas coisas que fazem você ser a pessoa da minha vida.</div>
       <div class="motivos-grid" id="motivosGrid"></div>
     </section>
 
+    <!-- 5. Carta de Amor -->
     <section id="carta">
       <h2 class="section-title">Carta de Amor</h2>
       <div class="section-sub">Do meu coração direto para o seu.</div>
@@ -972,13 +1020,14 @@
         <p>Eu nunca fui muito bom com palavras, mas tentei. Porque você merece ouvir, ler e sentir tudo e este cantinho é o nosso, sempre que precisar lembrar, beleza?</p>
         <p>Quando te vi descendo a escada da igreja, eu não sabia que estava conhecendo a minha vida inteira. Naquele momento, sem nenhum aviso, meu mundo capotou de um jeito maravilhoso. Você desceu aquela escada e seu sorriso ficou na minha mente de um jeito...</p>
         <p>Foram quatro anos namorando como quem brinca de eternidade. A gente fez planos, sonhos, casa, futuro. E quando chega todos os dias, principalmente agora, penso: tudo o que eu já tinha vivido valia a pena, porque me trouxe até ali e aqui, com você xuxu, e sei que já estava escrito nas estrelas o nós.</p>
-        <p>Agradeço por todas as manhãs in que acordamos juntos e escuto o "bom dia". Pelos jantares improvisados. Pelas brigas que viraram. Pela paciência que você tem com os meus silêncios. Pela coragem que você me empresta quando a minha falta.</p>
+        <p>Agradeço por todas as manhãs em que acordamos juntos e escuto o "bom dia". Pelos jantares improvisados. Pelas brigas que viraram. Pela paciência que você tem com os meus silêncios. Pela coragem que você me empresta quando a minha falta.</p>
         <p>Eu quero envelhecer com você. Quero te ver com cabelos brancos, ainda rindo das minhas piadas ruins. Quero que a gente conte essa nossa história na eternidade.</p>
         <p>Obrigado por ser a casa que eu sempre quero voltar quando saio. Obrigado por ser paz, festa, abraço e calmaria, tudo na mesma pessoa. Eu te amo. Hoje, ontem, amanhã. No dia 13 e em todos os outros.</p>
-        <div class="carta-box-assinatura carta-assinatura">— Extremamente seu, com todo amor</div>
+        <div class="carta-assinatura">— Extremamente seu, com todo amor</div>
       </div>
     </section>
 
+    <!-- 6. Contador Widget Style -->
     <section id="contador">
       <h2 class="section-title">⏳ Cada segundo conta</h2>
       <div class="contador-wrapper glass-card">
@@ -995,6 +1044,7 @@
       </div>
     </section>
 
+    <!-- 7. Música Oculta com Widget Customizado de Luxo -->
     <section id="musica">
       <h2 class="section-title">A nossa música especial</h2>
       <div class="musica-wrapper glass-card">
@@ -1014,6 +1064,7 @@
           </div>
         </div>
 
+        <!-- Player de Áudio Técnico Oculto -->
         <iframe id="youtubePlayer" width="200" height="200" src="https://www.youtube.com/embed/qUD2GxTeVcI" title="YouTube player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
         
         <button id="playMusicBtn" class="btn" style="margin-top: 1.5rem;"><i class="fas fa-redo"></i> Reiniciar Trilha</button>
@@ -1021,6 +1072,7 @@
     </section>
   </div>
 
+  <!-- 8. Seção Final -->
   <div class="final-section" id="final">
     <div class="floating-hearts" id="floatingHeartsFinal"></div>
     <div class="final-content">
@@ -1032,11 +1084,13 @@
     </div>
   </div>
 
+  <!-- Lightbox Element -->
   <div id="lightboxModal" class="lightbox">
     <span class="close-lightbox" id="closeLightbox">&times;</span>
     <img id="lightboxImg" src="" alt="Foto expandida">
   </div>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="citacao">
       "O amor é a única coisa que somos capazes de perceber que transcende as dimensões de tempo e espaço."
@@ -1244,23 +1298,17 @@
   document.getElementById('sliderNext').addEventListener('click', () => { nextSlide(); resetAutoPlay(); });
   document.getElementById('sliderPrev').addEventListener('click', () => { prevSlide(); resetAutoPlay(); });
 
-  function startAutoPlay() {
-    slideInterval = setInterval(nextSlide, 4000);
-  }
-  function resetAutoPlay() {
-    clearInterval(slideInterval);
-    startAutoPlay();
-  }
+  function startAutoPlay() { slideInterval = setInterval(nextSlide, 4000); }
+  function resetAutoPlay() { clearInterval(slideInterval); startAutoPlay(); }
   startAutoPlay();
 
-
-  // ==================== RENDERIZADOR DOS CARDS DE MOTIVOS COM DETALHES DE HOVER/CLICK ====================
+  // ==================== RENDERIZADOR DOS CARDS DE MOTIVOS ====================
   const motivos = [
     "Pelo seu sorriso que ilumina meus dias",
     "Pelo seu coração gigante, generoso, leal. Você ama as pessoas como quem cuida de uma planta rara.",
     "Pelas nossas manhãs: café, série, risadas. Minha parte favorita do dia.",
     "Pelas risadas bobas. Ninguém ri das minhas leseiras como você. Nem mesmo eu mesmo.",
-    "Pela sua mão na minha. Em todo lugar, em todo momento. É o melhor lugar.",
+    "Pela sua mão na minha. Em todo lugar, em todo moment. É o melhor lugar.",
     "Pela sua força. Você é a pessoa mais corajosa que conheço, mesmo quando acha que não tem um pingo de coragem.",
     "Por construir um lar. Onde você está, é casa.",
     "Pelas suas histórias. Adoro ouvir você falar do dia, dos sonhos, das pessoas. Vou ouvir para sempre, minha xuxu.",
@@ -1274,7 +1322,6 @@
       const card = document.createElement('div');
       card.className = 'motivo-card glass-card';
       
-      // Montagem do HTML injetando o rodapé oculto com o coração e o "para sempre"
       card.innerHTML = `
         <div>
           <div class="motivo-num">${String(i+1).padStart(2,'0')}</div>
@@ -1285,7 +1332,6 @@
         </div>
       `;
       
-      // Listener de toque para funcionar como clique estável no mobile/tablet
       card.addEventListener('click', function() {
         this.classList.toggle('reveal');
       });
@@ -1293,7 +1339,6 @@
       motifsGrid.appendChild(card);
     });
   }
-
 
   // ==================== CONTADOR PRECISO ====================
   function atualizarContador() {
@@ -1305,7 +1350,7 @@
     const minutos = Math.floor(diff / (1000 * 60)) % 60;
     const horas = Math.floor(diff / (1000 * 60 * 60)) % 24;
     const diasTotal = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const anos = Math.floor(diasTotal / 3 canvas = 365);
+    const anos = Math.floor(diasTotal / 365);
     const meses = Math.floor((diasTotal % 365) / 30.44);
     const dias = Math.floor((diasTotal % 365) % 30.44);
     
@@ -1323,7 +1368,6 @@
   atualizarContador();
   setInterval(atualizarContador, 1000);
 
-
   // ==================== NAV SCROLL SUAVE ====================
   document.querySelectorAll('.nav-links a, .hero-buttons a').forEach(link => {
     link.addEventListener('click', function(e) {
@@ -1335,7 +1379,6 @@
       }
     });
   });
-
 
   // ==================== LIGHTBOX MODAL SCRIPT ====================
   const lightboxModal = document.getElementById('lightboxModal');
