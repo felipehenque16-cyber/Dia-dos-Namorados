@@ -13,7 +13,6 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      /* Camada de Proteção UI: Impede seleção de texto e cópia visual */
       user-select: none;
       -webkit-user-select: none;
       -moz-user-select: none;
@@ -30,7 +29,105 @@
       position: relative;
     }
 
-    /* AURORA MESH GRADIENT EFFECT (FUNDO DINÂMICO PREMIUM) */
+    /* TELA DE SENHA (BLOQUEIO ANTES DO PRESENTE) */
+    .password-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.ibb.co/TBXs3VBz/IMG-20250112-WA0003.jpg') no-repeat center center/cover;
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 1.5rem;
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+    }
+    .password-screen.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .password-box {
+      width: 100%;
+      max-width: 400px;
+      padding: 2.5rem 2rem;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 36px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+    }
+    .password-box i {
+      font-size: 3rem;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+    .password-box h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: #2b1f1a;
+      margin-bottom: 0.5rem;
+    }
+    .password-box p {
+      color: #635349;
+      font-size: 0.9rem;
+      margin-bottom: 1.8rem;
+    }
+    .password-input {
+      width: 100%;
+      padding: 14px 18px;
+      font-size: 1rem;
+      border: 1.5px solid rgba(212, 175, 55, 0.3);
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.9);
+      font-family: monospace;
+      font-size: 1.2rem;
+      text-align: center;
+      letter-spacing: 2px;
+      outline: none;
+      transition: all 0.3s;
+      margin-bottom: 1rem;
+    }
+    .password-input:focus {
+      border-color: #ff9a9e;
+      box-shadow: 0 0 0 3px rgba(255, 154, 158, 0.2);
+    }
+    .password-error {
+      color: #e74c3c;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+      min-height: 35px;
+    }
+    .btn-unlock {
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+      border: none;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s;
+      color: #5c3d46;
+    }
+    .btn-unlock:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 154, 158, 0.4);
+    }
+    .password-hint {
+      margin-top: 1.2rem;
+      font-size: 0.75rem;
+      color: #a89a90;
+    }
+
+    /* AURORA MESH GRADIENT EFFECT */
     body::before, body::after {
       content: '';
       position: fixed;
@@ -64,74 +161,12 @@
       --text-soft: #635349;
     }
 
-    /* TELA DE INGRESSO (SPLASH SCREEN STYLE LOVEPANDA) */
-    .welcome-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(rgba(44, 34, 30, 0.5), rgba(0, 0, 0, 0.6)), url('https://i.ibb.co/mCStQV3n/IMG-20241015-WA0022.jpg');
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 1.5rem;
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .welcome-overlay.fade-out {
-      opacity: 0;
-      transform: scale(1.06);
-      pointer-events: none;
-    }
-    .welcome-box {
-      width: 100%;
-      max-width: 450px;
-      padding: 3.5rem 2rem;
-      background: rgba(255, 255, 255, 0.78);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
-      border: 1px solid var(--glass-border);
-      border-radius: 36px;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
-    }
-    .welcome-icon {
-      font-size: 3.2rem;
-      background: var(--pink-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 1.5rem;
-      animation: heartbeat 1.6s infinite ease-in-out;
-    }
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0px rgba(255,154,158,0)); }
-      50% { transform: scale(1.08); filter: drop-shadow(0 4px 12px rgba(255,154,158,0.3)); }
-    }
-    .welcome-box h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      color: #2b1f1a;
-      margin-bottom: 1rem;
-    }
-    .welcome-box p {
-      color: var(--text-soft);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 2.2rem;
-    }
-
     .container {
       max-width: 1000px;
       margin: 0 auto;
       padding: 4rem 1.5rem;
     }
 
-    /* GLASSMORPHISM CARD LAPIDADO */
     .glass-card {
       background: var(--glass-bg);
       backdrop-filter: blur(20px);
@@ -142,7 +177,6 @@
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* SISTEMA DE ANIMAÇÃO SCROLL REVEAL CLAN */
     .reveal-on-scroll {
       opacity: 0;
       transform: translateY(35px);
@@ -153,7 +187,6 @@
       transform: translateY(0);
     }
 
-    /* HEADER / NAVEGAÇÃO INTERATIVA PREMIUM */
     .header {
       position: fixed;
       top: 15px;
@@ -206,7 +239,6 @@
       transform: translateY(-1px);
     }
 
-    /* HERO COURE DE LUXE */
     .hero {
       min-height: 100vh;
       width: 100%;
@@ -271,7 +303,6 @@
       flex-wrap: wrap;
     }
 
-    /* BOTÕES COM SHIMMER METÁLICO INTELIGENTE */
     .btn {
       position: relative;
       overflow: hidden;
@@ -288,9 +319,9 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      text-decoration: none;
     }
 
-    /* Raio metálico Shimmer */
     .btn::before {
       content: '';
       position: absolute;
@@ -325,7 +356,6 @@
       box-shadow: 0 12px 25px rgba(255,255,255,0.25);
     }
 
-    /* SEÇÕES E TIPOGRAFIA EDITORIAL */
     .section-title {
       font-size: 2.5rem;
       font-family: 'Playfair Display', serif;
@@ -343,7 +373,6 @@
       font-size: 0.98rem;
     }
 
-    /* HISTÓRIA E LAYOUT LUXO */
     .historia-content {
       padding: 3.5rem 3rem;
       display: flex;
@@ -360,10 +389,6 @@
 
     .historia-text p {
       margin-bottom: 1.5rem;
-    }
-
-    .historia-text p:last-child {
-      margin-bottom: 0;
     }
 
     .para-sempre {
@@ -399,7 +424,6 @@
       display: block;
     }
 
-    /* CARTA BOX RESPIRO EDITORIAL */
     .carta-box {
       padding: 4rem 3.5rem;
       line-height: 1.95;
@@ -409,7 +433,6 @@
     .carta-box p { margin-bottom: 1.6rem; }
     .carta-assinatura { margin-top: 1.5rem; font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; color: var(--gold-dark); }
 
-    /* TIMELINE CLEAN APP STYLE */
     .timeline-grid {
       position: relative;
       padding-left: 2.5rem;
@@ -472,7 +495,6 @@
       line-height: 1.65;
     }
 
-    /* PREMIUM SLIDER COMPLETO ANTI-CORTE */
     .slider-container {
       position: relative;
       width: 100%;
@@ -585,7 +607,6 @@
       border-radius: 10px;
     }
 
-    /* CONFIGURAÇÃO DO CARDS DE MOTIVOS COM SUPORTE À IMAGEM 1FC41E.PNG */
     .motivos-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
@@ -621,7 +642,7 @@
       align-items: center;
       gap: 6px;
       margin-top: 1.2rem;
-      color: #c9a87b; /* Cor dourada idêntica à foto enviada */
+      color: #c9a87b;
       font-family: 'Playfair Display', serif;
       font-style: italic;
       font-weight: 600;
@@ -637,7 +658,6 @@
       transform: translateY(0);
     }
 
-    /* CONTADOR ESTILO WIDGET IOS REFINADO */
     .contador-wrapper {
       padding: 4rem 2rem;
       text-align: center;
@@ -667,7 +687,6 @@
       margin-bottom: 0.3rem;
     }
 
-    /* AUDIO PLAYER WIDGET (VIDEO OCULTO) */
     .musica-wrapper {
       padding: 2.5rem 2rem;
       text-align: center;
@@ -740,7 +759,6 @@
       100% { height: 100%; }
     }
 
-    /* SEÇÃO FINAL GRANDIOSA */
     .final-section {
       min-height: 85vh;
       width: 100%;
@@ -776,7 +794,6 @@
       font-weight: 600;
     }
 
-    /* LIGHTBOX CINEMATOGRÁFICO */
     .lightbox {
       display: none;
       position: fixed;
@@ -845,7 +862,6 @@
       100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
     }
 
-    /* FOOTER MODERNO */
     .footer {
       background: transparent;
       text-align: center;
@@ -869,7 +885,6 @@
       font-weight: 600;
     }
 
-    /* BREAKPOINTS RESPONSIVOS */
     @media (max-width: 1024px) {
       .container { padding: 3rem 1.2rem; }
       .historia-content { gap: 2rem; padding: 2.5rem; }
@@ -901,26 +916,34 @@
       .player-widget { flex-direction: column; text-align: center; gap: 1rem; }
       .player-meta { text-align: center; }
       .btn-celebrate { bottom: 20px; right: 20px; }
+      .contador-numeros { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 480px) {
-      .contador-numeros { grid-template-columns: repeat(2, 1fr); }
       .slider-container { border-width: 4px; border-radius: 24px; }
       .slider-track { height: 260px; }
-      .welcome-box { padding: 2.5rem 1.2rem; border-radius: 28px; }
       .section-title { font-size: 1.8rem; }
+      .password-box { padding: 2rem 1.5rem; }
+      .password-box h2 { font-size: 1.5rem; }
     }
   </style>
 </head>
 <body id="topo">
 
-<!-- SPLASH SCREEN INTERATIVA BLINDADA -->
-<div class="welcome-overlay" id="welcomeOverlay">
-  <div class="welcome-box">
-    <div class="welcome-icon"><i class="fas fa-heart"></i></div>
-    <h2>Para o meu amor...</h2>
-    <p>Você recebeu um presente feito com memórias, palavras e música. Clique abaixo para abrir.</p>
-    <button class="btn" id="btnEnterSite"><i class="fas fa-envelope-open-text"></i> ABRIR PRESENTE</button>
+<!-- TELA DE SENHA (BLOQUEIO) -->
+<div class="password-screen" id="passwordScreen">
+  <div class="password-box">
+    <i class="fas fa-lock"></i>
+    <h2>Presente Bloqueado</h2>
+    <p>Digite a senha para desbloquear</p>
+    <input type="password" id="passwordInput" class="password-input" placeholder="__/__/____" maxlength="10" autocomplete="off">
+    <div class="password-error" id="passwordError"></div>
+    <button class="btn-unlock" id="unlockBtn">
+      <i class="fas fa-unlock-alt"></i> Desbloquear
+    </button>
+    <div class="password-hint">
+      <i class="fas fa-calendar-alt"></i> Dica: uma data especial...
+    </div>
   </div>
 </div>
 
@@ -942,7 +965,6 @@
 </header>
 
 <main>
-  <!-- HERO APP LOOK -->
   <div class="hero">
     <div class="floating-hearts" id="floatingHeartsHero"></div>
     <div class="hero-content">
@@ -958,7 +980,6 @@
   </div>
 
   <div class="container">
-    <!-- 1. Nossa História -->
     <section id="historia" class="reveal-on-scroll">
       <h2 class="section-title">A nossa história de amor</h2>
       <div class="section-sub">Como tudo começou.</div>
@@ -976,7 +997,6 @@
       </div>
     </section>
 
-    <!-- 2. Linha do Tempo -->
     <section id="linha-tempo" class="reveal-on-scroll">
       <h2 class="section-title">A linha do tempo do nosso amor</h2>
       <div class="section-sub">Cinco momentos que nunca vou esquecer — e tantos outros que ainda virão.</div>
@@ -984,7 +1004,7 @@
         <div class="timeline-item glass-card">
           <div class="timeline-year">VERÃO DE 2018</div>
           <div class="timeline-title">Primeiro Encontro</div>
-          <div class="timeline-desc">Te vi descendo a escada da igreja. Naquele momento, o tempo parou e eu soube era você.</div>
+          <div class="timeline-desc">Te vi descendo a escada da igreja. Naquele momento, o tempo parou e eu sabia era você.</div>
         </div>
         <div class="timeline-item glass-card">
           <div class="timeline-year">OUTUBRO DE 2018</div>
@@ -1009,7 +1029,6 @@
       </div>
     </section>
 
-    <!-- 3. Slide de Fotos Interativo -->
     <section id="galeria" class="reveal-on-scroll">
       <h2 class="section-title">A nossa galeria</h2>
       <div class="section-sub">Arraste para os lados ou clique nas fotos para expandir em tela cheia.</div>
@@ -1018,24 +1037,18 @@
         <button class="slider-arrow left" id="sliderPrev"><i class="fas fa-chevron-left"></i></button>
         <button class="slider-arrow right" id="sliderNext"><i class="fas fa-chevron-right"></i></button>
         
-        <div class="slider-track" id="sliderTrack">
-          <!-- Slides gerados dinamicamente via JavaScript -->
-        </div>
+        <div class="slider-track" id="sliderTrack"></div>
         
-        <div class="slider-dots" id="sliderDots">
-          <!-- Bolinhas geradas via JavaScript -->
-        </div>
+        <div class="slider-dots" id="sliderDots"></div>
       </div>
     </section>
 
-    <!-- 4. 10 Motivos -->
     <section id="motivos" class="reveal-on-scroll">
       <h2 class="section-title">10 motivos pelos quais eu te amo</h2>
       <div class="section-sub">Pequenas coisas que fazem você ser a pessoa da minha vida.</div>
       <div class="motivos-grid" id="motivosGrid"></div>
     </section>
 
-    <!-- 5. Carta de Amor -->
     <section id="carta" class="reveal-on-scroll">
       <h2 class="section-title">Carta de Amor</h2>
       <div class="section-sub">Do meu coração direto para o seu.</div>
@@ -1051,7 +1064,6 @@
       </div>
     </section>
 
-    <!-- 6. Contador Widget Style -->
     <section id="contador" class="reveal-on-scroll">
       <h2 class="section-title">⏳ Cada segundo conta</h2>
       <div class="contador-wrapper glass-card">
@@ -1068,11 +1080,9 @@
       </div>
     </section>
 
-    <!-- 7. Música Oculta com Widget Customizado de Luxo -->
     <section id="musica" class="reveal-on-scroll">
       <h2 class="section-title">A nossa música especial</h2>
       <div class="musica-wrapper glass-card">
-        
         <div class="player-widget">
           <div class="player-disc"><i class="fas fa-compact-disc"></i></div>
           <div class="player-meta">
@@ -1088,7 +1098,6 @@
           </div>
         </div>
 
-        <!-- Player de Áudio Técnico Totalmente Oculto -->
         <iframe id="youtubePlayer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
         
         <button id="playMusicBtn" class="btn" style="margin-top: 1.5rem;"><i class="fas fa-redo"></i> Reiniciar Trilha</button>
@@ -1096,7 +1105,6 @@
     </section>
   </div>
 
-  <!-- 8. Seção Final -->
   <div class="final-section" id="final">
     <div class="floating-hearts" id="floatingHeartsFinal"></div>
     <div class="final-content">
@@ -1108,13 +1116,11 @@
     </div>
   </div>
 
-  <!-- Lightbox Element -->
   <div id="lightboxModal" class="lightbox">
     <span class="close-lightbox" id="closeLightbox">&times;</span>
     <img id="lightboxImg" src="" alt="Foto expandida">
   </div>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="citacao">
       "O amor é a única coisa que somos capazes de perceber que transcende as dimensões de tempo e espaço."
@@ -1126,7 +1132,62 @@
 </main>
 
 <script>
-  // ==================== CAMADA TÉCNICA DE SINALIZAÇÃO E PROTEÇÃO ANTI-CÓPIA ====================
+  // ==================== SISTEMA DE SENHA ====================
+  const SENHA_CORRETA = "13/01/2022";
+  const passwordScreen = document.getElementById('passwordScreen');
+  const passwordInput = document.getElementById('passwordInput');
+  const unlockBtn = document.getElementById('unlockBtn');
+  const passwordError = document.getElementById('passwordError');
+
+  function verificarSenha() {
+    const senhaDigitada = passwordInput.value.trim();
+    
+    if (senhaDigitada === SENHA_CORRETA) {
+      // Senha correta - libera o site
+      passwordScreen.classList.add('hide');
+      
+      // Inicia a música após desbloquear
+      setTimeout(() => {
+        playMusic();
+      }, 300);
+      
+      // Salva no sessionStorage para não pedir novamente
+      sessionStorage.setItem('presenteDesbloqueado', 'true');
+    } else {
+      // Senha errada
+      passwordError.innerHTML = '<i class="fas fa-exclamation-circle"></i> Senha incorreta. Tente novamente!';
+      passwordInput.value = '';
+      passwordInput.focus();
+      
+      // Efeito de shake
+      const box = document.querySelector('.password-box');
+      box.style.animation = 'shake 0.3s ease-in-out';
+      setTimeout(() => { box.style.animation = ''; }, 300);
+    }
+  }
+
+  // Efeito shake
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+  `;
+  document.head.appendChild(style);
+
+  unlockBtn.addEventListener('click', verificarSenha);
+  passwordInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') verificarSenha();
+  });
+
+  // Verifica se já foi desbloqueado antes
+  if (sessionStorage.getItem('presenteDesbloqueado') === 'true') {
+    passwordScreen.classList.add('hide');
+  }
+
+  // ==================== PROTEÇÃO ANTI-CÓPIA ====================
   document.addEventListener('contextmenu', event => event.preventDefault());
   document.addEventListener('keydown', event => {
     if (event.keyCode === 123) { event.preventDefault(); return false; }
@@ -1136,7 +1197,7 @@
     if (event.ctrlKey && (event.keyCode === 67 || event.keyCode === 88)) { event.preventDefault(); return false; }
   });
 
-  // ==================== SISTEMA NATIVO SCROLL REVEAL ENGINE ====================
+  // ==================== SCROLL REVEAL ====================
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -1149,7 +1210,7 @@
     revealObserver.observe(section);
   });
 
-  // ==================== DISPARADOR AUTOMÁTICO DE MÚSICA PROTEGIDO ====================
+  // ==================== SISTEMA DE MÚSICA ====================
   function playMusic() {
     const iframe = document.getElementById('youtubePlayer');
     if (iframe) {
@@ -1157,44 +1218,46 @@
     }
   }
 
-  document.getElementById('btnEnterSite').addEventListener('click', function(e) {
-    try { playMusic(); } catch(err) { console.log("Autoplay bloqueado"); }
-    try { heartBurst(e); } catch(err) { console.log("Partículas bloqueadas"); }
-    
-    const overlay = document.getElementById('welcomeOverlay');
-    if (overlay) {
-      overlay.classList.add('fade-out');
-      setTimeout(() => overlay.remove(), 800);
-    }
-  });
-
   document.getElementById('playMusicBtn').addEventListener('click', playMusic);
 
-  // ==================== CORAÇÕES FLUTUANTES (AMBIENTE) ====================
+  // ==================== CORAÇÕES FLUTUANTES ====================
   function createFloatingHearts(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
     
-    const heartCount = 30;
-    for (let i = 0; i < heartCount; i++) {
+    for (let i = 0; i < 30; i++) {
       const heart = document.createElement('i');
-      heart.classList.add('fas', 'fa-heart', 'heart');
+      heart.classList.add('fas', 'fa-heart');
       
       const size = Math.random() * 15 + 10;
       heart.style.position = 'absolute';
       heart.style.color = 'rgba(255, 154, 158, 0.4)';
       heart.style.fontSize = size + 'px';
       heart.style.left = Math.random() * 100 + '%';
+      heart.style.top = Math.random() * 100 + '%';
       heart.style.animation = `floatUp ${Math.random() * 6 + 6}s linear infinite`;
       heart.style.animationDelay = Math.random() * 8 + 's';
       
       container.appendChild(heart);
     }
   }
+  
+  // Adiciona o CSS da animação flutuante
+  const floatStyle = document.createElement('style');
+  floatStyle.textContent = `
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+      100% { transform: translateY(-100vh) rotate(20deg); opacity: 0; }
+    }
+    .floating-hearts { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none; z-index: 1; }
+    .hero, .final-section { position: relative; overflow: hidden; }
+  `;
+  document.head.appendChild(floatStyle);
+  
   createFloatingHearts('floatingHeartsHero');
   createFloatingHearts('floatingHeartsFinal');
 
-  // ==================== EXPLOSÃO DE CORAÇÕES INTERATIVA ====================
+  // ==================== EXPLOSÃO DE CORAÇÕES ====================
   function heartBurst(e) {
     const count = 18;
     const clientX = e.clientX || window.innerWidth / 2;
@@ -1226,7 +1289,7 @@
   document.getElementById('btnCelebrate').addEventListener('click', heartBurst);
   document.getElementById('heroSurprise').addEventListener('click', heartBurst);
 
-  // ==================== ÁLBUM COMPLETO (56 FOTOS) ====================
+  // ==================== GALERIA DE FOTOS ====================
   const fotosGaleria = [
     "https://i.ibb.co/jZhRC9X7/IMG-20251120-WA0005.jpg",
     "https://i.ibb.co/67X49YsZ/IMG-20221125-WA0000.jpg",
@@ -1332,14 +1395,14 @@
   function nextSlide() { goToSlide(currentSlide + 1); }
   function prevSlide() { goToSlide(currentSlide - 1); }
 
-  document.getElementById('sliderNext').addEventListener('click', () => { nextSlide(); resetAutoPlay(); });
-  document.getElementById('sliderPrev').addEventListener('click', () => { prevSlide(); resetAutoPlay(); });
+  document.getElementById('sliderNext')?.addEventListener('click', () => { nextSlide(); resetAutoPlay(); });
+  document.getElementById('sliderPrev')?.addEventListener('click', () => { prevSlide(); resetAutoPlay(); });
 
   function startAutoPlay() { slideInterval = setInterval(nextSlide, 4000); }
   function resetAutoPlay() { clearInterval(slideInterval); startAutoPlay(); }
   startAutoPlay();
 
-  // ==================== MOTIVOS COM INTERAÇÃO HOVER/CLICK ====================
+  // ==================== MOTIVOS ====================
   const motivos = [
     "Pelo seu sorriso que ilumina meus dias",
     "Pelo seu coração gigante, generoso, leal. Você ama as pessoas como quem cuida de uma planta rara.",
@@ -1377,7 +1440,7 @@
     });
   }
 
-  // ==================== CONTADOR PRECISO ====================
+  // ==================== CONTADOR ====================
   function atualizarContador() {
     const inicio = new Date(2017, 9, 15);
     const agora = new Date();
@@ -1391,8 +1454,8 @@
     const meses = Math.floor((diasTotal % 365) / 30.44);
     const dias = Math.floor((diasTotal % 365) % 30.44);
     
-    const elAnos = document.getElementById('anos');
-    if(elAnos) {
+    const anosEl = document.getElementById('anos');
+    if(anosEl) {
       document.getElementById('anos').textContent = anos;
       document.getElementById('meses').textContent = meses;
       document.getElementById('dias').textContent = dias;
@@ -1405,7 +1468,7 @@
   atualizarContador();
   setInterval(atualizarContador, 1000);
 
-  // ==================== NAV SCROLL SUAVE ====================
+  // ==================== NAVEGAÇÃO SUAVE ====================
   document.querySelectorAll('.nav-links a, .hero-buttons a').forEach(link => {
     link.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
@@ -1417,7 +1480,7 @@
     });
   });
 
-  // ==================== LIGHTBOX MODAL SCRIPT ====================
+  // ==================== LIGHTBOX ====================
   const lightboxModal = document.getElementById('lightboxModal');
   const lightboxImg = document.getElementById('lightboxImg');
   
